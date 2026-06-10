@@ -1,3 +1,6 @@
+
+raw
+Index images · HTML
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,7 +23,7 @@
 </head>
 <body class="bg-gray-50">
     <div id="app"></div>
-
+ 
     <script>
         let state = {
             language: 'fr',
@@ -30,9 +33,9 @@
             selectedCategory: 'all',
             bannerIndex: 0
         };
-
+ 
         const ARIARYRATE = 4500;
-
+ 
         const translations = {
             fr: {
                 nav: { home: 'Accueil', products: 'Produits', blog: 'Blog', faq: 'FAQ', contact: 'Contact', about: 'À propos' },
@@ -49,24 +52,24 @@
                 footer: { slogan: 'Vita avy amin\'ny amin\'ny, Niforona ho an\'ny inao', rights: '© 2026 MLR TECH' },
             }
         };
-
+ 
         const bannerSlides = [
             { 
                 title_fr: 'Électricité pour Tous',
                 title_mg: 'Herinaratra ho an\'ny Lahat',
                 desc_fr: 'Découvrez nos solutions d\'énergie solaire',
                 desc_mg: 'Tuklahin ang aming solusyon sa enerhiya',
-                image: 'https://images.unsplash.com/photo-1509391366360-2e938960db18?w=1200&h=400&fit=crop'
+                image: 'https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Banni%C3%A8re%20%C3%A9lectrique.png'
             },
             { 
                 title_fr: 'Eau Potable Accessible',
                 title_mg: 'Rano Madio Abot-Kaya',
                 desc_fr: 'Systèmes de filtration abordables',
                 desc_mg: 'Abot-kayang sistema ng pagsala',
-                image: 'https://images.unsplash.com/photo-1508037487667-a8c51f24caa6?w=1200&h=400&fit=crop'
+                image: 'https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Banni%C3%A8re%20Eau%20potable.png'
             }
         ];
-
+ 
         const products = [
             { id: 1, name: 'Kit Solaire 100W', category: 'electricity', price: 150, desc: 'Éclairage simple + charge' },
             { id: 2, name: 'Kit Solaire 300W', category: 'electricity', price: 350, desc: 'Petit usage résidentiel' },
@@ -79,74 +82,74 @@
             { id: 9, name: 'Système Osmose Inverse', category: 'water', price: 1200, desc: 'Réservoir premium' },
             { id: 10, name: 'Station Multi-Étapes', category: 'water', price: 2500, desc: 'Système professionnel' },
         ];
-
+ 
         const blogArticles = [
             { 
                 title_fr: 'La Crise Énergétique à Madagascar',
                 title_mg: 'Ny Krizy Angetry',
                 content_fr: 'Madagascar fait face à une crise d\'électricité critique. Plus de 75% de la population n\'a pas accès à l\'électricité fiable. Les zones rurales sont particulièrement affectées avec des coupures quotidiennes.',
                 content_mg: 'Madagasikara miatrika ny krizy angetry. Mahigit 75% ny zanaky ny tany tsy manana access.',
-                image: 'https://images.unsplash.com/photo-1581092921550-e323be2ae537?w=600&h=400&fit=crop'
+                image: 'https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Article%20electricit%C3%A9.png'
             },
             { 
                 title_fr: 'Problèmes d\'Eau Potable à Madagascar',
                 title_mg: 'Ny Olana Amin\'ny Rano Madio',
                 content_fr: 'L\'accès à l\'eau potable est un défi majeur. Seuls 50% des Malgaches ont accès à de l\'eau propre. Les maladies liées à l\'eau contaminée tuent des milliers de personnes.',
                 content_mg: 'Ny access amin\'ny rano madio ay hamon. 50% lamang ng mga Malgasy ang may access.',
-                image: 'https://images.unsplash.com/photo-1508037487667-a8c51f24caa6?w=600&h=400&fit=crop'
+                image: 'https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Article%20eau.png'
             },
             { 
                 title_fr: 'L\'Énergie Solaire : Solution pour Madagascar',
                 title_mg: 'Ang Enerhiya ng Araw : Solusyon',
                 content_fr: 'Madagascar bénéficie de 320 jours de soleil par an. L\'énergie solaire est la solution idéale, écologique et durable. Les panneaux solaires permettent aux familles d\'accéder à l\'électricité.',
                 content_mg: 'Ang Madagascar ay may 320 araw ng araw. Ang enerhiya ng araw ay perpektong solusyon.',
-                image: 'https://images.unsplash.com/photo-1509391366360-2e938960db18?w=600&h=400&fit=crop'
+                image: 'https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Articles%201.jpg'
             },
             { 
                 title_fr: 'Notre Mission : MLR TECH',
                 title_mg: 'Ang Aming Misyon : MLR TECH',
                 content_fr: 'MLR TECH s\'engage à résoudre les problèmes d\'électricité et d\'eau potable. Nous proposons des solutions simples, abordables et écologiques. "Fait par nous, Créé pour vous"',
                 content_mg: 'Ang MLR TECH ay nakatuon sa paglutas. "Ginawa ng amin, Nilikha para sa inyo"',
-                image: 'https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/logo_mlr.png'
+                image: 'https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/MLR%20article.jpg'
             }
         ];
-
+ 
         function formatPrice(price) {
             if (state.currency === 'EUR') return `${price}€`;
             return `${Math.round(price * ARIARYRATE)} Ar`;
         }
-
+ 
         function addToCart(product) {
             state.cart.push({ ...product, cartId: Date.now() });
             render();
         }
-
+ 
         function removeFromCart(cartId) {
             state.cart = state.cart.filter(item => item.cartId !== cartId);
             render();
         }
-
+ 
         function setPage(page) {
             state.currentPage = page;
             state.selectedCategory = 'all';
             render();
         }
-
+ 
         function setCategory(cat) {
             state.selectedCategory = cat;
             render();
         }
-
+ 
         function nextBanner() {
             state.bannerIndex = (state.bannerIndex + 1) % bannerSlides.length;
             render();
         }
-
+ 
         function render() {
             const t = translations[state.language];
             let content = '';
             const currentSlide = bannerSlides[state.bannerIndex];
-
+ 
             if (state.currentPage === 'home') {
                 content = `
                     <section class="relative h-96 overflow-hidden">
@@ -161,7 +164,7 @@
                             </div>
                         </div>
                     </section>
-
+ 
                     <section class="gradient-body text-white px-4 py-20">
                         <div class="max-w-7xl mx-auto">
                             <h2 class="text-5xl font-bold text-center mb-4">${t.blog.title}</h2>
@@ -177,7 +180,7 @@
                             </div>
                         </div>
                     </section>
-
+ 
                     <section class="gradient-body text-white px-4 py-20">
                         <div class="max-w-7xl mx-auto">
                             <h2 class="text-5xl font-bold text-center mb-16 text-white">Produits Populaires</h2>
@@ -275,7 +278,7 @@
                     </section>
                 `;
             }
-
+ 
             document.getElementById('app').innerHTML = `
                 <nav class="header-white sticky top-0 z-50 shadow-lg">
                     <div class="max-w-7xl mx-auto px-4 py-4">
@@ -298,9 +301,9 @@
                         </div>
                     </div>
                 </nav>
-
+ 
                 <main class="min-h-screen gradient-body">${content}</main>
-
+ 
                 <footer class="bg-gray-900 text-white py-12">
                     <div class="max-w-7xl mx-auto px-4 text-center">
                         <p class="text-orange-400 font-semibold mb-2">"${t.footer.slogan}"</p>
@@ -308,10 +311,10 @@
                     </div>
                 </footer>
             `;
-
+ 
             setTimeout(() => { nextBanner(); }, 5000);
         }
-
+ 
         function productCard(p, t) {
             const catName = p.category === 'electricity' ? t.categories.electricity : t.categories.water;
             return `
@@ -327,7 +330,7 @@
                 </div>
             `;
         }
-
+ 
         render();
     </script>
 </body>
