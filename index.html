@@ -19,6 +19,8 @@
         img { filter: brightness(1.08) contrast(1.05); }
         .page { display: none !important; }
         .page.active { display: block !important; }
+        nav { transition: transform 0.3s ease-in-out; }
+        nav.hidden-header { transform: translateY(-100%); }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -377,6 +379,23 @@
                 location.reload();
             }
         }
+ 
+        // SCROLL HIDE/SHOW EN-TÊTE
+        let lastScrollTop = 0;
+        const nav = document.querySelector('nav');
+ 
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scroll DOWN - cache l'en-tête
+                nav.classList.add('hidden-header');
+            } else {
+                // Scroll UP - affiche l'en-tête
+                nav.classList.remove('hidden-header');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
     </script>
  
 </body>
