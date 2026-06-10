@@ -15,6 +15,8 @@
         .btn-primary { background: linear-gradient(135deg, #ff9900, #ffb84d); color: white; }
         .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(255,153,0,0.4); }
         .card-hover:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .banner-img { transition: opacity 0.5s ease-in-out; filter: brightness(1.15) contrast(1.05); }
+        img { filter: brightness(1.08) contrast(1.05); }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -46,14 +48,14 @@
     </nav>
  
     <main class="gradient-body text-white">
-        <!-- BANNIÈRE 1 - ÉLECTRICITÉ -->
+        <!-- BANNIÈRE QUI DÉFILE - PLUS CLAIRE -->
         <section class="relative h-96 overflow-hidden">
-            <img src="https://imgur.com/ORYraPh.png" alt="Électricité" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <img id="banner-image" src="https://imgur.com/ORYraPh.png" alt="Banner" class="banner-img w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-25"></div>
             <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
-                <h2 class="text-5xl font-bold mb-4">Électricité pour Tous</h2>
-                <p class="text-xl mb-8">Découvrez nos solutions d'énergie solaire</p>
-                <button class="btn-primary px-8 py-3 rounded-lg font-semibold">Électricité</button>
+                <h2 id="banner-title" class="text-5xl font-bold mb-4">Électricité pour Tous</h2>
+                <p id="banner-desc" class="text-xl mb-8">Découvrez nos solutions d'énergie solaire</p>
+                <button id="banner-btn" class="btn-primary px-8 py-3 rounded-lg font-semibold">Électricité</button>
             </div>
         </section>
  
@@ -63,45 +65,34 @@
                 <h2 class="text-5xl font-bold text-center mb-4">Découvrez les Enjeux de Madagascar</h2>
                 <p class="text-center text-orange-100 mb-16 text-lg">Comprenez les enjeux et nos solutions</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Article 1 -->
+                    <!-- Article 1 - La Crise Énergétique (avec image Imgur) -->
                     <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white border-opacity-20 card-hover">
                         <h3 class="text-2xl font-bold mb-4 text-white">La Crise Énergétique à Madagascar</h3>
                         <p class="text-orange-100 leading-relaxed mb-6">Madagascar fait face à une crise d'électricité critique. Plus de 75% de la population n'a pas accès à l'électricité fiable. Les zones rurales sont particulièrement affectées avec des coupures quotidiennes.</p>
-                        <img src="https://images.unsplash.com/photo-1581092921550-e323be2ae537?w=600&h=400&fit=crop" alt="Article" class="w-full h-48 object-cover rounded-xl">
+                        <img src="https://imgur.com/KNhHRtz.png" alt="Article" class="w-full h-48 object-cover rounded-xl">
                     </div>
  
-                    <!-- Article 2 -->
+                    <!-- Article 2 - Eau Potable -->
                     <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white border-opacity-20 card-hover">
                         <h3 class="text-2xl font-bold mb-4 text-white">Problèmes d'Eau Potable à Madagascar</h3>
                         <p class="text-orange-100 leading-relaxed mb-6">L'accès à l'eau potable est un défi majeur. Seuls 50% des Malgaches ont accès à de l'eau propre. Les maladies liées à l'eau contaminée tuent des milliers de personnes.</p>
                         <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Article%20eau.png" alt="Article" class="w-full h-48 object-cover rounded-xl">
                     </div>
  
-                    <!-- Article 3 -->
+                    <!-- Article 3 - Enjeux Eau et Énergie -->
                     <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white border-opacity-20 card-hover">
                         <h3 class="text-2xl font-bold mb-4 text-white">Madagascar face aux Enjeux de l'Énergie et de l'Eau</h3>
                         <p class="text-orange-100 leading-relaxed mb-6">Madagascar souffre d'une crise majeure d'accès aux services essentiels. Seulement 35% de la population a accès à l'électricité, et seulement 51% a accès à l'eau potable. En zones rurales (où vivent 65% des Malgaches), ces chiffres chutent dramatiquement à 15% pour l'électricité et 35% pour l'eau. Chaque année, plus de 10 000 décès sont liés aux maladies d'eau contaminée.</p>
                         <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Articles%201.jpg" alt="Article" class="w-full h-48 object-cover rounded-xl">
                     </div>
  
-                    <!-- Article 4 -->
+                    <!-- Article 4 - Notre Mission MLR TECH -->
                     <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white border-opacity-20 card-hover">
                         <h3 class="text-2xl font-bold mb-4 text-white">Notre Mission : MLR TECH</h3>
                         <p class="text-orange-100 leading-relaxed mb-6">MLR TECH s'engage à résoudre les problèmes d'électricité et d'eau potable. Nous proposons des solutions simples, abordables et écologiques. "Fait par nous, Créé pour vous"</p>
                         <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/MLR%20article.jpg" alt="Article" class="w-full h-48 object-cover rounded-xl">
                     </div>
                 </div>
-            </div>
-        </section>
- 
-        <!-- BANNIÈRE 2 - EAU -->
-        <section class="relative h-96 overflow-hidden">
-            <img src="https://imgur.com/0DzqejS.png" alt="Eau Potable" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-            <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
-                <h2 class="text-5xl font-bold mb-4">Eau Potable Accessible</h2>
-                <p class="text-xl mb-8">Systèmes de filtration abordables</p>
-                <button class="btn-primary px-8 py-3 rounded-lg font-semibold">Eau Potable</button>
             </div>
         </section>
  
@@ -192,6 +183,42 @@
             <p class="text-gray-400">© 2026 MLR TECH. Tous droits réservés</p>
         </div>
     </footer>
+ 
+    <script>
+        const banners = [
+            {
+                image: 'https://imgur.com/ORYraPh.png',
+                title: 'Électricité pour Tous',
+                desc: "Découvrez nos solutions d'énergie solaire",
+                button: 'Électricité'
+            },
+            {
+                image: 'https://imgur.com/0DzqejS.png',
+                title: 'Eau Potable Accessible',
+                desc: 'Systèmes de filtration abordables',
+                button: 'Eau Potable'
+            }
+        ];
+ 
+        let currentBanner = 0;
+ 
+        function changeBanner() {
+            currentBanner = (currentBanner + 1) % banners.length;
+            const banner = banners[currentBanner];
+            
+            document.getElementById('banner-image').style.opacity = '0';
+            
+            setTimeout(() => {
+                document.getElementById('banner-image').src = banner.image;
+                document.getElementById('banner-title').textContent = banner.title;
+                document.getElementById('banner-desc').textContent = banner.desc;
+                document.getElementById('banner-btn').textContent = banner.button;
+                document.getElementById('banner-image').style.opacity = '1';
+            }, 250);
+        }
+ 
+        setInterval(changeBanner, 5000);
+    </script>
  
 </body>
 </html>
