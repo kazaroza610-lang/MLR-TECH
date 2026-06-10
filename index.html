@@ -17,16 +17,16 @@
         .card-hover:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
         .banner-img { transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1); filter: brightness(1.15) contrast(1.05); object-position: center 30%; }
         img { filter: brightness(1.08) contrast(1.05); }
-        .page { display: none; }
-        .page.active { display: block; }
+        .page { display: none !important; }
+        .page.active { display: block !important; }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- HEADER -->
     <nav class="header-white sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-4">
+        <div class="max-w-7xl mx-auto px-4 py-1">
             <!-- Logo à GAUCHE + Grand -->
-            <div class="flex justify-between items-center mb-3">
+            <div class="flex justify-between items-center mb-1">
                 <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/logo_mlr.png" alt="Logo" style="height: 120px; cursor: pointer;" onclick="goToPage('home')">
                 
                 <!-- Panier à DROITE -->
@@ -36,7 +36,7 @@
             </div>
  
             <!-- NAV CENTRE -->
-            <div class="flex justify-center gap-2 md:gap-4 flex-wrap mb-2 text-xs md:text-sm">
+            <div class="flex justify-center gap-2 md:gap-4 flex-wrap mb-1 text-xs md:text-sm">
                 <button onclick="goToPage('home')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Accueil</button>
                 <button onclick="goToPage('products')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Nos Panneaux Solaires</button>
                 <button onclick="goToPage('products')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Nos Filtres à Eaux</button>
@@ -46,7 +46,7 @@
             </div>
  
             <!-- SÉLECTEURS -->
-            <div class="flex justify-center gap-2 flex-wrap">
+            <div class="flex justify-center gap-2 flex-wrap py-1">
                 <select onchange="changeLanguage(this.value)" class="bg-gray-100 text-gray-800 px-2 py-1 rounded-lg text-xs">
                     <option value="fr">FR</option>
                     <option value="mg">MG</option>
@@ -70,352 +70,6 @@
                     <h2 id="banner-title" class="text-3xl md:text-5xl font-bold mb-4">Électricité pour Tous</h2>
                     <p id="banner-desc" class="text-lg md:text-xl mb-8">Découvrez nos solutions d'énergie solaire</p>
                     <button id="banner-btn" onclick="goToPage('products')" class="px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-yellow-400 bg-blue-900 hover:bg-blue-800 border-2 border-yellow-400 shadow-lg">Électricité</button>
-                </div>
-            </section>
- 
-            <!-- ARTICLES -->
-            <section class="px-4 py-16 md:py-20">
-                <div class="max-w-7xl mx-auto">
-                    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">Découvrez les Enjeux de Madagascar</h2>
-                    <p class="text-center text-orange-100 mb-12 md:mb-16 text-lg">Comprenez les enjeux et nos solutions</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Article 1 -->
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 border border-white border-opacity-20 card-hover">
-                            <h3 class="text-2xl font-bold mb-4 text-white">La Crise Énergétique à Madagascar</h3>
-                            <p class="text-orange-100 leading-relaxed mb-6">Madagascar fait face à une crise d'électricité critique et sans précédent. Plus de 75% de la population n'a pas accès à l'électricité fiable et stable. Les zones rurales sont particulièrement affectées avec des coupures quotidiennes qui durent plusieurs heures. Cette situation paralyse le développement économique, empêche les enfants d'étudier le soir, et prive les hôpitaux d'énergie pour sauver des vies. Les générateurs diesel sont coûteux et polluent l'environnement. L'absence d'électricité confine 25 millions de Malgaches à la pauvreté et à l'obscurité.</p>
-                            <img src="https://imgur.com/KNhHRtz.png" alt="Article" class="w-full h-48 object-cover rounded-xl">
-                        </div>
- 
-                        <!-- Article 2 -->
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 border border-white border-opacity-20 card-hover">
-                            <h3 class="text-2xl font-bold mb-4 text-white">Problèmes d'Eau Potable à Madagascar</h3>
-                            <p class="text-orange-100 leading-relaxed mb-6">L'accès à l'eau potable est un défi majeur qui coûte des vies chaque jour. Seuls 50% des Malgaches ont accès à de l'eau propre et saine. Les maladies liées à l'eau contaminée - choléra, diarrhée, typhus - tuent des milliers de personnes chaque année, notamment les enfants. Les femmes parcourent des kilomètres pour chercher de l'eau, perdant des journées de travail et d'éducation. Les eaux souterraines sont souvent contaminées par les bactéries, et les systèmes d'approvisionnement en eau sont archaïques et inefficaces. Sans eau potable, il n'y a pas de santé, pas de dignité, pas d'avenir.</p>
-                            <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Article%20eau.png" alt="Article" class="w-full h-48 object-cover rounded-xl">
-                        </div>
- 
-                        <!-- Article 3 -->
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 border border-white border-opacity-20 card-hover">
-                            <h3 class="text-2xl font-bold mb-4 text-white">Madagascar face aux Enjeux de l'Énergie et de l'Eau</h3>
-                            <p class="text-orange-100 leading-relaxed mb-6">Madagascar souffre d'une crise majeure et simultanée d'accès aux deux services essentiels de la vie moderne. Seulement 35% de la population a accès à l'électricité, et seulement 51% a accès à l'eau potable. Ces statistiques nationales cachent des disparités terribles : en zones rurales où vivent 65% des Malgaches, seulement 15% ont l'électricité et seulement 35% ont l'eau potable. Chaque année, plus de 10 000 décès sont directement liés aux maladies d'eau contaminée. Les enfants abandonnent l'école, les entrepreneurs ne peuvent pas développer leurs affaires, les hôpitaux manquent d'électricité pour les opérations d'urgence. Cette double crise bloque tout développement durable et condamne des générations à rester dans la pauvreté extrême.</p>
-                            <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/Articles%201.jpg" alt="Article" class="w-full h-48 object-cover rounded-xl">
-                        </div>
- 
-                        <!-- Article 4 -->
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 md:p-8 border border-white border-opacity-20 card-hover">
-                            <h3 class="text-2xl font-bold mb-4 text-white">Notre Mission : MLR TECH</h3>
-                            <p class="text-orange-100 leading-relaxed mb-6">MLR TECH s'engage fermement à résoudre les problèmes critiques d'électricité et d'eau potable qui freinent Madagascar. Nous ne croyons pas aux solutions compliquées et coûteuses. Nous proposons des solutions simples, abordables et écologiques que chaque Malgache peut se permettre. Nos kits solaires sont robustes et faciles à installer. Nos systèmes de filtration d'eau sont efficaces et durables. Nous croyons que chaque famille mérite de l'électricité pour éclairer leurs enfants et de l'eau propre pour boire sans crainte. Ensemble, nous bâtissons un Madagascar où l'électricité et l'eau propre ne sont plus des luxes, mais des droits. "Fait par nous, Créé pour vous" - c'est notre engagement envers chaque Malgache.</p>
-                            <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/MLR%20article.jpg" alt="Article" class="w-full h-48 object-cover rounded-xl">
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
- 
-        <!-- PAGE PRODUITS -->
-        <div id="products" class="page">
-            <section class="px-4 py-16 md:py-20">
-                <div class="max-w-7xl mx-auto">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-12 text-white">Notre Catalogue</h1>
- 
-                    <!-- NOS PANNEAUX SOLAIRES -->
-                    <div class="mb-16">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white">Nos Panneaux Solaires</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-white border-opacity-20 card-hover">
-                                <div class="bg-gradient-to-br from-white from-opacity-20 to-orange-400 to-opacity-20 h-48 flex items-center justify-center text-4xl font-bold text-white">☀️</div>
-                                <div class="p-6">
-                                    <h3 class="font-bold text-lg mb-2 text-white">Kit Solaire 100W</h3>
-                                    <p class="text-orange-100 text-sm mb-4">Éclairage simple + charge téléphone</p>
-                                    <div class="mb-6"><span class="text-3xl font-bold text-orange-300">150€</span></div>
-                                    <button class="btn-primary w-full py-3 rounded-lg font-semibold">Ajouter au panier</button>
-                                </div>
-                            </div>
-                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-white border-opacity-20 card-hover">
-                                <div class="bg-gradient-to-br from-white from-opacity-20 to-orange-400 to-opacity-20 h-48 flex items-center justify-center text-4xl font-bold text-white">☀️</div>
-                                <div class="p-6">
-                                    <h3 class="font-bold text-lg mb-2 text-white">Kit Solaire 300W</h3>
-                                    <p class="text-orange-100 text-sm mb-4">Petit usage résidentiel</p>
-                                    <div class="mb-6"><span class="text-3xl font-bold text-orange-300">350€</span></div>
-                                    <button class="btn-primary w-full py-3 rounded-lg font-semibold">Ajouter au panier</button>
-                                </div>
-                            </div>
-                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-white border-opacity-20 card-hover">
-                                <div class="bg-gradient-to-br from-white from-opacity-20 to-orange-400 to-opacity-20 h-48 flex items-center justify-center text-4xl font-bold text-white">☀️</div>
-                                <div class="p-6">
-                                    <h3 class="font-bold text-lg mb-2 text-white">Kit Solaire 1000W</h3>
-                                    <p class="text-orange-100 text-sm mb-4">Usage moyen résidentiel</p>
-                                    <div class="mb-6"><span class="text-3xl font-bold text-orange-300">800€</span></div>
-                                    <button class="btn-primary w-full py-3 rounded-lg font-semibold">Ajouter au panier</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
- 
-                    <!-- NOS FILTRES À EAUX -->
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white">Nos Filtres à Eaux</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-white border-opacity-20 card-hover">
-                                <div class="bg-gradient-to-br from-white from-opacity-20 to-orange-400 to-opacity-20 h-48 flex items-center justify-center text-4xl font-bold text-white">💧</div>
-                                <div class="p-6">
-                                    <h3 class="font-bold text-lg mb-2 text-white">Filtre Gravité Simple</h3>
-                                    <p class="text-orange-100 text-sm mb-4">Filtration basique efficace</p>
-                                    <div class="mb-6"><span class="text-3xl font-bold text-orange-300">50€</span></div>
-                                    <button class="btn-primary w-full py-3 rounded-lg font-semibold">Ajouter au panier</button>
-                                </div>
-                            </div>
-                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-white border-opacity-20 card-hover">
-                                <div class="bg-gradient-to-br from-white from-opacity-20 to-orange-400 to-opacity-20 h-48 flex items-center justify-center text-4xl font-bold text-white">💧</div>
-                                <div class="p-6">
-                                    <h3 class="font-bold text-lg mb-2 text-white">Filtre Charbon Portable</h3>
-                                    <p class="text-orange-100 text-sm mb-4">Gourde filtrante pratique</p>
-                                    <div class="mb-6"><span class="text-3xl font-bold text-orange-300">150€</span></div>
-                                    <button class="btn-primary w-full py-3 rounded-lg font-semibold">Ajouter au panier</button>
-                                </div>
-                            </div>
-                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-white border-opacity-20 card-hover">
-                                <div class="bg-gradient-to-br from-white from-opacity-20 to-orange-400 to-opacity-20 h-48 flex items-center justify-center text-4xl font-bold text-white">💧</div>
-                                <div class="p-6">
-                                    <h3 class="font-bold text-lg mb-2 text-white">Filtre Céramique</h3>
-                                    <p class="text-orange-100 text-sm mb-4">Carafe filtrante premium</p>
-                                    <div class="mb-6"><span class="text-3xl font-bold text-orange-300">400€</span></div>
-                                    <button class="btn-primary w-full py-3 rounded-lg font-semibold">Ajouter au panier</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
- 
-        <!-- PAGE BLOG -->
-        <div id="blog" class="page">
-            <section class="px-4 py-16 md:py-20">
-                <div class="max-w-7xl mx-auto">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-12 text-white">Notre Blog</h1>
-                    <p class="text-center text-orange-100 mb-12 text-lg">Lisez nos articles pour en savoir plus</p>
-                    <button onclick="goToPage('home')" class="btn-primary px-6 py-3 rounded-lg font-semibold">Retour à l'accueil</button>
-                </div>
-            </section>
-        </div>
- 
-        <!-- PAGE FAQ -->
-        <div id="faq" class="page">
-            <section class="px-4 py-16 md:py-20">
-                <div class="max-w-4xl mx-auto">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-12 text-white">Questions Fréquentes</h1>
-                    <div class="space-y-6">
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm border-l-4 border-orange-400 p-6 md:p-8 rounded-lg">
-                            <h3 class="font-bold text-xl mb-3 text-white">Combien de temps prend la livraison ?</h3>
-                            <p class="text-orange-100">Nous proposons deux options : Livraison Express (5-7 jours) ou Livraison Standard (3-4 semaines). Les délais dépendent de votre localisation et de la disponibilité des produits. Vous recevrez un numéro de suivi pour suivre votre colis en temps réel.</p>
-                        </div>
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm border-l-4 border-orange-400 p-6 md:p-8 rounded-lg">
-                            <h3 class="font-bold text-xl mb-3 text-white">Quels sont les modes de paiement acceptés ?</h3>
-                            <p class="text-orange-100">Nous acceptons Orange Money, Airtel Money, Visa, Mastercard et les virements bancaires. Tous les paiements sont sécurisés et cryptés. Vous pouvez aussi payer à la livraison dans certaines régions.</p>
-                        </div>
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm border-l-4 border-orange-400 p-6 md:p-8 rounded-lg">
-                            <h3 class="font-bold text-xl mb-3 text-white">Puis-je retourner un produit ?</h3>
-                            <p class="text-orange-100">Oui, vous avez 30 jours pour retourner un produit s'il n'est pas endommagé ou utilisé. Les frais de retour sont à votre charge, sauf en cas de défaut de fabrication.</p>
-                        </div>
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm border-l-4 border-orange-400 p-6 md:p-8 rounded-lg">
-                            <h3 class="font-bold text-xl mb-3 text-white">Comment puis-je contacter le service client ?</h3>
-                            <p class="text-orange-100">Vous pouvez nous contacter par email : contact@mlrtech.mg, par téléphone : +261 XX XXX XXXX, ou via notre formulaire de contact. Nous répondons sous 24 heures.</p>
-                        </div>
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm border-l-4 border-orange-400 p-6 md:p-8 rounded-lg">
-                            <h3 class="font-bold text-xl mb-3 text-white">Vos produits sont-ils garantis ?</h3>
-                            <p class="text-orange-100">Tous nos produits sont garantis 2 ans contre les défauts de fabrication. Cette garantie couvre les panneaux solaires, les batteries et les systèmes de filtration d'eau. Les conditions de garantie sont détaillées dans la documentation de chaque produit.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
- 
-        <!-- PAGE CONTACT -->
-        <div id="contact" class="page">
-            <section class="px-4 py-16 md:py-20">
-                <div class="max-w-4xl mx-auto">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-12 text-white">Nous Contacter</h1>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="space-y-8">
-                            <div><p class="font-semibold text-white mb-2 text-lg">Email</p><p class="text-orange-100">contact@mlrtech.mg</p></div>
-                            <div><p class="font-semibold text-white mb-2 text-lg">Téléphone</p><p class="text-orange-100">+261 XX XXX XXXX</p></div>
-                            <div><p class="font-semibold text-white mb-2 text-lg">Adresse</p><p class="text-orange-100">Antananarivo, Madagascar</p></div>
-                        </div>
-                        <form class="space-y-4">
-                            <input type="text" placeholder="Votre nom" class="w-full border border-orange-300 rounded-lg px-4 py-3 bg-white bg-opacity-10 text-white placeholder-orange-200">
-                            <input type="email" placeholder="Votre email" class="w-full border border-orange-300 rounded-lg px-4 py-3 bg-white bg-opacity-10 text-white placeholder-orange-200">
-                            <textarea placeholder="Votre message" rows="5" class="w-full border border-orange-300 rounded-lg px-4 py-3 bg-white bg-opacity-10 text-white placeholder-orange-200"></textarea>
-                            <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold">Envoyer</button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </div>
- 
-        <!-- PAGE À PROPOS -->
-        <div id="about" class="page">
-            <section class="px-4 py-16 md:py-20 bg-white">
-                <div class="max-w-4xl mx-auto">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-12 text-blue-900">À Propos de MLR TECH</h1>
-                    <div class="space-y-8 text-gray-800">
-                        <p class="text-lg leading-relaxed">MLR TECH est plus qu'une simple entreprise - c'est un mouvement de transformation pour Madagascar. Nous avons été fondés par des Malgaches passionnés qui ont witnessed la souffrance causée par l'absence d'électricité et d'eau potable dans notre pays bien-aimé. Nous avons vu des enfants étudier à la lueur des bougies, des femmes marcher des kilomètres pour chercher de l'eau, des hôpitaux incapables de sauver des vies faute d'électricité. Nous avons décidé qu'il était temps de faire quelque chose.</p>
- 
-                        <p class="text-lg leading-relaxed">Notre mission est simple mais puissante : fournir à chaque Malgache un accès à l'électricité propre et à l'eau potable. Nous n'offrons pas des solutions luxueuses réservées aux riches. Nous créons des solutions robustes, abordables et durables que chaque famille peut se permettre. Nos panneaux solaires sont faciles à installer et ne nécessitent pas d'expertise technique. Nos systèmes de filtration d'eau sont simples mais efficaces. Nous croyons que la technologie doit servir les pauvres, pas seulement les riches.</p>
- 
-                        <div class="bg-blue-50 border-l-4 border-blue-900 rounded-xl p-8">
-                            <h3 class="text-2xl font-bold mb-6 text-blue-900">Nos Valeurs</h3>
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-4">
-                                    <span class="text-orange-500 text-2xl">✓</span>
-                                    <div>
-                                        <h4 class="font-bold text-blue-900 mb-2">Accessibilité</h4>
-                                        <p class="text-gray-700">Chaque Malgache mérite l'électricité et l'eau potable, peu importe son statut économique.</p>
-                                    </div>
-                                </li>
-                                <li class="flex items-start gap-4">
-                                    <span class="text-orange-500 text-2xl">✓</span>
-                                    <div>
-                                        <h4 class="font-bold text-blue-900 mb-2">Durabilité</h4>
-                                        <p class="text-gray-700">Nous protégeons l'environnement en proposant des solutions écologiques et respectueuses de la nature.</p>
-                                    </div>
-                                </li>
-                                <li class="flex items-start gap-4">
-                                    <span class="text-orange-500 text-2xl">✓</span>
-                                    <div>
-                                        <h4 class="font-bold text-blue-900 mb-2">Qualité</h4>
-                                        <p class="text-gray-700">Nos produits sont testés et garantis pour durer des années même dans les conditions difficiles.</p>
-                                    </div>
-                                </li>
-                                <li class="flex items-start gap-4">
-                                    <span class="text-orange-500 text-2xl">✓</span>
-                                    <div>
-                                        <h4 class="font-bold text-blue-900 mb-2">Innovation</h4>
-                                        <p class="text-gray-700">Nous investissons dans la recherche et le développement pour créer les meilleures solutions possibles.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
- 
-                        <p class="text-lg leading-relaxed">Depuis notre fondation, MLR TECH a transformé la vie de milliers de Malgaches. Des familles qui vivaient dans l'obscurité ont maintenant de la lumière. Des villages qui attendaient des heures pour de l'eau contaminée ont maintenant de l'eau potable. Des enfants qui ne pouvaient pas étudier le soir peuvent maintenant faire leurs devoirs. Des entrepreneurs qui ne pouvaient pas développer leurs affaires peuvent maintenant utiliser des outils électriques.</p>
- 
-                        <p class="text-lg leading-relaxed">Mais nous ne nous arrêtons pas là. Notre vision est que 100% des Malgaches aient accès à l'électricité propre et à l'eau potable dans les 10 prochaines années. Cela nécessite du courage, de la détermination et une véritable passion pour aider notre peuple à se développer. C'est notre engagement envers Madagascar et envers chaque Malgache qui mérite une vie digne et prospère.</p>
- 
-                        <div class="bg-gradient-to-br from-blue-900 to-orange-500 rounded-xl p-8 text-center text-white">
-                            <p class="text-2xl md:text-3xl font-bold mb-6">"Fait par nous, Créé pour vous"</p>
-                            <p class="text-lg mb-8">C'est notre promesse, notre engagement et notre vision pour Madagascar.</p>
-                            <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/logo_mlr.png" alt="Logo MLR TECH" style="height: 100px; margin: 0 auto;">
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
- 
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-orange-400 font-semibold mb-2">"Fait par nous, Créé pour vous"</p>
-            <p class="text-gray-400">© 2026 MLR TECH. Tous droits réservés</p>
-        </div>
-    </footer>
- 
-    <script>
-        const banners = [
-            {
-                image: 'https://imgur.com/ORYraPh.png',
-                title: 'Électricité pour Tous',
-                desc: "Découvrez nos solutions d'énergie solaire",
-                button: 'Électricité'
-            },
-            {
-                image: 'https://imgur.com/0DzqejS.png',
-                title: 'Eau Potable Accessible',
-                desc: 'Systèmes de filtration abordables',
-                button: 'Eau Potable'
-            }
-        ];
- 
-        let currentBanner = 0;
- 
-        function changeBanner() {
-            currentBanner = (currentBanner + 1) % banners.length;
-            const banner = banners[currentBanner];
-            
-            document.getElementById('banner-image').style.opacity = '0';
-            
-            setTimeout(() => {
-                document.getElementById('banner-image').src = banner.image;
-                document.getElementById('banner-title').textContent = banner.title;
-                document.getElementById('banner-desc').textContent = banner.desc;
-                document.getElementById('banner-btn').textContent = banner.button;
-                document.getElementById('banner-image').style.opacity = '1';
-            }, 250);
-        }
- 
-        setInterval(changeBanner, 5000);
- 
-        function goToPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(page).classList.add('active');
-            window.scrollTo(0, 0);
-        }
- 
-        function changeLanguage(lang) {
-            if (lang === 'mg') {
-                // Traduction Malagasy - Version simple
-                document.querySelectorAll('button[onclick*="goToPage"]').forEach(btn => {
-                    const text = btn.textContent;
-                    if (text.includes('Accueil')) btn.textContent = 'Hafaintsika';
-                    else if (text.includes('Produits')) btn.textContent = 'Vokatra';
-                    else if (text.includes('Blog')) btn.textContent = 'Blog';
-                    else if (text.includes('FAQ')) btn.textContent = 'Fanontaniana';
-                    else if (text.includes('Contact')) btn.textContent = 'Fifandraisana';
-                    else if (text.includes('À propos')) btn.textContent = 'Momba';
-                });
-                alert('Traduction Malagasy activée (Version bêta) - Ny site dia niova ho Malagasy!');
-            } else {
-                // Retour au français
-                location.reload();
-            }
-        }
-    </script>
- 
-</body>
-</html> 
-            <!-- NAV CENTRE -->
-            <div class="flex justify-center gap-2 md:gap-4 flex-wrap mb-2 text-xs md:text-sm">
-                <button onclick="goToPage('home')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Accueil</button>
-                <button onclick="goToPage('products')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Nos Panneaux Solaires</button>
-                <button onclick="goToPage('products')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Nos Filtres à Eaux</button>
-                <button onclick="goToPage('faq')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">FAQ</button>
-                <button onclick="goToPage('contact')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Contact</button>
-                <button onclick="goToPage('about')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">À propos</button>
-            </div>
- 
-            <!-- SÉLECTEURS -->
-            <div class="flex justify-center gap-2 flex-wrap">
-                <select onchange="changeLanguage(this.value)" class="bg-gray-100 text-gray-800 px-2 py-1 rounded-lg text-xs">
-                    <option value="fr">FR</option>
-                    <option value="mg">MG</option>
-                </select>
-                <select class="bg-gray-100 text-gray-800 px-2 py-1 rounded-lg text-xs">
-                    <option>EUR</option>
-                    <option>MGA</option>
-                </select>
-            </div>
-        </div>
-    </nav>
- 
-    <main id="app" class="gradient-body text-white">
-        <!-- PAGE HOME -->
-        <div id="home" class="page active">
-            <!-- BANNIÈRE QUI DÉFILE -->
-            <section class="relative h-80 md:h-96 overflow-hidden">
-                <img id="banner-image" src="https://imgur.com/ORYraPh.png" alt="Banner" class="banner-img w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-25"></div>
-                <div class="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
-                    <h2 id="banner-title" class="text-3xl md:text-5xl font-bold mb-4">Électricité pour Tous</h2>
-                    <p id="banner-desc" class="text-lg md:text-xl mb-8">Découvrez nos solutions d'énergie solaire</p>
-                    <button id="banner-btn" onclick="goToPage('products')" class="px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold bg-white bg-opacity-20 backdrop-blur-sm text-yellow-400 border-2 border-blue-900 hover:bg-opacity-30">Électricité</button>
                 </div>
             </section>
  
