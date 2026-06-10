@@ -24,37 +24,37 @@
 <body class="bg-gray-50">
     <!-- HEADER -->
     <nav class="header-white sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-1">
-            <!-- Logo à GAUCHE + Grand -->
-            <div class="flex justify-between items-center mb-1">
-                <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/logo_mlr.png" alt="Logo" style="height: 120px; cursor: pointer;" onclick="goToPage('home')">
+        <div class="max-w-7xl mx-auto px-4 py-2">
+            <!-- TOUT SUR UNE LIGNE -->
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
                 
-                <!-- Panier à DROITE -->
-                <button class="relative text-gray-800 text-lg md:text-xl hover:text-orange-500 flex items-center gap-2">
-                    🛒 <span class="hidden md:inline">PANIER</span> <span class="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">0</span>
-                </button>
-            </div>
- 
-            <!-- NAV CENTRE -->
-            <div class="flex justify-center gap-2 md:gap-4 flex-wrap mb-1 text-xs md:text-sm">
-                <button onclick="goToPage('home')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Accueil</button>
-                <button onclick="goToPage('products')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Nos Panneaux Solaires</button>
-                <button onclick="goToPage('products')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Nos Filtres à Eaux</button>
-                <button onclick="goToPage('faq')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">FAQ</button>
-                <button onclick="goToPage('contact')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">Contact</button>
-                <button onclick="goToPage('about')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 font-medium">À propos</button>
-            </div>
- 
-            <!-- SÉLECTEURS -->
-            <div class="flex justify-center gap-2 flex-wrap py-1">
-                <select onchange="changeLanguage(this.value)" class="bg-gray-100 text-gray-800 px-2 py-1 rounded-lg text-xs">
-                    <option value="fr">FR</option>
-                    <option value="mg">MG</option>
-                </select>
-                <select class="bg-gray-100 text-gray-800 px-2 py-1 rounded-lg text-xs">
-                    <option>EUR</option>
-                    <option>MGA</option>
-                </select>
+                <!-- Logo GAUCHE (petit) -->
+                <img src="https://raw.githubusercontent.com/kazaroza610-lang/MLR-TECH/main/logo_mlr.png" alt="Logo" style="height: 70px; cursor: pointer;" onclick="goToPage('home')">
+                
+                <!-- NAV CENTRE -->
+                <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; flex: 1;">
+                    <button onclick="goToPage('home')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 text-xs md:text-sm">Accueil</button>
+                    <button onclick="goToPage('products')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 text-xs md:text-sm">Nos Panneaux</button>
+                    <button onclick="goToPage('products')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 text-xs md:text-sm">Nos Filtres</button>
+                    <button onclick="goToPage('faq')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 text-xs md:text-sm">FAQ</button>
+                    <button onclick="goToPage('contact')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 text-xs md:text-sm">Contact</button>
+                    <button onclick="goToPage('about')" style="font-family: 'Montserrat', sans-serif; font-weight: 700;" class="text-gray-800 hover:text-orange-500 text-xs md:text-sm">À propos</button>
+                </div>
+                
+                <!-- DROITE: Sélecteurs + Panier -->
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <select onchange="changeLanguage(this.value)" class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">
+                        <option value="fr">FR</option>
+                        <option value="mg">MG</option>
+                    </select>
+                    <select class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">
+                        <option>EUR</option>
+                        <option>MGA</option>
+                    </select>
+                    <button class="relative text-gray-800 text-lg hover:text-orange-500 flex items-center gap-1">
+                        🛒 <span class="hidden md:inline text-xs">PANIER</span> <span class="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">0</span>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
