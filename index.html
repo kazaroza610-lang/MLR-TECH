@@ -225,7 +225,7 @@
             document.getElementById('app').innerHTML = `
                 <nav class="bg-blue-600 text-white sticky top-0 z-50 shadow-lg">
                     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                        <div class="text-2xl font-bold">MLR TECH</div>
+                        <div class="flex items-center gap-2">     <img src="logo_mlr.png" alt="MLR TECH" style="height: 50px;">     <span class="text-2xl font-bold">MLR TECH</span> </div>
                         <div class="hidden md:flex gap-8">
                             ${Object.entries(t.nav).map(([key, label]) => 
                                 `<button onclick="setPage('${key}')" class="hover:text-orange-400 transition font-semibold">${label}</button>`
