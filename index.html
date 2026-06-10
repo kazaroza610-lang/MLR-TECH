@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLR TECH - Électricité & Eau Potable Madagascar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .transition-all { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <div id="app"></div>
+
+    <script>
+        // App State
+        let state = {
+            language: 'fr',
+            currency: 'EUR',
+            currentPage: 'home',
+            cart: [],
+            menuOpen: false
+        };
+
+        const ARIARYRATE = 4500;
+
+        const translations = {
+            fr: {
+                nav: { home: 'Accueil', products: 'Produits', blog: 'Blog', faq: 'FAQ', contact: 'Contact', about: 'À propos' },
+                hero: { title: 'Électricité & Eau Potable pour Madagascar', subtitle: 'Solutions écologiques et abordables pour tous', cta: 'Découvrir les produits' },
+                products: { solar: 'Panneaux Solaires', water: 'Filtration Eau', price: 'Prix', shipping: 'Livraison', express: 'Express (5-7j)', standard: 'Standard (3-4 semaines)' },
+                cart: { title: 'Panier', empty: 'Panier vide', checkout: 'Passer la commande', remove: 'Supprimer', total: 'Total' },
+                blog: { title: 'Blog MLR TECH' },
+                faq: { title: 'FAQ' },
+                footer: { slogan: 'Fait par nous, Créé pour vous', rights: 'Tous droits réservés' },
+            },
+            mg: {
+                nav: { home: 'Fampitahana', products: 'Vokatra', blog: 'Blog', faq: 'Fanontaniana', contact: 'Fifandraisana', about: 'Momba Amin\'ny' },
+                hero: { title: 'Herinaratra & Rano Madio ho an\'i Madagasikara', subtitle: 'Vahaolana ara-tsakaivoam-pankasitrahana sy azo-dalana', cta: 'Jereo ny vokatra' },
+                products: { solar: 'Fikorontanan\'ny Masoandro', water: 'Filaterana Rano' },
+                cart: { title: 'Karitra', empty: 'Karitra foana', checkout: 'Manaova Baiko', total: 'Totalité' },
+                blog: { title: 'Blog MLR TECH' },
+                faq: { title: 'Fanontaniana' },
+                footer: { slogan: 'Vita avy amin\'ny amin\'ny, Niforona ho an\'ny inao', rights: 'Fahazoan-dàlana' },
+            }
+        };
+
+        const products = [
+            { id: 1, name: 'Kit Solaire 100W', category: 'solar', price: 150, desc: 'Éclairage simple + charge' },
+            { id: 2, name: 'Kit Solaire 300W', category: 'solar', price: 350, desc: 'Petit usage résidentiel' },
+            { id: 3, name: 'Kit Solaire 1000W', category: 'solar', price: 800, desc: 'Usage moyen' },
+            { id: 4, name: 'Kit Solaire 3000W', category: 'solar', price: 2000, desc: 'Résidence standard' },
+            { id: 5, name: 'Kit Solaire 5000W', category: 'solar', price: 3500, desc: 'Usage complet' },
+            { id: 6, name: 'Filtre Gravité Simple', category: 'water', price: 50, desc: 'Filtration basique' },
+            { id: 7, name: 'Filtre Charbon Portable', category: 'water', price: 150, desc: 'Gourde filtrante' },
+            { id: 8, name: 'Filtre Céramique', category: 'water', price: 400, desc: 'Carafe filtrante' },
+            { id: 9, name: 'Système Osmose Inverse', category: 'water', price: 1200, desc: 'Réservoir premium' },
+            { id: 10, name: 'Station Multi-Étapes', category: 'water', price: 2500, desc: 'Système professionnel' },
+        ];
+
+        const blogArticles = [
+            {
+                id: 1,
+                title_fr: 'La Crise Énergétique à Madagascar',
+                title_mg: 'Ny Krizy Angetry eto Madagasikara',
+                content_fr: 'Madagascar fait face à une crise d\'électricité critique. Plus de 75% de la population n\'a pas accès à l\'électricité fiable. Les zones rurales sont particulièrement affectées avec des coupures quotidiennes.',
+                content_mg: 'Madagasikara miatrika ny krizy angetry. Mahigit 75% ny zanaky ny tany tsy manana access amin\'ny herinaratra tsara. Ny faritra ivelan\'ny tanàna dia samihafa indrindra noho ny fanapahana mitatao.',
+                category: 'Électricité'
+            },
+            {
+                id: 2,
+                title_fr: 'Problèmes d\'Eau Potable à Madagascar',
+                title_mg: 'Ny Olana Amin\'ny Rano Madio',
+                content_fr: 'L\'accès à l\'eau potable est un défi majeur. Seuls 50% des Malgaches ont accès à de l\'eau propre. Les maladies liées à l\'eau contaminée tuent des milliers de personnes chaque année.',
+                content_mg: 'Ny access amin\'ny rano madio dia ohatra lehibe. 50% fotsiny ny Malagasy manana access. Ny aretin\'ny rano maloto manokana an\'arivoan\'ny olona isan-taona.',
+                category: 'Eau'
+            },
+            {
+                id: 3,
+                title_fr: 'L\'Énergie Solaire : Solution pour Madagascar',
+                title_mg: 'Ny Angon\'ny Masoandro : Vahaolana',
+                content_fr: 'Madagascar bénéficie de 320 jours de soleil par an. L\'énergie solaire est la solution idéale, écologique et durable. Les panneaux solaires permettent aux familles d\'accéder à l\'électricité sans dépendre du réseau national fragile.',
+                content_mg: 'Madagasikara dia mahazo 320 andro asoandro isan-taona. Ny herinaratra avy amin\'ny masoandro dia vahaolana tsara. Azo atao ny fambolena herinaratra tsy miankina amin\'ny tambajotra nasionaly.',
+                category: 'Solutions'
+            },
+            {
+                id: 4,
+                title_fr: 'Notre Mission : MLR TECH',
+                title_mg: 'Ny Fiasanay : MLR TECH',
+                content_fr: 'MLR TECH s\'engage à résoudre les problèmes d\'électricité et d\'eau potable à Madagascar. Nous proposons des solutions simples, abordables et écologiques pour tous. "Fait par nous, Créé pour vous" - notre promesse.',
+                content_mg: 'MLR TECH dia nampiandratra ny famahana ny olana amin\'ny herinaratra sy rano madio. Manolotra vahaolana tsotra sy azo-dalana amin\'ny lahat. "Vita avy amin\'ny amin\'ny, Niforona ho an\'ny inao"',
+                category: 'MLR TECH'
+            }
+        ];
+
+        function formatPrice(price) {
+            if (state.currency === 'EUR') return `${price}€`;
+            return `${Math.round(price * ARIARYRATE)} Ar`;
+        }
+
+        function addToCart(product) {
+            state.cart.push({ ...product, cartId: Date.now() });
+            render();
+        }
+
+        function removeFromCart(cartId) {
+            state.cart = state.cart.filter(item => item.cartId !== cartId);
+            render();
+        }
+
+        function setPage(page) {
+            state.currentPage = page;
+            state.menuOpen = false;
+            render();
+        }
+
+        function render() {
+            const t = translations[state.language];
+            let content = '';
+
+            if (state.currentPage === 'home') {
+                content = `
+                    <section class="bg-gradient-to-r from-blue-600 to-orange-500 text-white py-20 px-4">
+                        <div class="max-w-7xl mx-auto text-center">
+                            <h1 class="text-5xl font-bold mb-4">${t.hero.title}</h1>
+                            <p class="text-2xl mb-8">${t.hero.subtitle}</p>
+                            <button onclick="setPage('products')" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100">
+                                ${t.hero.cta}
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="max-w-7xl mx-auto px-4 py-16">
+                        <h2 class="text-4xl font-bold mb-12 text-center">Produits Populaires</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            ${products.slice(0, 6).map(p => productCard(p, t)).join('')}
+                        </div>
+                    </section>
+                `;
+            } else if (state.currentPage === 'products') {
+                content = `
+                    <section class="max-w-7xl mx-auto px-4 py-16">
+                        <h1 class="text-4xl font-bold mb-12">Tous nos Produits</h1>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            ${products.map(p => productCard(p, t)).join('')}
+                        </div>
+                    </section>
+                `;
+            } else if (state.currentPage === 'blog') {
+                content = `
+                    <section class="max-w-7xl mx-auto px-4 py-16">
+                        <h1 class="text-4xl font-bold mb-12">${t.blog.title}</h1>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            ${blogArticles.map(a => `
+                                <div class="border border-gray-300 rounded-lg overflow-hidden shadow-lg">
+                                    <div class="bg-blue-200 h-48 flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-6xl">⚡</div>
+                                            <div class="text-6xl mt-2">💧</div>
+                                        </div>
+                                    </div>
+                                    <div class="p-6">
+                                        <span class="text-orange-500 font-semibold text-sm">${a.category}</span>
+                                        <h3 class="font-bold text-xl mt-2 mb-4">${state.language === 'fr' ? a.title_fr : a.title_mg}</h3>
+                                        <p class="text-gray-700 leading-relaxed">${state.language === 'fr' ? a.content_fr : a.content_mg}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                `;
+            } else if (state.currentPage === 'faq') {
+                content = `
+                    <section class="max-w-4xl mx-auto px-4 py-16">
+                        <h1 class="text-4xl font-bold mb-12">${t.faq.title}</h1>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-orange-500 pl-6 py-4 bg-blue-50 rounded">
+                                <h3 class="font-bold text-lg mb-2">Comment fonctionne la livraison?</h3>
+                                <p>Nous proposons deux options: Express (5-7 jours) ou Standard (3-4 semaines).</p>
+                            </div>
+                            <div class="border-l-4 border-orange-500 pl-6 py-4 bg-blue-50 rounded">
+                                <h3 class="font-bold text-lg mb-2">Quels sont les moyens de paiement?</h3>
+                                <p>Orange Money, Airtel Money, Carte Visa ou virement bancaire.</p>
+                            </div>
+                        </div>
+                    </section>
+                `;
+            } else if (state.currentPage === 'contact') {
+                content = `
+                    <section class="max-w-4xl mx-auto px-4 py-16">
+                        <h1 class="text-4xl font-bold mb-12">Nous Contacter</h1>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <p class="mb-6"><strong>Email:</strong> contact@mlrtech.mg</p>
+                                <p class="mb-6"><strong>Téléphone:</strong> +261 XX XXX XXXX</p>
+                                <p class="mb-6"><strong>Adresse:</strong> Antananarivo, Madagascar</p>
+                            </div>
+                            <form class="space-y-4">
+                                <input type="text" placeholder="Votre nom" class="w-full border border-gray-300 rounded px-4 py-2">
+                                <input type="email" placeholder="Votre email" class="w-full border border-gray-300 rounded px-4 py-2">
+                                <textarea placeholder="Message" rows="5" class="w-full border border-gray-300 rounded px-4 py-2"></textarea>
+                                <button class="w-full bg-blue-600 text-white py-2 rounded font-bold hover:bg-blue-700">Envoyer</button>
+                            </form>
+                        </div>
+                    </section>
+                `;
+            } else if (state.currentPage === 'about') {
+                content = `
+                    <section class="max-w-4xl mx-auto px-4 py-16">
+                        <h1 class="text-4xl font-bold mb-8">À Propos de MLR TECH</h1>
+                        <div class="space-y-6 text-gray-700 leading-relaxed">
+                            <p>MLR TECH est une entreprise dédiée à résoudre les crises d'électricité et d'eau potable à Madagascar. Notre mission est de rendre accessible à tous les solutions écologiques et durables.</p>
+                            <p>Nous proposons des kits solaires simples d'utilisation et des systèmes de filtration d'eau abordables, conçus spécifiquement pour les besoins des Malgaches.</p>
+                            <div class="bg-blue-50 border-l-4 border-orange-500 p-6 mt-8">
+                                <p class="text-center font-bold text-xl text-blue-600">"${t.footer.slogan}"</p>
+                            </div>
+                        </div>
+                    </section>
+                `;
+            }
+
+            document.getElementById('app').innerHTML = `
+                <nav class="bg-blue-600 text-white sticky top-0 z-50 shadow-lg">
+                    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+                        <div class="text-2xl font-bold">MLR TECH</div>
+                        <div class="hidden md:flex gap-8">
+                            ${Object.entries(t.nav).map(([key, label]) => 
+                                `<button onclick="setPage('${key}')" class="hover:text-orange-400 transition font-semibold">${label}</button>`
+                            ).join('')}
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <select onchange="state.language = this.value; render()" class="bg-blue-700 text-white px-2 py-1 rounded">
+                                <option value="fr">🇫🇷 FR</option>
+                                <option value="mg">🇲🇬 MG</option>
+                            </select>
+                            <select onchange="state.currency = this.value; render()" class="bg-blue-700 text-white px-2 py-1 rounded">
+                                <option value="EUR">€ EUR</option>
+                                <option value="MGA">Ar MGA</option>
+                            </select>
+                            <button onclick="state.menuOpen = !state.menuOpen; render()" class="relative">
+                                🛒 <span class="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">${state.cart.length}</span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+
+                <main class="min-h-screen">
+                    ${content}
+                </main>
+
+                <footer class="bg-blue-900 text-white py-8 mt-16">
+                    <div class="max-w-7xl mx-auto px-4 text-center">
+                        <p class="text-orange-400 font-semibold mb-2">"${t.footer.slogan}"</p>
+                        <p class="text-sm">${t.footer.rights} © 2024 MLR TECH</p>
+                    </div>
+                </footer>
+
+                ${state.cart.length > 0 ? `
+                    <div class="fixed bottom-8 right-8 bg-white border-2 border-blue-600 rounded-lg shadow-2xl p-6 w-96">
+                        <h3 class="font-bold text-blue-600 mb-4 text-lg">${t.cart.title}</h3>
+                        <div class="max-h-48 overflow-y-auto mb-4">
+                            ${state.cart.map(item => `
+                                <div class="flex justify-between items-center mb-2 pb-2 border-b text-sm">
+                                    <span>${item.name}</span>
+                                    <button onclick="removeFromCart(${item.cartId})" class="text-red-500 font-bold">×</button>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="font-bold text-lg mb-4 text-blue-600">Total: ${formatPrice(state.cart.reduce((s, i) => s + i.price, 0))}</div>
+                        <button class="w-full bg-orange-500 text-white py-2 rounded font-bold hover:bg-orange-600">
+                            ${t.cart.checkout}
+                        </button>
+                    </div>
+                ` : ''}
+            `;
+        }
+
+        function productCard(p, t) {
+            return `
+                <div class="border border-gray-300 rounded-lg overflow-hidden shadow-lg card-hover">
+                    <div class="bg-blue-100 h-40 flex items-center justify-center text-4xl">
+                        ${p.category === 'solar' ? '⚡' : '💧'}
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">${p.name}</h3>
+                        <p class="text-gray-600 text-sm mb-4">${p.desc}</p>
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-orange-500">${formatPrice(p.price)}</span>
+                        </div>
+                        <button onclick="addToCart(${JSON.stringify(p).replace(/"/g, '&quot;')})" class="w-full bg-orange-500 text-white py-2 rounded font-bold hover:bg-orange-600">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        render();
+    </script>
+</body>
+</html>
