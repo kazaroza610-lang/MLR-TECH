@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLR TECH — Produit</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="product">
+
+  <header class="header">
+    <div class="header-container">
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
+        <img src="logo_mlr.png"
+             
+             alt="MLR TECH" width="120" height="48">
+      </a>
+      <nav class="nav" id="mainNav" aria-label="Navigation principale">
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Accueil</a>
+        <a href="category.html?cat=telephone" class="nav-link" data-i18n="category.telephone">Téléphone</a>
+        <a href="category.html?cat=son-image" class="nav-link" data-i18n="category.son-image">Son & Image</a>
+        <a href="category.html?cat=bureau-gaming" class="nav-link" data-i18n="category.bureau-gaming">Bureau & Gaming</a>
+        <a href="category.html?cat=maison-intelligente" class="nav-link" data-i18n="category.maison-intelligente">Maison Intelligente</a>
+        <a href="category.html?cat=montre" class="nav-link" data-i18n="category.montre">Montre Connectée</a>
+        <div class="nav-mobile-extras">
+          <select class="lang-select" aria-label="Langue">
+            <option value="fr">🇫🇷 Français</option>
+            <option value="mg">🇲🇬 Malagasy</option>
+          </select>
+          <select class="currency-select" aria-label="Devise">
+            <option value="EUR">EUR €</option>
+            <option value="AR">AR Ar</option>
+          </select>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <div class="search-desktop desktop-only">
+          <input type="search" id="searchInput" placeholder="Rechercher…" aria-label="Rechercher">
+          <button aria-label="Rechercher">🔍</button>
+        </div>
+        <button class="mobile-search-btn" id="mobileSearchBtn" aria-label="Rechercher">🔍</button>
+        <select class="lang-select desktop-only" aria-label="Langue">
+          <option value="fr">🇫🇷 FR</option>
+          <option value="mg">🇲🇬 MG</option>
+        </select>
+        <select class="currency-select desktop-only" aria-label="Devise">
+          <option value="EUR">EUR €</option>
+          <option value="AR">AR Ar</option>
+        </select>
+        <button class="cart-btn" aria-label="Ouvrir le panier">
+          🛒<span class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-search-bar" id="mobileSearchBar" role="search">
+      <input type="search" id="mobileSearchInput" placeholder="Rechercher…" aria-label="Rechercher">
+      <button id="mobileSearchClose" aria-label="Fermer">✕</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-detail-section">
+      <p class="product-back">
+        <a href="javascript:history.back()" data-i18n="back">← Retour</a>
+      </p>
+      <div class="product-detail" id="productDetail" aria-live="polite">
+        <!-- Rempli par JS -->
+      </div>
+    </div>
+
+    <section class="similar-section" aria-labelledby="similarTitle">
+      <div style="max-width:1440px;margin:0 auto">
+        <h2 class="section-title" id="similarTitle" data-i18n="products.similar">Produits similaires</h2>
+        <div class="products-grid" id="similarGrid">
+          <!-- Rempli par JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="logo_mlr.png"
+             
+             alt="MLR TECH" style="height:40px;margin-bottom:12px;filter:brightness(0) invert(1)">
+        <p data-i18n="footer.about-desc">Électronique premium livrée à Madagascar en 10 jours par DHL Express.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.delivery">Livraison & Retours</h4>
+        <p data-i18n="footer.delivery-desc">DHL Express : 10 jours partout à Madagascar.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.contact">Contact</h4>
+        <p>contact@mlrtech.mg</p>
+        <p>+261 XX XXX XXXX</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.follow">Nous suivre</h4>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="TikTok">♪</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copyright">© 2026 MLR TECH. Tous droits réservés.</span>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/currency.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
