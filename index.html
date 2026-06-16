@@ -14,57 +14,51 @@
   <!-- ══ HEADER ══════════════════════════════ -->
   <header class="header">
     <div class="header-container">
+      <!-- Logo LEFT -->
+      <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
+        <img src="logo.svg" alt="MLR TECH" width="100" height="50">
+      </a>
 
+      <!-- Menu burger MOBILE -->
       <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
 
+      <!-- Categories NAV CENTER -->
       <nav class="nav" id="mainNav" aria-label="Navigation principale">
-        <a href="index.html" class="nav-link active" data-i18n="nav.home">Accueil</a>
         <a href="category.html?cat=telephone" class="nav-link" data-i18n="category.telephone">Téléphone</a>
         <a href="category.html?cat=son-image" class="nav-link" data-i18n="category.son-image">Son & Image</a>
         <a href="category.html?cat=bureau-gaming" class="nav-link" data-i18n="category.bureau-gaming">Bureau & Gaming</a>
         <a href="category.html?cat=maison-intelligente" class="nav-link" data-i18n="category.maison-intelligente">Maison Intelligente</a>
         <a href="category.html?cat=montre" class="nav-link" data-i18n="category.montre">Montre Connectée</a>
-        <div class="nav-mobile-extras">
-          <select class="lang-select" aria-label="Langue">
-            <option value="fr">🇫🇷 Français</option>
-            <option value="mg">🇲🇬 Malagasy</option>
-          </select>
-          <select class="currency-select" aria-label="Devise">
-            <option value="EUR">EUR €</option>
-            <option value="AR">AR Ar</option>
-          </select>
-        </div>
       </nav>
 
+      <!-- Actions RIGHT -->
       <div class="header-actions">
-        <!-- Desktop search -->
-        <div class="search-desktop desktop-only">
-          <input type="search" id="searchInput" data-i18n-placeholder="search.placeholder" placeholder="Rechercher des produits…" aria-label="Rechercher">
-          <button aria-label="Lancer la recherche">🔍</button>
+        <!-- Search -->
+        <button class="search-btn" id="mobileSearchBtn" aria-label="Rechercher">🔍</button>
+
+        <!-- Language & Currency Dropdown -->
+        <div class="settings-dropdown">
+          <button class="settings-toggle" aria-label="Paramètres">⚙️</button>
+          <div class="settings-menu">
+            <select class="lang-select" aria-label="Langue">
+              <option value="fr">🇫🇷 Français</option>
+              <option value="mg">🇲🇬 Malagasy</option>
+            </select>
+            <select class="currency-select" aria-label="Devise">
+              <option value="EUR">EUR €</option>
+              <option value="AR">AR Ar</option>
+            </select>
+          </div>
         </div>
-        <!-- Mobile search icon -->
-        <button class="mobile-search-btn" id="mobileSearchBtn" aria-label="Rechercher">🔍</button>
 
-        <select class="lang-select desktop-only" aria-label="Langue">
-          <option value="fr">🇫🇷 FR</option>
-          <option value="mg">🇲🇬 MG</option>
-        </select>
-        <select class="currency-select desktop-only" aria-label="Devise">
-          <option value="EUR">EUR €</option>
-          <option value="AR">AR Ar</option>
-        </select>
-
+        <!-- Cart -->
         <button class="cart-btn" aria-label="Ouvrir le panier">
           🛒
           <span class="cart-count" aria-live="polite">0</span>
         </button>
       </div>
-
-      <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
-        <img src="logo.svg" alt="MLR TECH" width="120" height="60">
-      </a>
     </div>
     <!-- Mobile search bar -->
     <div class="mobile-search-bar" id="mobileSearchBar" role="search">
