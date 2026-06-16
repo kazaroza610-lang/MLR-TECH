@@ -24,58 +24,78 @@ function initLang() {
   });
 }
 
-/* ── Hamburger menu ─────────────────────────────────────── */
+/* ── Menu burger (mobile / tablette) ────────────────────── */
 function initMenu() {
-  const toggle = document.getElementById('menuToggle');
-  const nav    = document.getElementById('mainNav');
+  const toggle  = document.getElementById('menuToggle');
+  const nav     = document.getElementById('mainNav');
+  const overlay = document.getElementById('navOverlay');
   if (!toggle || !nav) return;
 
+  const closeMenu = () => {
+    nav.classList.remove('open');
+    overlay?.classList.remove('open');
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
+  const openMenu = () => {
+    nav.classList.add('open');
+    overlay?.classList.add('open');
+    toggle.classList.add('active');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+
   toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.classList.toggle('active', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    nav.classList.contains('open') ? closeMenu() : openMenu();
   });
 
+  // Fermer au clic sur un lien de catégorie
   nav.addEventListener('click', e => {
-    if (e.target.tagName === 'A') {
-      nav.classList.remove('open');
-      toggle.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
+    if (e.target.tagName === 'A') closeMenu();
   });
 
-  document.addEventListener('click', e => {
-    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-      nav.classList.remove('open');
-      toggle.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
+  // Fermer au clic sur l'overlay
+  overlay?.addEventListener('click', closeMenu);
+
+  // Fermer avec la touche Échap
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
   });
 }
 
-/* ── Search ─────────────────────────────────────────────── */
+/* ── Barre de recherche (toggle via l'icône 🔍) ─────────── */
 function initSearch() {
-  const desktopInput  = document.getElementById('searchInput');
-  const mobileBtn     = document.getElementById('mobileSearchBtn');
-  const mobileBar     = document.getElementById('mobileSearchBar');
-  const mobileInput   = document.getElementById('mobileSearchInput');
-  const mobileClose   = document.getElementById('mobileSearchClose');
+  const toggle = document.getElementById('searchToggle');
+  const bar    = document.getElementById('searchBar');
+  const input  = document.getElementById('searchInput');
+  const close  = document.getElementById('searchClose');
 
-  if (mobileBtn && mobileBar) {
-    mobileBtn.addEventListener('click', () => {
-      mobileBar.classList.add('open');
-      mobileInput?.focus();
+  const openBar = () => {
+    bar?.classList.add('open');
+    toggle?.setAttribute('aria-expanded', 'true');
+    input?.focus();
+  };
+  const closeBar = () => {
+    bar?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  if (toggle && bar) {
+    toggle.addEventListener('click', () => {
+      bar.classList.contains('open') ? closeBar() : openBar();
     });
   }
-  if (mobileClose && mobileBar) {
-    mobileClose.addEventListener('click', () => mobileBar.classList.remove('open'));
-  }
+  close?.addEventListener('click', closeBar);
 
-  [desktopInput, mobileInput].forEach(input => {
-    if (!input) return;
+  // Fermer la recherche avec Échap
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeBar();
+  });
+
+  // Filtrage en direct de la grille produits (si présente sur la page)
+  if (input) {
     input.addEventListener('input', debounce(() => {
       const q = input.value.trim().toLowerCase();
       const grid = document.getElementById('productsGrid');
@@ -87,7 +107,7 @@ function initSearch() {
         : currentProducts;
       renderProductGrid(filtered, grid);
     }, 250));
-  });
+  }
 }
 
 function debounce(fn, ms) {

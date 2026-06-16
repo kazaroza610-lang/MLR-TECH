@@ -14,58 +14,73 @@
   <!-- ══ HEADER ══════════════════════════════ -->
   <header class="header">
     <div class="header-container">
-      <!-- Logo LEFT -->
-      <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
-        <img src="logo.svg" alt="MLR TECH" width="100" height="50">
-      </a>
 
-      <!-- Menu burger MOBILE -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <!-- Menu burger (mobile / tablette) — ZONE GAUCHE -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
         <span></span><span></span><span></span>
       </button>
 
-      <!-- Categories NAV CENTER -->
+      <!-- Logo — ZONE GAUCHE -->
+      <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
+        <img src="logo.svg" alt="MLR TECH" width="120" height="60">
+      </a>
+
+      <!-- Catégories — ZONE CENTRE
+           (desktop : barre horizontale / mobile : panneau latéral du burger) -->
       <nav class="nav" id="mainNav" aria-label="Navigation principale">
         <a href="category.html?cat=telephone" class="nav-link" data-i18n="category.telephone">Téléphone</a>
-        <a href="category.html?cat=son-image" class="nav-link" data-i18n="category.son-image">Son & Image</a>
-        <a href="category.html?cat=bureau-gaming" class="nav-link" data-i18n="category.bureau-gaming">Bureau & Gaming</a>
+        <a href="category.html?cat=son-image" class="nav-link" data-i18n="category.son-image">Son &amp; Image</a>
+        <a href="category.html?cat=bureau-gaming" class="nav-link" data-i18n="category.bureau-gaming">Bureau &amp; Gaming</a>
         <a href="category.html?cat=maison-intelligente" class="nav-link" data-i18n="category.maison-intelligente">Maison Intelligente</a>
         <a href="category.html?cat=montre" class="nav-link" data-i18n="category.montre">Montre Connectée</a>
+
+        <!-- Langue + devise (affichées dans le burger mobile/tablette) -->
+        <div class="nav-mobile-extras">
+          <select class="lang-select" aria-label="Langue">
+            <option value="fr">🇫🇷 Français</option>
+            <option value="mg">🇲🇬 Malagasy</option>
+          </select>
+          <select class="currency-select" aria-label="Devise">
+            <option value="EUR">EUR €</option>
+            <option value="AR">AR Ar</option>
+          </select>
+        </div>
       </nav>
 
-      <!-- Actions RIGHT -->
+      <!-- Actions — ZONE DROITE -->
       <div class="header-actions">
-        <!-- Search -->
-        <button class="search-btn" id="mobileSearchBtn" aria-label="Rechercher">🔍</button>
+        <!-- Langue + devise (desktop) -->
+        <select class="lang-select desktop-only" aria-label="Langue">
+          <option value="fr">🇫🇷 Français</option>
+          <option value="mg">🇲🇬 Malagasy</option>
+        </select>
+        <select class="currency-select desktop-only" aria-label="Devise">
+          <option value="EUR">EUR €</option>
+          <option value="AR">AR Ar</option>
+        </select>
 
-        <!-- Language & Currency Dropdown -->
-        <div class="settings-dropdown">
-          <button class="settings-toggle" aria-label="Paramètres">⚙️</button>
-          <div class="settings-menu">
-            <select class="lang-select" aria-label="Langue">
-              <option value="fr">🇫🇷 Français</option>
-              <option value="mg">🇲🇬 Malagasy</option>
-            </select>
-            <select class="currency-select" aria-label="Devise">
-              <option value="EUR">EUR €</option>
-              <option value="AR">AR Ar</option>
-            </select>
-          </div>
-        </div>
+        <!-- Recherche (ouvre / ferme la barre de recherche) -->
+        <button class="search-btn" id="searchToggle" aria-label="Rechercher" aria-expanded="false" aria-controls="searchBar">🔍</button>
 
-        <!-- Cart -->
+        <!-- Panier -->
         <button class="cart-btn" aria-label="Ouvrir le panier">
           🛒
           <span class="cart-count" aria-live="polite">0</span>
         </button>
       </div>
     </div>
-    <!-- Mobile search bar -->
-    <div class="mobile-search-bar" id="mobileSearchBar" role="search">
-      <input type="search" id="mobileSearchInput" placeholder="Rechercher des produits…" data-i18n-placeholder="search.placeholder" aria-label="Rechercher">
-      <button id="mobileSearchClose" aria-label="Fermer la recherche">✕</button>
+
+    <!-- Barre de recherche (cachée par défaut — slide-down) -->
+    <div class="search-bar" id="searchBar" role="search">
+      <div class="search-bar-inner">
+        <input type="search" id="searchInput" placeholder="Rechercher des produits…" data-i18n-placeholder="search.placeholder" aria-label="Rechercher des produits">
+        <button class="search-close" id="searchClose" aria-label="Fermer la recherche">✕</button>
+      </div>
     </div>
   </header>
+
+  <!-- Overlay du menu mobile -->
+  <div class="nav-overlay" id="navOverlay"></div>
 
   <main>
     <!-- ══ HERO ════════════════════════════════ -->
