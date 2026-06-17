@@ -1,3 +1,6 @@
+/* ── Configuration globale livraison ── */
+const DELIVERY_DAYS = 10; // à modifier ici pour changer le délai sur tout le site
+
 const PRODUCTS = [
   /* ── TÉLÉPHONE ────────────────────────────── */
   {
@@ -136,8 +139,21 @@ const PRODUCTS = [
   /* ── CONSOLES & JEUX VIDÉO ───────────────── */
   {
     id:'p022', category:'consoles-jeux', subcategory:'consoles',
-    name:{ fr:'PlayStation 5 Édition Numérique', mg:'PlayStation 5 Édition Numérique' },
-    description:{ fr:'Console 100% numérique avec SSD ultra-rapide, Ray Tracing, Audio 3D et manette DualSense avec retour haptique et gâchettes adaptatives.', mg:'Console nomerika manontolo, SSD haingana, Ray Tracing, Audio 3D ary DualSense miaraka amin\'ny haptique sy gâchettes adaptatives.' },
+    name:{ fr:'PlayStation 5 Slim Édition Numérique', mg:'PlayStation 5 Slim Édition Numérique' },
+    description:{ fr:'Console next-gen 100% numérique, plus compacte, avec SSD ultra-rapide, Ray Tracing, Audio 3D et manette DualSense.', mg:'Console next-gen nomerika manontolo, SSD haingana, Ray Tracing, Audio 3D ary DualSense.' },
+    description_complete: 'La PlayStation 5 Slim Édition Numérique est la version compacte de la console next-gen de Sony, entièrement dématérialisée. Son SSD ultra-rapide élimine presque totalement les temps de chargement : les jeux se lancent en quelques secondes. Le Ray Tracing offre des graphismes photoréalistes avec des reflets et des ombres calculés en temps réel. L\'Audio 3D plonge le joueur dans une expérience sonore immersive. La manette DualSense révolutionne les sensations avec son retour haptique précis et ses gâchettes adaptatives qui résistent différemment selon l\'action — tirer à l\'arc, conduire sur une route mouillée, marcher sur du sable.',
+    contenu_boite: [
+      '1 console PlayStation 5 Slim Édition Numérique',
+      '1 manette sans fil DualSense',
+      '1 câble HDMI 2.1',
+      '1 cordon d\'alimentation',
+      '1 câble USB-C',
+      '2 supports de base horizontaux',
+      'Documentation et guide de démarrage rapide',
+    ],
+    // Dimensions PS5 Slim (CFI-2016) — source : Sony officiel. À vérifier sur fr.playstation.com si besoin.
+    dimensions: { longueur_cm: 35.8, largeur_cm: 21.6, hauteur_cm: 9.6, unite: 'cm' },
+    poids_kg: 2.6, // poids approximatif PS5 Slim Digital — à confirmer sur le site Sony
     features:{ fr:['SSD ultra-rapide','Ray Tracing','Audio 3D immersif','Manette DualSense incluse','Gâchettes adaptatives'], mg:['SSD haingana','Ray Tracing','Audio 3D','DualSense','Gâchettes adaptatives'] },
     price_eur:600, image:'images/products/ps5-digital.jpeg', rating:4.9
   },

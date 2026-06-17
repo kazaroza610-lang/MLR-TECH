@@ -591,11 +591,10 @@ ul { list-style: none; }
 .product-back { margin-bottom: 20px; }
 .product-back a { font-size: 14px; color: var(--c-muted); }
 .product-back a:hover { color: var(--c-black); }
-.product-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+.product-detail { display: flex; flex-direction: column; gap: 0; }
+
+/* Bloc principal image + info */
+.pd-main { display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px; }
 .product-detail-img img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: var(--radius); background: #fff; }
 .product-cat-label { font-size: 12px; text-transform: uppercase; color: var(--c-muted); letter-spacing: .6px; margin-bottom: 8px; }
 .product-detail-name { font-size: clamp(22px, 4vw, 32px); font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
@@ -608,6 +607,74 @@ ul { list-style: none; }
 .product-features li { padding: 8px 0; border-bottom: 1px solid var(--c-border); font-size: 14px; }
 .product-features li::before { content: '✓  '; font-weight: 700; }
 .btn-add-big { font-size: 16px; min-height: 52px; }
+
+/* Livraison inline (bloc principal) */
+.pd-delivery-inline { display: flex; align-items: center; gap: 8px; background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.25); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 16px; font-size: 14px; color: #22c55e; }
+.pd-delivery-inline svg { flex-shrink: 0; stroke: #22c55e; }
+
+/* Sections détail */
+.pd-sections { display: flex; flex-direction: column; }
+.pd-section { border-top: 1px solid var(--c-border); }
+
+/* Accordéon */
+.pd-acc-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 18px 0; background: none; border: none; font-size: 16px; font-weight: 700; color: var(--c-text); cursor: pointer; text-align: left; gap: 8px; }
+.pd-acc-caret { transition: transform var(--t-fast); flex-shrink: 0; }
+.pd-accordion.open > .pd-acc-toggle .pd-acc-caret { transform: rotate(180deg); }
+.pd-acc-body { display: none; padding-bottom: 24px; }
+.pd-accordion.open > .pd-acc-body { display: block; }
+
+/* Description */
+.pd-desc-text { font-size: 15px; color: var(--c-muted); line-height: 1.8; }
+
+/* Contenu boîte */
+.pd-box-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.pd-box-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.5; }
+.pd-box-list li svg { flex-shrink: 0; margin-top: 2px; }
+
+/* Dimensions */
+.pd-dims-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+.pd-dim-card { background: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius); padding: 16px 12px; text-align: center; }
+.pd-dim-icon { font-size: 22px; display: block; margin-bottom: 6px; }
+.pd-dim-val { display: block; font-size: 18px; font-weight: 700; }
+.pd-dim-label { display: block; font-size: 12px; color: var(--c-muted); margin-top: 3px; }
+
+/* Livraison section (toujours visible) */
+.pd-delivery-section { background: linear-gradient(135deg, #0a1628, #0f2040); border-radius: var(--radius); padding: 20px; margin: 24px 0; }
+.pd-delivery-badge { display: flex; align-items: center; gap: 16px; color: #fff; }
+.pd-delivery-badge > svg { stroke: #22c55e; flex-shrink: 0; }
+.pd-delivery-title { font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: rgba(255,255,255,.55); margin-bottom: 4px; }
+.pd-delivery-days { font-size: 24px; font-weight: 800; color: #22c55e; }
+.pd-delivery-note { font-size: 13px; color: rgba(255,255,255,.45); margin-top: 12px; }
+
+/* Avis */
+.reviews-loading, .reviews-empty { font-size: 14px; color: var(--c-muted); font-style: italic; padding: 8px 0; }
+.reviews-avg { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--c-border); }
+.reviews-avg-score { font-size: 52px; font-weight: 800; line-height: 1; }
+.reviews-avg-stars { font-size: 22px; color: #f59e0b; margin-bottom: 4px; }
+.reviews-avg-count { font-size: 14px; color: var(--c-muted); }
+.reviews-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+.review-card { background: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius); padding: 16px; }
+.review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.review-author { font-weight: 700; font-size: 14px; }
+.review-stars { color: #f59e0b; font-size: 14px; }
+.review-date { font-size: 12px; color: var(--c-muted); margin-left: auto; }
+.review-comment { font-size: 14px; color: var(--c-muted); line-height: 1.6; }
+.review-form-wrap h4 { font-size: 16px; font-weight: 700; margin-bottom: 16px; padding-top: 8px; border-top: 1px solid var(--c-border); }
+.star-input { display: flex; gap: 4px; margin-bottom: 8px; }
+.star-btn { font-size: 30px; color: #ddd; background: none; border: none; cursor: pointer; transition: color var(--t-fast); line-height: 1; padding: 0; }
+.star-btn.active { color: #f59e0b; }
+.star-input-hint { font-size: 12px; color: var(--c-muted); margin-bottom: 12px; }
+.review-textarea { width: 100%; border: 1px solid var(--c-border); border-radius: var(--radius); padding: 12px; font-family: inherit; font-size: 14px; background: var(--c-bg); color: var(--c-text); resize: vertical; box-sizing: border-box; }
+.review-textarea:focus { outline: none; border-color: var(--c-primary); }
+.review-error { font-size: 13px; color: #ef4444; min-height: 18px; margin: 6px 0 10px; }
+.review-login-prompt, .review-already { font-size: 14px; color: var(--c-muted); padding: 12px 0; }
+.review-login-prompt a { color: var(--c-primary); text-decoration: underline; }
+
+/* Sticky cart bar (mobile) */
+.sticky-cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--c-white); border-top: 1px solid var(--c-border); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; z-index: 100; transform: translateY(100%); transition: transform var(--t-med); box-shadow: 0 -4px 20px rgba(0,0,0,.12); }
+.sticky-cart-bar.visible { transform: translateY(0); }
+.sticky-cart-price { font-size: 20px; font-weight: 800; }
+.sticky-cart-btn { flex-shrink: 0; min-width: 160px; }
 
 /* Similar products */
 .similar-section { padding: 32px 16px 48px; background: var(--c-bg); }

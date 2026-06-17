@@ -80,7 +80,7 @@ function initAccountMenu() {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 
   // Rendu selon l'état de connexion
-  loadCurrentUser().then(user => renderAccountMenu(user, menu));
+  loadCurrentUser().then(user => { window._mlrCurrentUser = user; renderAccountMenu(user, menu); });
 }
 
 function renderAccountMenu(user, menu) {
@@ -429,6 +429,9 @@ function setLoading(btn, on) {
   if (on) { btn.dataset.label = btn.textContent; btn.disabled = true; btn.textContent = 'Veuillez patienter…'; }
   else { btn.disabled = false; if (btn.dataset.label) btn.textContent = btn.dataset.label; }
 }
+
+/* Exposé globalement pour que main.js puisse lire l'utilisateur courant */
+window.mlrLoadUser = loadCurrentUser;
 
 /* ── Bootstrap (après le DOM) ── */
 document.addEventListener('DOMContentLoaded', () => {

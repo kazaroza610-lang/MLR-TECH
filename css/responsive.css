@@ -29,10 +29,11 @@
   .product-name { font-size: 14px; }
   .product-price { font-size: 18px; }
 
-  /* Product detail: 2 col */
-  .product-detail { flex-direction: row; gap: 40px; align-items: flex-start; }
-  .product-detail-img { flex: 0 0 50%; }
-  .product-detail-info { flex: 1; }
+  /* Product detail: pd-main en 2 col */
+  .pd-main { flex-direction: row; gap: 40px; align-items: flex-start; }
+  .pd-main .product-detail-img { flex: 0 0 50%; }
+  .pd-main .product-detail-info { flex: 1; }
+  .pd-dims-grid { grid-template-columns: repeat(4, 1fr); }
 
   /* Cart panel: sidebar right */
   .cart-panel {
@@ -168,10 +169,16 @@
   .category-card { transition: box-shadow var(--t-med), transform var(--t-med); }
   .category-card:hover { transform: translateY(-4px); }
 
-  /* Product detail */
-  .product-detail { gap: 60px; }
-  .product-detail-img { flex: 0 0 55%; }
+  /* Product detail desktop */
+  .pd-main { gap: 60px; }
+  .pd-main .product-detail-img { flex: 0 0 50%; }
   .product-detail-section { padding: 48px 40px; }
+  /* Accordéon : tout visible sur desktop */
+  .pd-acc-toggle { pointer-events: none; cursor: default; }
+  .pd-acc-caret { display: none; }
+  .pd-acc-body { display: block !important; }
+  /* Sticky bar : inutile sur desktop */
+  .sticky-cart-bar { display: none; }
   .similar-section { padding: 48px 40px 80px; }
 
   /* Similar products: 4 cols on desktop, 5 cols on large */

@@ -250,26 +250,207 @@ function initProduct() {
 function renderProductDetail(p) {
   const el = document.getElementById('productDetail');
   if (!el) return;
+
+  const checkIcon = `<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#22c55e" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
+  const truckIcon = `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>`;
+  const caretIcon = `<svg class="pd-acc-caret" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+  const hasDims  = p.dimensions && p.dimensions.longueur_cm != null;
+  const hasBox   = Array.isArray(p.contenu_boite) && p.contenu_boite.length > 0;
+  const hasDesc  = !!p.description_complete;
+  const hasSpecs = p.features[currentLang].length > 0 || hasDims || !!p.poids_kg;
+
   el.innerHTML = `
-    <div class="product-detail-img">
-      <img src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">
+    <div class="pd-main">
+      <div class="product-detail-img">
+        <img src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">
+      </div>
+      <div class="product-detail-info">
+        <p class="product-cat-label">${t('category.' + p.category)}</p>
+        <h1 class="product-detail-name">${p.name[currentLang]}</h1>
+        <div class="product-detail-rating" id="pdRating">${renderStars(p.rating)} <span>${p.rating}/5</span></div>
+        <div class="product-detail-price" data-price-eur="${p.price_eur}">${formatPrice(p.price_eur)}</div>
+        <p class="product-detail-desc">${p.description[currentLang]}</p>
+        <div class="pd-delivery-inline">${truckIcon}<span>Livraison estimée : <strong>${DELIVERY_DAYS} jours ouvrés</strong></span></div>
+        <p class="dhl-badge dhl-detail">${t('dhl.badge')}</p>
+        <button class="btn btn-primary btn-full btn-add-big" data-product-id="${p.id}">${t('products.add')}</button>
+      </div>
     </div>
-    <div class="product-detail-info">
-      <p class="product-cat-label">${t('category.' + p.category)}</p>
-      <h1 class="product-detail-name">${p.name[currentLang]}</h1>
-      <div class="product-detail-rating">${renderStars(p.rating)} <span>${p.rating}/5</span></div>
-      <div class="product-detail-price" data-price-eur="${p.price_eur}">${formatPrice(p.price_eur)}</div>
-      <p class="product-detail-desc">${p.description[currentLang]}</p>
-      <p class="dhl-badge dhl-detail">${t('dhl.badge')}</p>
-      <ul class="product-features">
-        ${p.features[currentLang].map(f => `<li>${f}</li>`).join('')}
-      </ul>
-      <button class="btn btn-primary btn-full btn-add-big" data-product-id="${p.id}">
-        ${t('products.add')}
-      </button>
+
+    <div class="pd-sections">
+
+      ${hasDesc ? `
+      <div class="pd-section pd-accordion open" id="pd-desc">
+        <button class="pd-acc-toggle" aria-expanded="true"><span class="pd-acc-title">Description</span>${caretIcon}</button>
+        <div class="pd-acc-body"><p class="pd-desc-text">${p.description_complete}</p></div>
+      </div>` : ''}
+
+      ${hasBox ? `
+      <div class="pd-section pd-accordion" id="pd-box">
+        <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Contenu de la boîte</span>${caretIcon}</button>
+        <div class="pd-acc-body">
+          <ul class="pd-box-list">${p.contenu_boite.map(item => `<li>${checkIcon}<span>${item}</span></li>`).join('')}</ul>
+        </div>
+      </div>` : ''}
+
+      ${hasSpecs ? `
+      <div class="pd-section pd-accordion" id="pd-specs">
+        <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Caractéristiques</span>${caretIcon}</button>
+        <div class="pd-acc-body">
+          ${(hasDims || p.poids_kg) ? `<div class="pd-dims-grid">
+            ${hasDims ? `
+            <div class="pd-dim-card"><span class="pd-dim-icon">📏</span><span class="pd-dim-val">${p.dimensions.longueur_cm} cm</span><span class="pd-dim-label">Longueur</span></div>
+            <div class="pd-dim-card"><span class="pd-dim-icon">📐</span><span class="pd-dim-val">${p.dimensions.largeur_cm} cm</span><span class="pd-dim-label">Largeur</span></div>
+            <div class="pd-dim-card"><span class="pd-dim-icon">↕️</span><span class="pd-dim-val">${p.dimensions.hauteur_cm} cm</span><span class="pd-dim-label">Hauteur</span></div>` : ''}
+            ${p.poids_kg ? `<div class="pd-dim-card"><span class="pd-dim-icon">⚖️</span><span class="pd-dim-val">${p.poids_kg} kg</span><span class="pd-dim-label">Poids</span></div>` : ''}
+          </div>` : ''}
+          ${p.features[currentLang].length ? `<ul class="product-features">${p.features[currentLang].map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
+        </div>
+      </div>` : ''}
+
+      <div class="pd-delivery-section">
+        <div class="pd-delivery-badge">${truckIcon}<div><p class="pd-delivery-title">Livraison estimée</p><p class="pd-delivery-days">${DELIVERY_DAYS} jours ouvrés</p></div></div>
+        <p class="pd-delivery-note">Livraison express vers Madagascar — plus rapide que la concurrence</p>
+      </div>
+
+      <div class="pd-section pd-accordion" id="pd-reviews">
+        <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Avis clients</span>${caretIcon}</button>
+        <div class="pd-acc-body">
+          <div id="reviewsSummary" class="reviews-summary"></div>
+          <div id="reviewsList" class="reviews-list"></div>
+          <div id="reviewFormContainer"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sticky-cart-bar" id="stickyCartBar" aria-hidden="true">
+      <span class="sticky-cart-price" data-price-eur="${p.price_eur}">${formatPrice(p.price_eur)}</span>
+      <button class="btn btn-primary sticky-cart-btn" data-product-id="${p.id}">${t('products.add')}</button>
     </div>
   `;
+
   el.querySelector('.btn-add-big').addEventListener('click', () => addToCart(p.id));
+  el.querySelector('.sticky-cart-btn').addEventListener('click', () => addToCart(p.id));
+  initProductAccordion(el);
+  initStickyCartBar();
+  loadProductReviews(p.id);
+}
+
+function initProductAccordion(container) {
+  container.querySelectorAll('.pd-acc-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (window.innerWidth >= 1024) return;
+      const section = btn.closest('.pd-accordion');
+      const isOpen = section.classList.contains('open');
+      container.querySelectorAll('.pd-accordion.open').forEach(s => {
+        s.classList.remove('open');
+        s.querySelector('.pd-acc-toggle').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) { section.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+}
+
+function initStickyCartBar() {
+  if (!window.IntersectionObserver) return;
+  const mainBtn   = document.querySelector('.btn-add-big');
+  const stickyBar = document.getElementById('stickyCartBar');
+  if (!mainBtn || !stickyBar) return;
+  new IntersectionObserver(([entry]) => {
+    const show = !entry.isIntersecting;
+    stickyBar.classList.toggle('visible', show);
+    stickyBar.setAttribute('aria-hidden', String(!show));
+  }, { threshold: 0 }).observe(mainBtn);
+}
+
+async function loadProductReviews(productId) {
+  const summary  = document.getElementById('reviewsSummary');
+  const list     = document.getElementById('reviewsList');
+  const formWrap = document.getElementById('reviewFormContainer');
+  if (!summary || !list) return;
+
+  summary.innerHTML = '<p class="reviews-loading">Chargement des avis…</p>';
+  try {
+    const res  = await fetch(`/api/reviews?product_id=${encodeURIComponent(productId)}`);
+    const data = await res.json();
+    if (data.error) { summary.innerHTML = ''; return; }
+
+    const reviews = data.reviews || [];
+    if (reviews.length === 0) {
+      summary.innerHTML = '<p class="reviews-empty">Aucun avis pour l\'instant. Soyez le premier !</p>';
+    } else {
+      const avg = (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1);
+      summary.innerHTML = `<div class="reviews-avg"><span class="reviews-avg-score">${avg}</span><div><div class="reviews-avg-stars">${renderStars(parseFloat(avg))}</div><span class="reviews-avg-count">${reviews.length} avis</span></div></div>`;
+    }
+
+    list.innerHTML = reviews.map(r => `
+      <div class="review-card">
+        <div class="review-header">
+          <span class="review-author">${r.first_name} ${r.last_name_initial}.</span>
+          <span class="review-stars">${renderStars(r.rating)}</span>
+          <span class="review-date">${new Date(r.created_at).toLocaleDateString('fr-FR')}</span>
+        </div>
+        <p class="review-comment">${r.comment}</p>
+      </div>`).join('');
+
+    if (formWrap) renderReviewForm(formWrap, productId, data.user_review);
+  } catch (_) { summary.innerHTML = ''; }
+}
+
+function renderReviewForm(container, productId, hasExistingReview) {
+  const user = window._mlrCurrentUser;
+  if (!user) {
+    container.innerHTML = `<p class="review-login-prompt"><a href="login.html?next=${encodeURIComponent(location.pathname + location.search)}">Connectez-vous</a> pour laisser un avis.</p>`;
+    return;
+  }
+  if (hasExistingReview) {
+    container.innerHTML = '<p class="review-already">Vous avez déjà laissé un avis pour ce produit.</p>';
+    return;
+  }
+  container.innerHTML = `
+    <div class="review-form-wrap">
+      <h4>Laisser un avis</h4>
+      <div class="star-input" role="radiogroup" aria-label="Note">
+        ${[1,2,3,4,5].map(i => `<button class="star-btn" data-val="${i}" type="button" aria-label="${i} étoile${i>1?'s':''}">★</button>`).join('')}
+      </div>
+      <p class="star-input-hint">Sélectionnez une note</p>
+      <textarea id="reviewComment" class="review-textarea" placeholder="Votre avis (10 caractères minimum)" rows="4" maxlength="1000"></textarea>
+      <p class="review-error" id="reviewError" aria-live="polite"></p>
+      <button class="btn btn-primary" id="submitReview">Publier mon avis</button>
+    </div>`;
+
+  let selectedRating = 0;
+  const highlightStars = n => container.querySelectorAll('.star-btn').forEach((b, i) => b.classList.toggle('active', i < n));
+
+  container.querySelectorAll('.star-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => highlightStars(+btn.dataset.val));
+    btn.addEventListener('mouseleave', () => highlightStars(selectedRating));
+    btn.addEventListener('click', () => {
+      selectedRating = +btn.dataset.val;
+      highlightStars(selectedRating);
+      container.querySelector('.star-input-hint').textContent = `${selectedRating} étoile${selectedRating > 1 ? 's' : ''}`;
+    });
+  });
+
+  container.querySelector('#submitReview').addEventListener('click', async () => {
+    const comment   = container.querySelector('#reviewComment').value.trim();
+    const errorEl   = container.querySelector('#reviewError');
+    const submitBtn = container.querySelector('#submitReview');
+    errorEl.textContent = '';
+    if (!selectedRating)     { errorEl.textContent = 'Veuillez sélectionner une note.'; return; }
+    if (comment.length < 10) { errorEl.textContent = 'Le commentaire doit faire au moins 10 caractères.'; return; }
+    submitBtn.disabled = true; submitBtn.textContent = 'Publication…';
+    try {
+      const res  = await fetch('/api/reviews', {
+        method: 'POST', credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ product_id: productId, rating: selectedRating, comment }),
+      });
+      const data = await res.json();
+      if (data.error) { errorEl.textContent = data.error; submitBtn.disabled = false; submitBtn.textContent = 'Publier mon avis'; }
+      else { loadProductReviews(productId); }
+    } catch (_) { errorEl.textContent = 'Erreur réseau. Réessayez.'; submitBtn.disabled = false; submitBtn.textContent = 'Publier mon avis'; }
+  });
 }
 
 /* ── CART page ──────────────────────────────────────────── */
