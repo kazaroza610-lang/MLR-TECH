@@ -49,6 +49,7 @@ ul { list-style: none; }
   margin: 0 auto;
   padding: 0 12px;
   height: var(--header-h);     /* 70px */
+  position: relative;          /* ancre pour logo centré en mobile */
 }
 
 /* ── Menu burger (mobile / tablette) — ZONE GAUCHE ── */
@@ -76,8 +77,11 @@ ul { list-style: none; }
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Logo — ZONE GAUCHE ── */
+/* ── Logo — centré en mobile, gauche en desktop ── */
 .logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -124,6 +128,49 @@ ul { list-style: none; }
 .nav-link:hover,
 .nav-link:focus-visible { background: #1a1a1a; }
 .nav-link.active { background: #1a1a1a; }
+
+/* ── Nav items avec sous-menus (mobile : accordéon) ── */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+}
+.nav-item > .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-caret {
+  font-style: normal;
+  font-size: 11px;
+  margin-left: 8px;
+  transition: transform var(--t-fast);
+  flex-shrink: 0;
+  opacity: .6;
+}
+.nav-item.open > .nav-link .nav-caret { transform: rotate(90deg); }
+.nav-sub {
+  display: none;
+  flex-direction: column;
+  margin: 4px 0 4px 14px;
+  padding-left: 12px;
+  border-left: 1px solid #333;
+  gap: 0;
+}
+.nav-item.open > .nav-sub { display: flex; }
+.nav-sub a {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,.65);
+  border-radius: var(--radius);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.nav-sub a:hover,
+.nav-sub a:focus-visible { background: #1a1a1a; color: #fff; }
 
 /* Langue + devise — dans le burger (mobile / tablette) */
 .nav-mobile-extras {

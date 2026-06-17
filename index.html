@@ -131,11 +131,58 @@
       <!-- Catégories — ZONE CENTRE
            (desktop : barre horizontale / mobile : panneau latéral du burger) -->
       <nav class="nav" id="mainNav" aria-label="Navigation principale">
-        <a href="category.html?cat=telephone" class="nav-link" data-i18n="category.telephone">Téléphone</a>
-        <a href="category.html?cat=son-image" class="nav-link" data-i18n="category.son-image">Son &amp; Image</a>
-        <a href="category.html?cat=bureau-gaming" class="nav-link" data-i18n="category.bureau-gaming">Bureau &amp; Gaming</a>
-        <a href="category.html?cat=maison-intelligente" class="nav-link" data-i18n="category.maison-intelligente">Maison Intelligente</a>
-        <a href="category.html?cat=montre" class="nav-link" data-i18n="category.montre">Montre Connectée</a>
+        <div class="nav-item has-sub">
+          <a href="category.html?cat=telephone" class="nav-link"><span data-i18n="category.telephone">Téléphone</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+          <ul class="nav-sub">
+            <li><a href="category.html?cat=telephone" data-i18n="subcat.all">Tout voir</a></li>
+            <li><a href="category.html?cat=telephone&amp;subcat=coques-protections" data-i18n="subcat.coques-protections">Coques &amp; Protections</a></li>
+            <li><a href="category.html?cat=telephone&amp;subcat=chargeurs-cables" data-i18n="subcat.chargeurs-cables">Chargeurs &amp; Câbles</a></li>
+            <li><a href="category.html?cat=telephone&amp;subcat=batterie-externe" data-i18n="subcat.batterie-externe">Batterie externe</a></li>
+            <li><a href="category.html?cat=telephone&amp;subcat=smartphones" data-i18n="subcat.smartphones">Téléphone</a></li>
+            <li><a href="category.html?cat=telephone&amp;subcat=supports" data-i18n="subcat.supports">Supports voiture &amp; bureau</a></li>
+          </ul>
+        </div>
+        <div class="nav-item has-sub">
+          <a href="category.html?cat=son-image" class="nav-link"><span data-i18n="category.son-image">Son &amp; Image</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+          <ul class="nav-sub">
+            <li><a href="category.html?cat=son-image" data-i18n="subcat.all">Tout voir</a></li>
+            <li><a href="category.html?cat=son-image&amp;subcat=ecouteurs-sans-fil" data-i18n="subcat.ecouteurs-sans-fil">Écouteurs sans fil</a></li>
+            <li><a href="category.html?cat=son-image&amp;subcat=enceintes-bluetooth" data-i18n="subcat.enceintes-bluetooth">Enceintes Bluetooth</a></li>
+            <li><a href="category.html?cat=son-image&amp;subcat=tablette" data-i18n="subcat.tablette">Tablette</a></li>
+            <li><a href="category.html?cat=son-image&amp;subcat=videoprojecteur" data-i18n="subcat.videoprojecteur">Vidéoprojecteur</a></li>
+            <li><a href="category.html?cat=son-image&amp;subcat=iptv" data-i18n="subcat.iptv">IPTV</a></li>
+          </ul>
+        </div>
+        <div class="nav-item has-sub">
+          <a href="category.html?cat=bureau-gaming" class="nav-link"><span data-i18n="category.bureau-gaming">Bureau &amp; Gaming</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+          <ul class="nav-sub">
+            <li><a href="category.html?cat=bureau-gaming" data-i18n="subcat.all">Tout voir</a></li>
+            <li><a href="category.html?cat=bureau-gaming&amp;subcat=casque-gaming" data-i18n="subcat.casque-gaming">Casque gaming</a></li>
+            <li><a href="category.html?cat=bureau-gaming&amp;subcat=claviers-souris" data-i18n="subcat.claviers-souris">Claviers &amp; souris</a></li>
+            <li><a href="category.html?cat=bureau-gaming&amp;subcat=routeurs-wifi" data-i18n="subcat.routeurs-wifi">Routeurs WiFi</a></li>
+            <li><a href="category.html?cat=bureau-gaming&amp;subcat=repeteur-wifi" data-i18n="subcat.repeteur-wifi">Répéteur WiFi</a></li>
+            <li><a href="category.html?cat=bureau-gaming&amp;subcat=montre-connectee" data-i18n="subcat.montre-connectee">Montre connectée</a></li>
+          </ul>
+        </div>
+        <div class="nav-item has-sub">
+          <a href="category.html?cat=consoles-jeux" class="nav-link"><span data-i18n="category.consoles-jeux">Consoles &amp; Jeux vidéo</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+          <ul class="nav-sub">
+            <li><a href="category.html?cat=consoles-jeux" data-i18n="subcat.all">Tout voir</a></li>
+            <li><a href="category.html?cat=consoles-jeux&amp;subcat=consoles" data-i18n="subcat.consoles">Consoles</a></li>
+            <li><a href="category.html?cat=consoles-jeux&amp;subcat=jeux" data-i18n="subcat.jeux">Jeux</a></li>
+            <li><a href="category.html?cat=consoles-jeux&amp;subcat=accessoires-console" data-i18n="subcat.accessoires-console">Accessoires console</a></li>
+          </ul>
+        </div>
+        <div class="nav-item has-sub">
+          <a href="category.html?cat=maison-intelligente" class="nav-link"><span data-i18n="category.maison-intelligente">Maison Intelligente</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+          <ul class="nav-sub">
+            <li><a href="category.html?cat=maison-intelligente" data-i18n="subcat.all">Tout voir</a></li>
+            <li><a href="category.html?cat=maison-intelligente&amp;subcat=ampoules-led" data-i18n="subcat.ampoules-led">Ampoules LED connectées</a></li>
+            <li><a href="category.html?cat=maison-intelligente&amp;subcat=cameras-surveillance" data-i18n="subcat.cameras-surveillance">Caméras de surveillance</a></li>
+            <li><a href="category.html?cat=maison-intelligente&amp;subcat=traceur-gps" data-i18n="subcat.traceur-gps">Traceur GPS</a></li>
+            <li><a href="category.html?cat=maison-intelligente&amp;subcat=alarme-connectee" data-i18n="subcat.alarme-connectee">Alarme connectée</a></li>
+          </ul>
+        </div>
 
         <!-- Langue + devise (affichées dans le burger mobile/tablette) -->
         <div class="nav-mobile-extras">
@@ -253,8 +300,8 @@
           <li><a href="category.html?cat=telephone" data-i18n="category.telephone">Téléphone</a></li>
           <li><a href="category.html?cat=son-image" data-i18n="category.son-image">Son &amp; Image</a></li>
           <li><a href="category.html?cat=bureau-gaming" data-i18n="category.bureau-gaming">Bureau &amp; Gaming</a></li>
+          <li><a href="category.html?cat=consoles-jeux" data-i18n="category.consoles-jeux">Consoles &amp; Jeux vidéo</a></li>
           <li><a href="category.html?cat=maison-intelligente" data-i18n="category.maison-intelligente">Maison Intelligente</a></li>
-          <li><a href="category.html?cat=montre" data-i18n="category.montre">Montre Connectée</a></li>
         </ul>
       </div>
 

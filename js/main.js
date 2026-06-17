@@ -37,6 +37,8 @@ function initMenu() {
     toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    // Ferme tous les sous-menus ouverts
+    document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
   };
 
   const openMenu = () => {
@@ -51,9 +53,22 @@ function initMenu() {
     nav.classList.contains('open') ? closeMenu() : openMenu();
   });
 
-  // Fermer au clic sur un lien de catégorie
+  // Fermer au clic sur un lien de sous-catégorie (pas sur le toggle parent)
   nav.addEventListener('click', e => {
-    if (e.target.tagName === 'A') closeMenu();
+    const link = e.target.closest('a');
+    if (link && link.closest('.nav-sub')) closeMenu();
+  });
+
+  // Accordéon mobile : toggle sous-menu au clic sur le nav-link parent
+  document.querySelectorAll('.nav-item.has-sub > .nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      if (window.innerWidth >= 1024) return; // desktop : navigation normale
+      e.preventDefault();
+      const item = link.closest('.nav-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.nav-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
   });
 
   // Fermer au clic sur l'overlay
@@ -189,14 +204,19 @@ function renderAll() {
 function initCategory() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('cat') || 'telephone';
+  const subcat = params.get('subcat') || '';
 
   const titleEl = document.getElementById('categoryTitle');
-  if (titleEl) titleEl.textContent = t('category.' + slug);
+  if (titleEl) {
+    titleEl.textContent = subcat
+      ? t('subcat.' + subcat)
+      : t('category.' + slug);
+  }
 
   const backLink = document.getElementById('backLink');
   if (backLink) backLink.textContent = t('back');
 
-  currentProducts = getProductsByCategory(slug);
+  currentProducts = getProductsByCategory(slug, subcat);
   const grid = document.getElementById('productsGrid');
   if (grid) renderProductGrid(currentProducts, grid);
 
