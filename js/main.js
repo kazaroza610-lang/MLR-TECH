@@ -255,10 +255,19 @@ function renderProductDetail(p) {
   const truckIcon = `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>`;
   const caretIcon = `<svg class="pd-acc-caret" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
 
+  // Icônes SVG des caractéristiques (remplacent les anciens emojis)
+  const dimSvg = inner => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+  const lengthIcon  = dimSvg('<path d="m18 8 4 4-4 4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/>');
+  const widthIcon   = dimSvg('<path d="M11 19H5v-6"/><path d="M19 5v6h-6"/><path d="m5 19 14-14"/>');
+  const heightIcon  = dimSvg('<path d="m8 18 4 4 4-4"/><path d="M12 2v20"/><path d="m8 6 4-4 4 4"/>');
+  const weightIcon  = dimSvg('<circle cx="12" cy="5" r="3"/><path d="M6.5 8a2 2 0 0 0-1.9 1.46L2.1 18.5A2 2 0 0 0 4 21h16a2 2 0 0 0 1.9-2.5L19.4 9.46A2 2 0 0 0 17.5 8Z"/>');
+  const storageIcon = dimSvg('<line x1="22" x2="2" y1="12" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" x2="6.01" y1="16" y2="16"/><line x1="10" x2="10.01" y1="16" y2="16"/>');
+
   const hasDims  = p.dimensions && p.dimensions.longueur_cm != null;
+  const hasStock = !!p.stockage;
   const hasBox   = Array.isArray(p.contenu_boite) && p.contenu_boite.length > 0;
   const hasDesc  = !!p.description_complete;
-  const hasSpecs = p.features[currentLang].length > 0 || hasDims || !!p.poids_kg;
+  const hasSpecs = p.features[currentLang].length > 0 || hasDims || !!p.poids_kg || hasStock;
 
   el.innerHTML = `
     <div class="pd-main">
@@ -270,7 +279,6 @@ function renderProductDetail(p) {
         <h1 class="product-detail-name">${p.name[currentLang]}</h1>
         <div class="product-detail-rating" id="pdRating">${renderStars(p.rating)} <span>${p.rating}/5</span></div>
         <div class="product-detail-price" data-price-eur="${p.price_eur}">${formatPrice(p.price_eur)}</div>
-        <p class="product-detail-desc">${p.description[currentLang]}</p>
         <div class="pd-delivery-inline">${truckIcon}<span>Livraison estimée : <strong>${DELIVERY_DAYS} jours ouvrés</strong></span></div>
         <p class="dhl-badge dhl-detail">${t('dhl.badge')}</p>
         <button class="btn btn-primary btn-full btn-add-big" data-product-id="${p.id}">${t('products.add')}</button>
@@ -297,21 +305,17 @@ function renderProductDetail(p) {
       <div class="pd-section pd-accordion" id="pd-specs">
         <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Caractéristiques</span>${caretIcon}</button>
         <div class="pd-acc-body">
-          ${(hasDims || p.poids_kg) ? `<div class="pd-dims-grid">
+          ${(hasDims || p.poids_kg || hasStock) ? `<div class="pd-dims-grid">
             ${hasDims ? `
-            <div class="pd-dim-card"><span class="pd-dim-icon">📏</span><span class="pd-dim-val">${p.dimensions.longueur_cm} cm</span><span class="pd-dim-label">Longueur</span></div>
-            <div class="pd-dim-card"><span class="pd-dim-icon">📐</span><span class="pd-dim-val">${p.dimensions.largeur_cm} cm</span><span class="pd-dim-label">Largeur</span></div>
-            <div class="pd-dim-card"><span class="pd-dim-icon">↕️</span><span class="pd-dim-val">${p.dimensions.hauteur_cm} cm</span><span class="pd-dim-label">Hauteur</span></div>` : ''}
-            ${p.poids_kg ? `<div class="pd-dim-card"><span class="pd-dim-icon">⚖️</span><span class="pd-dim-val">${p.poids_kg} kg</span><span class="pd-dim-label">Poids</span></div>` : ''}
+            <div class="pd-dim-card"><span class="pd-dim-icon">${lengthIcon}</span><span class="pd-dim-val">${p.dimensions.longueur_cm} cm</span><span class="pd-dim-label">Longueur</span></div>
+            <div class="pd-dim-card"><span class="pd-dim-icon">${widthIcon}</span><span class="pd-dim-val">${p.dimensions.largeur_cm} cm</span><span class="pd-dim-label">Largeur</span></div>
+            <div class="pd-dim-card"><span class="pd-dim-icon">${heightIcon}</span><span class="pd-dim-val">${p.dimensions.hauteur_cm} cm</span><span class="pd-dim-label">Hauteur</span></div>` : ''}
+            ${p.poids_kg ? `<div class="pd-dim-card"><span class="pd-dim-icon">${weightIcon}</span><span class="pd-dim-val">${p.poids_kg} kg</span><span class="pd-dim-label">Poids</span></div>` : ''}
+            ${hasStock ? `<div class="pd-dim-card"><span class="pd-dim-icon">${storageIcon}</span><span class="pd-dim-val">${p.stockage}</span><span class="pd-dim-label">Capacité de stockage</span></div>` : ''}
           </div>` : ''}
           ${p.features[currentLang].length ? `<ul class="product-features">${p.features[currentLang].map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
         </div>
       </div>` : ''}
-
-      <div class="pd-delivery-section">
-        <div class="pd-delivery-badge">${truckIcon}<div><p class="pd-delivery-title">Livraison estimée</p><p class="pd-delivery-days">${DELIVERY_DAYS} jours ouvrés</p></div></div>
-        <p class="pd-delivery-note">Livraison express vers Madagascar — plus rapide que la concurrence</p>
-      </div>
 
       <div class="pd-section pd-accordion" id="pd-reviews">
         <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Avis clients</span>${caretIcon}</button>

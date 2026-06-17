@@ -601,7 +601,6 @@ ul { list-style: none; }
 .product-detail-rating { font-size: 14px; color: #f59e0b; margin-bottom: 12px; }
 .product-detail-rating span { color: var(--c-muted); font-size: 13px; margin-left: 6px; }
 .product-detail-price { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
-.product-detail-desc { font-size: 15px; color: var(--c-muted); line-height: 1.7; margin-bottom: 16px; }
 .dhl-detail { margin-bottom: 16px; font-size: 13px; }
 .product-features { margin-bottom: 24px; }
 .product-features li { padding: 8px 0; border-bottom: 1px solid var(--c-border); font-size: 14px; }
@@ -634,17 +633,10 @@ ul { list-style: none; }
 /* Dimensions */
 .pd-dims-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
 .pd-dim-card { background: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius); padding: 16px 12px; text-align: center; }
-.pd-dim-icon { font-size: 22px; display: block; margin-bottom: 6px; }
+.pd-dim-icon { display: flex; justify-content: center; margin-bottom: 8px; color: var(--c-muted); }
+.pd-dim-icon svg { display: block; }
 .pd-dim-val { display: block; font-size: 18px; font-weight: 700; }
 .pd-dim-label { display: block; font-size: 12px; color: var(--c-muted); margin-top: 3px; }
-
-/* Livraison section (toujours visible) */
-.pd-delivery-section { background: linear-gradient(135deg, #0a1628, #0f2040); border-radius: var(--radius); padding: 20px; margin: 24px 0; }
-.pd-delivery-badge { display: flex; align-items: center; gap: 16px; color: #fff; }
-.pd-delivery-badge > svg { stroke: #22c55e; flex-shrink: 0; }
-.pd-delivery-title { font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: rgba(255,255,255,.55); margin-bottom: 4px; }
-.pd-delivery-days { font-size: 24px; font-weight: 800; color: #22c55e; }
-.pd-delivery-note { font-size: 13px; color: rgba(255,255,255,.45); margin-top: 12px; }
 
 /* Avis */
 .reviews-loading, .reviews-empty { font-size: 14px; color: var(--c-muted); font-style: italic; padding: 8px 0; }

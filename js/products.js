@@ -154,6 +154,7 @@ const PRODUCTS = [
     // Dimensions PS5 Slim (CFI-2016) — source : Sony officiel. À vérifier sur fr.playstation.com si besoin.
     dimensions: { longueur_cm: 35.8, largeur_cm: 21.6, hauteur_cm: 9.6, unite: 'cm' },
     poids_kg: 2.6, // poids approximatif PS5 Slim Digital — à confirmer sur le site Sony
+    stockage: '1 To SSD', // capacité officielle PS5 Slim Édition Numérique
     features:{ fr:['SSD ultra-rapide','Ray Tracing','Audio 3D immersif','Manette DualSense incluse','Gâchettes adaptatives'], mg:['SSD haingana','Ray Tracing','Audio 3D','DualSense','Gâchettes adaptatives'] },
     price_eur:600, image:'images/products/ps5-digital.jpeg', rating:4.9
   },
