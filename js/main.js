@@ -275,9 +275,8 @@ function renderProductDetail(p) {
 /* ── CART page ──────────────────────────────────────────── */
 function initCartPage() {
   updateCartDisplay();
-  document.getElementById('checkoutBtn')?.addEventListener('click', () => {
-    alert('Fonctionnalité de commande bientôt disponible !');
-  });
+  // Le checkout est géré par js/account.js (doCheckout) via délégation —
+  // crée une vraie commande en base si l'utilisateur est connecté.
 }
 
 /* ── Active nav link ────────────────────────────────────── */

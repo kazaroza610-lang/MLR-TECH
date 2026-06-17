@@ -191,10 +191,25 @@
   .footer-grid { padding: 80px 60px 56px; }
 }
 
+/* ── Mobile + tablette (< 1024px) ────────────
+   3 icônes (recherche/compte/panier) compactées
+   pour ne pas chevaucher le logo centré.
+   Desktop (≥1024px) garde les icônes à 48px. */
+@media (max-width: 1023px) {
+  .search-btn, .account-btn, .cart-btn { width: 40px; }
+  .header-actions { gap: 2px; }
+}
+
 /* ── Very small phones (< 360px) ───────────── */
 @media (max-width: 359px) {
   .products-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 26px; }
+  /* Header très compact : logo réduit + icônes resserrées */
+  .logo img { width: 64px; }
+  .search-btn, .account-btn, .cart-btn { width: 36px; }
+  .header-actions { gap: 1px; }
+  .menu-toggle { width: 42px; }
+  .header-container { padding: 0 8px; }
 }
 
 /* ── Print ──────────────────────────────────── */

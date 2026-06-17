@@ -123,6 +123,15 @@
         <!-- Recherche (ouvre / ferme la barre de recherche) -->
         <button class="search-btn" id="searchToggle" aria-label="Rechercher" aria-expanded="false" aria-controls="searchBar">🔍</button>
 
+        <!-- Compte client -->
+        <div class="account-wrap">
+          <button class="account-btn" id="accountToggle" aria-label="Mon compte" aria-haspopup="true" aria-expanded="false" aria-controls="accountMenu">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20.5C4 16.9 7.6 15 12 15s8 1.9 8 5.5"/></svg>
+            <span class="account-dot" id="accountDot" aria-hidden="true"></span>
+          </button>
+          <div class="account-menu" id="accountMenu" role="menu" aria-hidden="true"></div>
+        </div>
+
         <!-- Panier -->
         <button class="cart-btn" aria-label="Ouvrir le panier">
           🛒
@@ -229,6 +238,7 @@
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/seo.js"></script>
+  <script src="js/account.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

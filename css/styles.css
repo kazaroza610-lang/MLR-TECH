@@ -231,6 +231,89 @@ ul { list-style: none; }
 .search-btn:hover,
 .cart-btn:hover { background: #333; }
 
+/* ── Compte client (header) ── */
+.account-wrap { position: relative; display: flex; align-items: center; flex-shrink: 0; }
+.account-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  color: #ffffff;
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--t-fast);
+}
+.account-btn:hover { background: #333; }
+.account-btn svg { display: block; }
+/* Pastille « connecté » (affichée par JS) */
+.account-dot {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 1.5px solid #000;
+  display: none;
+}
+.account-dot.show { display: block; }
+
+/* Menu déroulant compte */
+.account-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 230px;
+  max-width: calc(100vw - 16px);
+  background: var(--c-white);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  display: none;
+  z-index: 150;
+}
+.account-menu.open { display: block; }
+.account-menu .am-greeting {
+  padding: 6px 12px 12px;
+  font-size: 13px;
+  color: var(--c-muted);
+  border-bottom: 1px solid var(--c-border);
+  margin-bottom: 6px;
+}
+.account-menu .am-greeting strong { display: block; color: var(--c-text); font-size: 15px; font-weight: 700; }
+.account-menu a,
+.account-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--c-text);
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--t-fast);
+}
+.account-menu a:hover,
+.account-menu button:hover { background: var(--c-bg); }
+.account-menu .am-primary {
+  background: var(--c-black);
+  color: var(--c-white);
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.account-menu .am-primary:hover { background: var(--c-accent); }
+.account-menu .am-logout { color: var(--c-error); }
+
 /* Badge compteur du panier */
 .cart-count {
   position: absolute;
@@ -691,6 +774,139 @@ ul { list-style: none; }
 .faq-item:last-child { border-bottom: none; }
 .faq-item h3 { font-size: 16px; margin: 0 0 8px; }
 .faq-item p { margin: 0; color: var(--c-muted); }
+
+/* ═══════════════════════════════════════════════
+   COMPTE CLIENT — Auth (login / register)
+   ═══════════════════════════════════════════════ */
+.auth-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+.auth-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 28px 24px;
+}
+.auth-card h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+.auth-sub { font-size: 14px; color: var(--c-muted); margin-bottom: 20px; }
+.auth-card form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 14px 0 6px;
+}
+.auth-card form label .opt { font-weight: 400; color: var(--c-muted); }
+.auth-card input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  font-size: 16px;
+  background: var(--c-white);
+  transition: border-color var(--t-fast);
+}
+.auth-card input:focus-visible { outline: none; border-color: var(--c-black); }
+.auth-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.auth-row { display: flex; justify-content: flex-end; margin: 12px 0 4px; }
+.auth-link { font-size: 13px; color: var(--c-muted); text-decoration: underline; }
+.auth-card .btn-full { margin-top: 20px; }
+.auth-foot { text-align: center; font-size: 14px; color: var(--c-muted); margin-top: 18px; }
+.auth-foot a { color: var(--c-black); font-weight: 600; text-decoration: underline; }
+
+/* Messages de formulaire */
+.form-msg { font-size: 14px; margin: 4px 0; min-height: 0; }
+.form-msg.err { color: var(--c-error); }
+.form-msg.ok  { color: #16a34a; }
+.form-msg:empty { margin: 0; }
+
+/* ═══════════════════════════════════════════════
+   TABLEAU DE BORD (compte.html)
+   ═══════════════════════════════════════════════ */
+.dash-section {
+  border-top: 1px solid var(--c-border);
+  padding-top: 24px;
+  margin-top: 24px;
+}
+.dash-section:first-of-type { border-top: none; padding-top: 0; margin-top: 8px; }
+.dash-form { max-width: 480px; }
+.dash-form label { display: block; font-size: 13px; font-weight: 600; margin: 14px 0 6px; }
+.dash-form label .opt { font-weight: 400; color: var(--c-muted); }
+.dash-form input {
+  width: 100%; height: 46px; padding: 0 14px;
+  border: 1px solid var(--c-border); border-radius: var(--radius);
+  font-size: 16px; background: var(--c-white);
+}
+.dash-form input:focus-visible { outline: none; border-color: var(--c-black); }
+.dash-form .btn { margin-top: 16px; }
+.muted { color: var(--c-muted); font-size: 14px; }
+
+/* Adresses */
+.address-list { display: grid; gap: 12px; margin-bottom: 12px; }
+.address-card {
+  display: flex; flex-direction: column; gap: 2px;
+  border: 1px solid var(--c-border); border-radius: var(--radius);
+  padding: 14px 16px; font-size: 14px;
+}
+.address-card strong { font-size: 15px; margin-bottom: 2px; }
+.address-card .addr-del { align-self: flex-start; margin-top: 8px; color: var(--c-error); }
+.addr-add { margin-top: 8px; }
+.addr-add summary { cursor: pointer; font-size: 14px; font-weight: 600; padding: 8px 0; }
+
+/* Commandes + suivi */
+.order-list { display: grid; gap: 16px; }
+.order-card {
+  border: 1px solid var(--c-border); border-radius: var(--radius);
+  padding: 18px 18px 20px;
+}
+.order-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.order-num { font-weight: 700; font-size: 15px; }
+.order-meta { font-size: 13px; color: var(--c-muted); margin: 4px 0 16px; }
+.order-status {
+  font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+  background: var(--c-bg); border: 1px solid var(--c-border); white-space: nowrap;
+}
+.order-status.st-prep    { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.order-status.st-ship    { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
+.order-status.st-transit { background: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
+.order-status.st-done    { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+.order-track { font-size: 13px; margin-top: 14px; }
+
+/* Barre de progression suivi */
+.tracker { display: flex; align-items: flex-start; justify-content: space-between; gap: 4px; margin: 6px 0; }
+.tracker-step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; position: relative; }
+.tracker-step::before {
+  content: ''; position: absolute; top: 6px; left: -50%; width: 100%; height: 2px;
+  background: var(--c-border); z-index: 0;
+}
+.tracker-step:first-child::before { display: none; }
+.tracker-dot {
+  width: 14px; height: 14px; border-radius: 50%; background: var(--c-border);
+  position: relative; z-index: 1;
+}
+.tracker-step.done .tracker-dot { background: #16a34a; }
+.tracker-step.done::before { background: #16a34a; }
+.tracker-label { font-size: 10px; color: var(--c-muted); text-align: center; line-height: 1.3; }
+.tracker-step.done .tracker-label { color: var(--c-text); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════
+   ADMIN (admin.html)
+   ═══════════════════════════════════════════════ */
+.admin-order {
+  border: 1px solid var(--c-border); border-radius: var(--radius);
+  padding: 14px 16px; margin-bottom: 12px;
+}
+.admin-order > div:first-child { margin-bottom: 10px; font-size: 14px; }
+.admin-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.admin-row select, .admin-row input {
+  height: 42px; padding: 0 10px; border: 1px solid var(--c-border);
+  border-radius: var(--radius); font-size: 14px; background: var(--c-white);
+}
+.admin-row .admin-tracking, .admin-row .admin-carrier { flex: 1; min-width: 120px; }
+.admin-row .btn { min-height: 42px; padding: 8px 18px; }
 
 /* ═══════════════════════════════════════════════
    TOAST
