@@ -124,7 +124,7 @@
   .nav-sub {
     display: none;
     position: absolute;
-    top: calc(100% + 6px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     min-width: 210px;
@@ -133,6 +133,7 @@
     border: 1px solid #333;
     border-radius: var(--radius);
     padding: 6px 0;
+    padding-top: 12px;
     z-index: 200;
     box-shadow: 0 8px 24px rgba(0,0,0,.4);
     margin: 0;
