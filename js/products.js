@@ -133,6 +133,15 @@ const PRODUCTS = [
     price_eur:200, image:'https://picsum.photos/seed/luxwatch/400/400', rating:4.8
   },
 
+  /* ── CONSOLES & JEUX VIDÉO ───────────────── */
+  {
+    id:'p022', category:'consoles-jeux', subcategory:'consoles',
+    name:{ fr:'PlayStation 5 Édition Numérique', mg:'PlayStation 5 Édition Numérique' },
+    description:{ fr:'Console 100% numérique avec SSD ultra-rapide, Ray Tracing, Audio 3D et manette DualSense avec retour haptique et gâchettes adaptatives.', mg:'Console nomerika manontolo, SSD haingana, Ray Tracing, Audio 3D ary DualSense miaraka amin\'ny haptique sy gâchettes adaptatives.' },
+    features:{ fr:['SSD ultra-rapide','Ray Tracing','Audio 3D immersif','Manette DualSense incluse','Gâchettes adaptatives'], mg:['SSD haingana','Ray Tracing','Audio 3D','DualSense','Gâchettes adaptatives'] },
+    price_eur:600, image:'https://picsum.photos/seed/ps5digital/400/400', rating:4.9
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
