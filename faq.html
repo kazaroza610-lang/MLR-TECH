@@ -1,54 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- ═══ CHARSET & VIEWPORT ═══ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ═══ TITRE ═══ -->
-  <title>Panier — MLR TECH Madagascar</title>
-  <meta name="description" content="Votre panier MLR TECH. Finalisez votre commande d'électronique premium avec livraison rapide à Madagascar.">
-
-  <!-- Le panier est une page technique : on ne l'indexe pas (mais on suit les liens) -->
-  <meta name="robots" content="noindex, follow">
+  <title>FAQ — Questions fréquentes | MLR TECH</title>
+  <meta name="description" content="Questions fréquentes MLR TECH : délais de livraison, frais de port, moyens de paiement, retours, garantie et contact.">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#000000">
-  <link rel="canonical" href="https://mlr-tech.com/cart.html">
-
-  <!-- ═══ FAVICONS ═══ -->
+  <link rel="canonical" href="https://mlr-tech.com/faq.html">
+  <meta property="og:title" content="FAQ — Questions fréquentes | MLR TECH">
+  <meta property="og:description" content="Toutes les réponses à vos questions chez MLR TECH.">
+  <meta property="og:url" content="https://mlr-tech.com/faq.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mlr-tech.com/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="MLR TECH">
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="apple-touch-icon" href="logo_mlr.png">
-
-  <!-- ═══ STYLES ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quels sont les délais de livraison ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Votre commande est livrée à Madagascar dans un délai indicatif de 10 jours à compter de la confirmation du paiement." }
+      },
+      {
+        "@type": "Question",
+        "name": "Livrez-vous partout à Madagascar ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui, nous livrons partout à Madagascar via notre transporteur partenaire." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels sont les frais de livraison ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Les éventuels frais de livraison sont affichés clairement avant la validation de votre commande." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels moyens de paiement acceptez-vous ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Vous pouvez payer par carte bancaire (Visa, Mastercard) via Stripe, ainsi que par Orange Money et Airtel Money via Paytech." }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment suivre ma commande ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Après votre commande, nous vous tenons informé du suivi par e-mail et par WhatsApp." }
+      },
+      {
+        "@type": "Question",
+        "name": "Puis-je retourner un produit ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui. Vous disposez de 14 jours pour retourner un produit. Consultez notre politique de retour et de remboursement pour la procédure." }
+      },
+      {
+        "@type": "Question",
+        "name": "Les produits sont-ils garantis ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui, tous nos produits bénéficient de la garantie légale de conformité et, le cas échéant, de la garantie du constructeur." }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment vous contacter ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Par e-mail à contact@mlr-tech.com ou par WhatsApp au +261 76 322 08 84, du lundi au vendredi de 9h à 18h (heure Madagascar)." }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body data-page="cart-page">
+<body data-page="legal">
 
-  <!-- ══ HEADER ══════════════════════════════ -->
   <header class="header">
     <div class="header-container">
-
-      <!-- Menu burger (mobile / tablette) — ZONE GAUCHE -->
       <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
         <span></span><span></span><span></span>
       </button>
-
-      <!-- Logo — ZONE GAUCHE -->
       <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
-        <img src="logo.svg" alt="MLR TECH" width="120" height="60">
+        <img src="logo.svg" alt="Logo MLR TECH — N°1 de l'électronique à Madagascar" width="120" height="60">
       </a>
-
-      <!-- Catégories — ZONE CENTRE
-           (desktop : barre horizontale / mobile : panneau latéral du burger) -->
       <nav class="nav" id="mainNav" aria-label="Navigation principale">
         <a href="category.html?cat=telephone" class="nav-link" data-i18n="category.telephone">Téléphone</a>
         <a href="category.html?cat=son-image" class="nav-link" data-i18n="category.son-image">Son &amp; Image</a>
         <a href="category.html?cat=bureau-gaming" class="nav-link" data-i18n="category.bureau-gaming">Bureau &amp; Gaming</a>
         <a href="category.html?cat=maison-intelligente" class="nav-link" data-i18n="category.maison-intelligente">Maison Intelligente</a>
         <a href="category.html?cat=montre" class="nav-link" data-i18n="category.montre">Montre Connectée</a>
-
-        <!-- Langue + devise (affichées dans le burger mobile/tablette) -->
         <div class="nav-mobile-extras">
           <select class="lang-select" aria-label="Langue">
             <option value="fr">🇫🇷 Français</option>
@@ -60,10 +96,7 @@
           </select>
         </div>
       </nav>
-
-      <!-- Actions — ZONE DROITE -->
       <div class="header-actions">
-        <!-- Langue + devise (desktop) -->
         <select class="lang-select desktop-only" aria-label="Langue">
           <option value="fr">🇫🇷 Français</option>
           <option value="mg">🇲🇬 Malagasy</option>
@@ -72,19 +105,13 @@
           <option value="EUR">EUR €</option>
           <option value="AR">AR Ar</option>
         </select>
-
-        <!-- Recherche (ouvre / ferme la barre de recherche) -->
         <button class="search-btn" id="searchToggle" aria-label="Rechercher" aria-expanded="false" aria-controls="searchBar">🔍</button>
-
-        <!-- Panier -->
         <button class="cart-btn" aria-label="Ouvrir le panier">
           🛒
           <span class="cart-count" aria-live="polite">0</span>
         </button>
       </div>
     </div>
-
-    <!-- Barre de recherche (cachée par défaut — slide-down) -->
     <div class="search-bar" id="searchBar" role="search">
       <div class="search-bar-inner">
         <input type="search" id="searchInput" placeholder="Rechercher des produits…" data-i18n-placeholder="search.placeholder" aria-label="Rechercher des produits">
@@ -92,31 +119,49 @@
       </div>
     </div>
   </header>
-
-  <!-- Overlay du menu mobile -->
   <div class="nav-overlay" id="navOverlay"></div>
+
   <main>
-    <div class="cart-page">
-      <p style="margin-bottom:16px"><a href="index.html" data-i18n="back" style="color:var(--c-muted);font-size:14px">← Retour</a></p>
-      <h1 data-i18n="cart.title">PANIER</h1>
+    <article class="legal-page">
+      <h1>Questions fréquentes</h1>
+      <p class="legal-updated">Tout ce qu'il faut savoir avant de commander</p>
 
-      <div id="cartBody" aria-live="polite">
-        <!-- Rempli par JS -->
+      <div class="faq-item">
+        <h3>Quels sont les délais de livraison ?</h3>
+        <p>Votre commande est livrée à Madagascar dans un délai indicatif de 10 jours à compter de la confirmation du paiement.</p>
       </div>
-
-      <div class="cart-total-row cart-page-total">
-        <span data-i18n="cart.total">Total</span>
-        <span id="cartTotalAmount">0 €</span>
+      <div class="faq-item">
+        <h3>Livrez-vous partout à Madagascar ?</h3>
+        <p>Oui, nous livrons partout à Madagascar via notre transporteur partenaire.</p>
       </div>
-
-      <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin-left:auto">
-        <button class="btn btn-primary btn-full" id="checkoutBtn" data-i18n="cart.checkout">Passer la commande</button>
-        <a href="index.html" class="btn btn-ghost btn-full" data-i18n="cart.continue">Continuer shopping</a>
+      <div class="faq-item">
+        <h3>Quels sont les frais de livraison ?</h3>
+        <p>Les éventuels frais de livraison sont affichés clairement avant la validation de votre commande.</p>
       </div>
-    </div>
+      <div class="faq-item">
+        <h3>Quels moyens de paiement acceptez-vous ?</h3>
+        <p>Vous pouvez payer par carte bancaire (Visa, Mastercard) via Stripe, ainsi que par Orange Money et Airtel Money via Paytech.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Comment suivre ma commande ?</h3>
+        <p>Après votre commande, nous vous tenons informé du suivi par e-mail et par WhatsApp.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Puis-je retourner un produit ?</h3>
+        <p>Oui. Vous disposez de 14 jours pour retourner un produit. Consultez notre <a href="politique-retour-remboursement.html">politique de retour et de remboursement</a> pour la procédure.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Les produits sont-ils garantis ?</h3>
+        <p>Oui, tous nos produits bénéficient de la garantie légale de conformité et, le cas échéant, de la garantie du constructeur.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Comment vous contacter ?</h3>
+        <p>Par e-mail à <a href="mailto:contact@mlr-tech.com">contact@mlr-tech.com</a> ou par <a href="https://wa.me/261763220884" target="_blank" rel="noopener">WhatsApp</a> au +261 76 322 08 84, du lundi au vendredi de 9h à 18h (heure Madagascar).</p>
+      </div>
+    </article>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" aria-label="Pied de page">
     <div class="footer-grid">
       <!-- Marque -->
       <div class="footer-col">

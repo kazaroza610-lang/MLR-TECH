@@ -1,54 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- ═══ CHARSET & VIEWPORT ═══ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ═══ TITRE ═══ -->
-  <title>Panier — MLR TECH Madagascar</title>
-  <meta name="description" content="Votre panier MLR TECH. Finalisez votre commande d'électronique premium avec livraison rapide à Madagascar.">
-
-  <!-- Le panier est une page technique : on ne l'indexe pas (mais on suit les liens) -->
-  <meta name="robots" content="noindex, follow">
+  <title>Conditions Générales de Vente — MLR TECH</title>
+  <meta name="description" content="Conditions générales de vente de MLR TECH : commande, paiement, livraison, rétractation et garanties.">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#000000">
-  <link rel="canonical" href="https://mlr-tech.com/cart.html">
-
-  <!-- ═══ FAVICONS ═══ -->
+  <link rel="canonical" href="https://mlr-tech.com/cgv.html">
+  <meta property="og:title" content="Conditions Générales de Vente — MLR TECH">
+  <meta property="og:description" content="Les CGV de MLR TECH.">
+  <meta property="og:url" content="https://mlr-tech.com/cgv.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mlr-tech.com/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="MLR TECH">
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="apple-touch-icon" href="logo_mlr.png">
-
-  <!-- ═══ STYLES ═══ -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body data-page="cart-page">
+<body data-page="legal">
 
-  <!-- ══ HEADER ══════════════════════════════ -->
   <header class="header">
     <div class="header-container">
-
-      <!-- Menu burger (mobile / tablette) — ZONE GAUCHE -->
       <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
         <span></span><span></span><span></span>
       </button>
-
-      <!-- Logo — ZONE GAUCHE -->
       <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
-        <img src="logo.svg" alt="MLR TECH" width="120" height="60">
+        <img src="logo.svg" alt="Logo MLR TECH — N°1 de l'électronique à Madagascar" width="120" height="60">
       </a>
-
-      <!-- Catégories — ZONE CENTRE
-           (desktop : barre horizontale / mobile : panneau latéral du burger) -->
       <nav class="nav" id="mainNav" aria-label="Navigation principale">
         <a href="category.html?cat=telephone" class="nav-link" data-i18n="category.telephone">Téléphone</a>
         <a href="category.html?cat=son-image" class="nav-link" data-i18n="category.son-image">Son &amp; Image</a>
         <a href="category.html?cat=bureau-gaming" class="nav-link" data-i18n="category.bureau-gaming">Bureau &amp; Gaming</a>
         <a href="category.html?cat=maison-intelligente" class="nav-link" data-i18n="category.maison-intelligente">Maison Intelligente</a>
         <a href="category.html?cat=montre" class="nav-link" data-i18n="category.montre">Montre Connectée</a>
-
-        <!-- Langue + devise (affichées dans le burger mobile/tablette) -->
         <div class="nav-mobile-extras">
           <select class="lang-select" aria-label="Langue">
             <option value="fr">🇫🇷 Français</option>
@@ -60,10 +48,7 @@
           </select>
         </div>
       </nav>
-
-      <!-- Actions — ZONE DROITE -->
       <div class="header-actions">
-        <!-- Langue + devise (desktop) -->
         <select class="lang-select desktop-only" aria-label="Langue">
           <option value="fr">🇫🇷 Français</option>
           <option value="mg">🇲🇬 Malagasy</option>
@@ -72,19 +57,13 @@
           <option value="EUR">EUR €</option>
           <option value="AR">AR Ar</option>
         </select>
-
-        <!-- Recherche (ouvre / ferme la barre de recherche) -->
         <button class="search-btn" id="searchToggle" aria-label="Rechercher" aria-expanded="false" aria-controls="searchBar">🔍</button>
-
-        <!-- Panier -->
         <button class="cart-btn" aria-label="Ouvrir le panier">
           🛒
           <span class="cart-count" aria-live="polite">0</span>
         </button>
       </div>
     </div>
-
-    <!-- Barre de recherche (cachée par défaut — slide-down) -->
     <div class="search-bar" id="searchBar" role="search">
       <div class="search-bar-inner">
         <input type="search" id="searchInput" placeholder="Rechercher des produits…" data-i18n-placeholder="search.placeholder" aria-label="Rechercher des produits">
@@ -92,31 +71,57 @@
       </div>
     </div>
   </header>
-
-  <!-- Overlay du menu mobile -->
   <div class="nav-overlay" id="navOverlay"></div>
+
   <main>
-    <div class="cart-page">
-      <p style="margin-bottom:16px"><a href="index.html" data-i18n="back" style="color:var(--c-muted);font-size:14px">← Retour</a></p>
-      <h1 data-i18n="cart.title">PANIER</h1>
+    <article class="legal-page">
+      <h1>Conditions Générales de Vente</h1>
+      <p class="legal-updated">Dernière mise à jour : 17 juin 2026</p>
 
-      <div id="cartBody" aria-live="polite">
-        <!-- Rempli par JS -->
-      </div>
+      <h2>Article 1 — Objet</h2>
+      <p>Les présentes conditions générales de vente (CGV) régissent les ventes de produits électroniques réalisées par <strong>MLR TECH</strong> (entreprise individuelle exploitée par M. Muller, 29 rue Anatole France, 13500 Martigues) sur le site mlr-tech.com. Toute commande implique l'acceptation sans réserve des présentes CGV.</p>
 
-      <div class="cart-total-row cart-page-total">
-        <span data-i18n="cart.total">Total</span>
-        <span id="cartTotalAmount">0 €</span>
-      </div>
+      <h2>Article 2 — Produits</h2>
+      <p>Les produits proposés sont décrits avec la plus grande exactitude possible. Les photographies sont non contractuelles. Les produits sont proposés dans la limite des stocks disponibles.</p>
 
-      <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin-left:auto">
-        <button class="btn btn-primary btn-full" id="checkoutBtn" data-i18n="cart.checkout">Passer la commande</button>
-        <a href="index.html" class="btn btn-ghost btn-full" data-i18n="cart.continue">Continuer shopping</a>
-      </div>
-    </div>
+      <h2>Article 3 — Prix</h2>
+      <p>Les prix sont indiqués en euros (€) et en ariary (Ar). MLR TECH bénéficie de la franchise en base de TVA (article 293 B du CGI) : les prix sont nets, TVA non applicable. Les éventuels frais de livraison sont précisés avant la validation de la commande.</p>
+
+      <h2>Article 4 — Commande</h2>
+      <p>Le client valide sa commande après avoir vérifié le contenu de son panier. La vente est considérée comme ferme après confirmation du paiement.</p>
+
+      <h2>Article 5 — Paiement</h2>
+      <p>Le paiement s'effectue au moment de la commande par :</p>
+      <ul>
+        <li>Carte bancaire (Visa, Mastercard) via <strong>Stripe</strong> ;</li>
+        <li>Orange Money et Airtel Money via <strong>Paytech</strong>.</li>
+      </ul>
+      <p>Les transactions sont sécurisées. MLR TECH n'a jamais accès aux données complètes de votre carte bancaire.</p>
+
+      <h2>Article 6 — Livraison</h2>
+      <p>Les produits sont livrés à Madagascar dans un délai indicatif de <strong>10 jours</strong> via notre transporteur partenaire, à compter de la confirmation du paiement. Les délais peuvent varier selon la destination. En cas de retard anormal, le client est informé dans les meilleurs délais.</p>
+
+      <h2>Article 7 — Droit de rétractation</h2>
+      <p>Conformément aux articles L221-18 et suivants du Code de la consommation, le client dispose d'un délai de <strong>14 jours</strong> à compter de la réception de sa commande pour exercer son droit de rétractation, sans avoir à se justifier. Les modalités sont détaillées dans notre <a href="politique-retour-remboursement.html">Politique de retour et de remboursement</a>.</p>
+
+      <h2>Article 8 — Retours et remboursements</h2>
+      <p>Les conditions de retour et de remboursement sont précisées sur la page dédiée : <a href="politique-retour-remboursement.html">Retours &amp; Remboursement</a>.</p>
+
+      <h2>Article 9 — Garanties</h2>
+      <p>Tous les produits bénéficient de la <strong>garantie légale de conformité</strong> (articles L217-3 et suivants du Code de la consommation) et de la garantie légale contre les vices cachés (articles 1641 et suivants du Code civil), ainsi que, le cas échéant, de la garantie du constructeur.</p>
+
+      <h2>Article 10 — Responsabilité</h2>
+      <p>MLR TECH ne saurait être tenue responsable des dommages résultant d'une mauvaise utilisation des produits. La responsabilité de MLR TECH est limitée au montant de la commande.</p>
+
+      <h2>Article 11 — Données personnelles</h2>
+      <p>Les données collectées sont traitées conformément à notre <a href="politique-confidentialite.html">Politique de confidentialité</a>.</p>
+
+      <h2>Article 12 — Droit applicable et litiges</h2>
+      <p>Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité. À défaut, le consommateur peut recourir à un médiateur de la consommation ou à la plateforme européenne : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+    </article>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" aria-label="Pied de page">
     <div class="footer-grid">
       <!-- Marque -->
       <div class="footer-col">
