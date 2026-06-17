@@ -18,6 +18,9 @@
   .section { padding: 64px 24px; }
   .section-title { margin-bottom: 40px; }
 
+  /* USP: 2 cols dès la tablette */
+  .usp-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
   /* Products: 3 cols */
   .products-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .products { padding: 48px 24px; }

@@ -189,7 +189,7 @@ function createProductCard(product) {
   card.innerHTML = `
     <a href="product.html?id=${product.id}" class="product-card-link" aria-label="${product.name[currentLang]}">
       <div class="product-img-wrap">
-        <img src="${product.image}" alt="${product.name[currentLang]}" loading="lazy" width="400" height="400">
+        <img src="${product.image}" alt="${product.name[currentLang]} — ${t('category.' + product.category)} | MLR TECH Madagascar" loading="lazy" width="400" height="400">
       </div>
       <div class="product-card-body">
         <p class="product-cat">${t('category.' + product.category)}</p>

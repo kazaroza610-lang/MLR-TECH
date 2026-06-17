@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- ═══ CHARSET & VIEWPORT ═══ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MLR TECH — Panier</title>
+
+  <!-- ═══ TITRE ═══ -->
+  <title>Panier — MLR TECH Madagascar</title>
+  <meta name="description" content="Votre panier MLR TECH. Finalisez votre commande d'électronique premium avec livraison rapide à Madagascar.">
+
+  <!-- Le panier est une page technique : on ne l'indexe pas (mais on suit les liens) -->
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://mlr-tech.com/cart.html">
+
+  <!-- ═══ FAVICONS ═══ -->
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="apple-touch-icon" href="logo_mlr.png">
+
+  <!-- ═══ STYLES ═══ -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -96,10 +111,6 @@
 
       <div style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin-left:auto">
         <button class="btn btn-primary btn-full" id="checkoutBtn" data-i18n="cart.checkout">Passer la commande</button>
-
-      <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
-        <img src="logo.svg" alt="MLR TECH" width="120" height="60">
-      </a>
         <a href="index.html" class="btn btn-ghost btn-full" data-i18n="cart.continue">Continuer shopping</a>
       </div>
     </div>
@@ -108,9 +119,7 @@
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-col">
-        <img src="logo.svg"
-             
-             alt="MLR TECH" style="height:40px;margin-bottom:12px;filter:brightness(0) invert(1)">
+        <img src="logo.svg" alt="Logo MLR TECH — électronique à Madagascar" style="height:40px;margin-bottom:12px;filter:brightness(0) invert(1)">
         <p data-i18n="footer.about-desc">Électronique premium livrée à Madagascar en 10 jours par DHL Express.</p>
       </div>
       <div class="footer-col">
@@ -140,6 +149,7 @@
   <script src="js/currency.js"></script>
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/seo.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -374,6 +374,29 @@ ul { list-style: none; }
 .category-card-body h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
 .category-card-body p { font-size: 13px; color: var(--c-muted); margin-bottom: 14px; line-height: 1.5; }
 
+/* ── USP / Pourquoi MLR TECH ────────────────── */
+.usp { background: var(--c-bg); }
+.usp-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+.usp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  text-align: left;
+}
+.usp-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+.usp-icon { font-size: 24px; flex-shrink: 0; line-height: 1; }
+
 /* ── Products grid ──────────────────────────── */
 .products { background: var(--c-bg); }
 .products-header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }

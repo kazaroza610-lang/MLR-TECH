@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Pages techniques non destinées à l'indexation
+Disallow: /cart.html
+
+Sitemap: https://mlr-tech.com/sitemap.xml

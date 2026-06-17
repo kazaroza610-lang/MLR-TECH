@@ -1,9 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- ═══ CHARSET & VIEWPORT ═══ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MLR TECH — Catégorie</title>
+
+  <!-- ═══ TITRE & DESCRIPTION (raffinés dynamiquement par js/seo.js selon ?cat=) ═══ -->
+  <title>Catégories — MLR TECH Madagascar</title>
+  <meta name="description" content="Découvrez les catégories MLR TECH : téléphone, son & image, bureau & gaming, maison intelligente et montres connectées. Livraison rapide à Madagascar.">
+  <meta name="keywords" content="électronique Madagascar, accessoires téléphone, audio, gaming, maison intelligente, montre connectée">
+  <meta name="author" content="MLR TECH">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#000000">
+
+  <!-- ═══ CANONICAL (raffiné par JS) ═══ -->
+  <link rel="canonical" href="https://mlr-tech.com/category.html">
+
+  <!-- ═══ OPEN GRAPH ═══ -->
+  <meta property="og:title" content="Catégories — MLR TECH Madagascar">
+  <meta property="og:description" content="Téléphone, audio, gaming, maison intelligente, montres connectées. Livraison rapide à Madagascar.">
+  <meta property="og:url" content="https://mlr-tech.com/category.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mlr-tech.com/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="MLR TECH">
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Catégories — MLR TECH Madagascar">
+  <meta name="twitter:description" content="Téléphone, audio, gaming, maison intelligente, montres connectées.">
+  <meta name="twitter:image" content="https://mlr-tech.com/og-image.png">
+
+  <!-- ═══ FAVICONS ═══ -->
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="apple-touch-icon" href="logo_mlr.png">
+
+  <!-- ═══ STYLES ═══ -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -109,9 +141,7 @@
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-col">
-        <img src="logo.svg"
-             
-             alt="MLR TECH" style="height:40px;margin-bottom:12px;filter:brightness(0) invert(1)">
+        <img src="logo.svg" alt="Logo MLR TECH — électronique à Madagascar" style="height:40px;margin-bottom:12px;filter:brightness(0) invert(1)">
         <p data-i18n="footer.about-desc">Électronique premium livrée à Madagascar en 10 jours par DHL Express.</p>
       </div>
       <div class="footer-col">
@@ -141,6 +171,7 @@
   <script src="js/currency.js"></script>
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/seo.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

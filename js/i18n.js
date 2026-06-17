@@ -12,8 +12,8 @@ const MLR_TRANSLATIONS = {
     'category.desc.bureau-gaming': 'Périphériques pro et gaming',
     'category.desc.maison-intelligente': 'Domotique et objets connectés',
     'category.desc.montre': 'Montres et bracelets intelligents',
-    'hero.title': 'MLR TECH — Électronique Premium',
-    'hero.subtitle': 'Livraison rapide Madagascar | DHL Express 10 jours',
+    'hero.title': "MLR TECH — N°1 de l'Électronique à Madagascar",
+    'hero.subtitle': 'Accessoires téléphone, audio, gaming, maison intelligente & montres connectées — livraison DHL Express 10 jours.',
     'hero.cta': 'Découvrir nos produits',
     'categories.title': 'Nos Catégories',
     'products.all': 'Tous les produits',
@@ -42,6 +42,26 @@ const MLR_TRANSLATIONS = {
     'footer.copyright': '© 2026 MLR TECH. Tous droits réservés.',
     'toast.added': '✓ Produit ajouté au panier',
     'toast.removed': '✓ Produit retiré',
+    /* ── SEO : titres & descriptions dynamiques ── */
+    'seo.home.title': "MLR TECH — N°1 de l'Électronique à Madagascar | Livraison Rapide",
+    'seo.home.desc': "MLR TECH, numéro 1 de l'électronique à Madagascar : accessoires téléphone, audio, gaming, maison intelligente et montres connectées. Livraison DHL Express en 10 jours.",
+    'seo.cat.title.telephone': 'Accessoires Téléphone à Madagascar | MLR TECH',
+    'seo.cat.desc.telephone': 'Powerbanks, câbles USB-C, chargeurs GaN et accessoires téléphone à Madagascar. Livraison DHL Express 10 jours — MLR TECH.',
+    'seo.cat.title.son-image': 'Son & Image — Casques, Enceintes, Barres de son | MLR TECH',
+    'seo.cat.desc.son-image': 'Casques Bluetooth, écouteurs ANC, enceintes et barres de son premium à Madagascar. Livraison rapide — MLR TECH.',
+    'seo.cat.title.bureau-gaming': 'Bureau & Gaming — Souris, Claviers, Hubs | MLR TECH',
+    'seo.cat.desc.bureau-gaming': 'Souris gaming, claviers mécaniques, webcams 4K et hubs USB-C à Madagascar. Livraison DHL Express — MLR TECH.',
+    'seo.cat.title.maison-intelligente': 'Maison Intelligente — Domotique & Objets Connectés | MLR TECH',
+    'seo.cat.desc.maison-intelligente': 'Ampoules connectées, prises WiFi, caméras et routeurs WiFi 6 à Madagascar. Livraison rapide — MLR TECH.',
+    'seo.cat.title.montre': 'Montres Connectées & Bracelets Fitness | MLR TECH',
+    'seo.cat.desc.montre': 'Smartwatches, montres GPS sport et bracelets connectés à Madagascar. Livraison DHL Express 10 jours — MLR TECH.',
+    /* ── USP / Pourquoi nous ── */
+    'usp.title': 'Pourquoi choisir MLR TECH ?',
+    'usp.1': "N°1 de l'électronique à Madagascar",
+    'usp.2': 'Livraison rapide DHL Express — 10 jours',
+    'usp.3': 'Électronique premium au meilleur prix',
+    'usp.4': 'Paiement sécurisé : Orange Money, Airtel Money & cartes',
+    'usp.5': 'Satisfait ou remboursé sous 30 jours',
   },
   mg: {
     'nav.home': 'Hafaintsika',
@@ -56,8 +76,8 @@ const MLR_TRANSLATIONS = {
     'category.desc.bureau-gaming': 'Fitaovana matihanina sy gaming',
     'category.desc.maison-intelligente': 'Domotika sy raha mifandray',
     'category.desc.montre': 'Famantaranandro sy fisikinana mifandray',
-    'hero.title': 'MLR TECH — Elektronika Premium',
-    'hero.subtitle': "Famitana mabiks an'i Madagasikara | DHL Express 10 andro",
+    'hero.title': "MLR TECH — Laharana voalohany amin'ny elektronika eto Madagasikara",
+    'hero.subtitle': "Telefona, feo, gaming, trano kinga & famantaranandro mifandray — fandefasana DHL Express 10 andro.",
     'hero.cta': 'Mahita ny vokatra',
     'categories.title': 'Ny Kategorya',
     'products.all': 'Ny vokatra rehetra',
@@ -86,6 +106,26 @@ const MLR_TRANSLATIONS = {
     'footer.copyright': '© 2026 MLR TECH. Zo rehetra voatokana.',
     'toast.added': "✓ Vokatra nampidirina ao amin'ny karata",
     'toast.removed': '✓ Vokatra nesorina',
+    /* ── SEO : lohateny & famaritana ── */
+    'seo.home.title': "MLR TECH — Laharana voalohany amin'ny elektronika eto Madagasikara",
+    'seo.home.desc': "MLR TECH, laharana voalohany amin'ny elektronika eto Madagasikara : telefona, feo, gaming, trano kinga, famantaranandro. Fandefasana DHL Express 10 andro.",
+    'seo.cat.title.telephone': 'Kojakoja Telefona eto Madagasikara | MLR TECH',
+    'seo.cat.desc.telephone': "Powerbank, tariby USB-C, mpanafana ary kojakoja telefona eto Madagasikara. Fandefasana DHL Express 10 andro — MLR TECH.",
+    'seo.cat.title.son-image': 'Feo sy Sary — Sofina, Fitaovam-peo | MLR TECH',
+    'seo.cat.desc.son-image': "Sofina Bluetooth, sofina ANC, fitaovam-peo ary barre feo premium eto Madagasikara. Fandefasana haingana — MLR TECH.",
+    'seo.cat.title.bureau-gaming': 'Birao & Gaming — Totozy, Klavie, Hub | MLR TECH',
+    'seo.cat.desc.bureau-gaming': "Totozy gaming, klavie mekanika, webcam 4K ary hub USB-C eto Madagasikara. Fandefasana DHL Express — MLR TECH.",
+    'seo.cat.title.maison-intelligente': 'Trano Kinga — Domotika & Zavatra Mifandray | MLR TECH',
+    'seo.cat.desc.maison-intelligente': "Jiro mifandray, fizarana WiFi, kamera ary routeur WiFi 6 eto Madagasikara. Fandefasana haingana — MLR TECH.",
+    'seo.cat.title.montre': 'Famantaranandro Mifandray & Bracelet Fitness | MLR TECH',
+    'seo.cat.desc.montre': "Smartwatch, famantaranandro GPS sport ary bracelet mifandray eto Madagasikara. Fandefasana DHL Express 10 andro — MLR TECH.",
+    /* ── USP / Nahoana izahay ── */
+    'usp.title': 'Nahoana no misafidy MLR TECH ?',
+    'usp.1': "Laharana voalohany amin'ny elektronika eto Madagasikara",
+    'usp.2': 'Fandefasana haingana DHL Express — 10 andro',
+    'usp.3': "Elektronika premium amin'ny vidiny tsara indrindra",
+    'usp.4': 'Fandoavana azo antoka : Orange Money, Airtel Money & karatra',
+    'usp.5': "Afa-po na averina ny vola anatin'ny 30 andro",
   }
 };
 
@@ -105,6 +145,7 @@ function setLanguage(lang) {
   applyTranslations();
   if (typeof renderAll === 'function') renderAll();
   if (typeof updateCartDisplay === 'function') updateCartDisplay();
+  if (typeof updateSEOForPage === 'function') updateSEOForPage();
 }
 
 function applyTranslations() {

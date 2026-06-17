@@ -150,6 +150,9 @@ function initHome() {
 
   // Set active nav
   markActiveNav('index.html');
+
+  // SEO dynamique (titre, description, canonical, OG, fil d'Ariane)
+  updateSEOForPage();
 }
 
 function renderCategories() {
@@ -162,7 +165,7 @@ function renderCategories() {
     card.innerHTML = `
       <a href="category.html?cat=${cat.slug}" class="category-card-link">
         <div class="category-img-wrap">
-          <img src="${cat.image}" alt="${t('category.' + cat.slug)}" loading="lazy" width="600" height="350">
+          <img src="${cat.image}" alt="${t('category.' + cat.slug)} à Madagascar — MLR TECH" loading="lazy" width="600" height="350">
         </div>
         <div class="category-card-body">
           <h3>${t('category.' + cat.slug)}</h3>
@@ -190,8 +193,6 @@ function initCategory() {
   const titleEl = document.getElementById('categoryTitle');
   if (titleEl) titleEl.textContent = t('category.' + slug);
 
-  document.title = `MLR TECH – ${t('category.' + slug)}`;
-
   const backLink = document.getElementById('backLink');
   if (backLink) backLink.textContent = t('back');
 
@@ -201,6 +202,9 @@ function initCategory() {
 
   initPriceFilter();
   markActiveNav(`category.html?cat=${slug}`);
+
+  // SEO dynamique selon la catégorie
+  updateSEOForPage();
 }
 
 /* ── PRODUCT detail page ────────────────────────────────── */
@@ -214,8 +218,10 @@ function initProduct() {
     return;
   }
 
-  document.title = `MLR TECH – ${product.name[currentLang]}`;
   renderProductDetail(product);
+
+  // SEO dynamique + données structurées Product (rich results Google)
+  updateSEOForPage();
 
   const similarGrid = document.getElementById('similarGrid');
   if (similarGrid) renderProductGrid(getSimilarProducts(product, 4), similarGrid);
@@ -226,7 +232,7 @@ function renderProductDetail(p) {
   if (!el) return;
   el.innerHTML = `
     <div class="product-detail-img">
-      <img src="${p.image}" alt="${p.name[currentLang]}" width="600" height="600">
+      <img src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">
     </div>
     <div class="product-detail-info">
       <p class="product-cat-label">${t('category.' + p.category)}</p>
@@ -259,6 +265,88 @@ function markActiveNav(href) {
   document.querySelectorAll('.nav-link').forEach(a => {
     a.classList.toggle('active', a.getAttribute('href') === href);
   });
+}
+
+/* ── SEO dynamique selon la page ────────────────────────────
+   Met à jour titre / description / canonical / Open Graph /
+   fil d'Ariane (et le schema Product sur la page produit).
+   Réappelé aussi au changement de langue (cf. i18n.js).
+   ─────────────────────────────────────────────────────────── */
+function updateSEOForPage() {
+  if (typeof applySEO !== 'function') return;   // js/seo.js requis
+  const page = document.body.dataset.page;
+  const OG_IMG = SEO_BASE + '/og-image.png';
+
+  if (page === 'home') {
+    applySEO({
+      title: t('seo.home.title'),
+      description: t('seo.home.desc'),
+      canonical: SEO_BASE + '/',
+      image: OG_IMG,
+      type: 'website'
+    });
+    setBreadcrumb([{ name: t('nav.home'), url: SEO_BASE + '/' }]);
+
+  } else if (page === 'category') {
+    const slug = new URLSearchParams(location.search).get('cat') || 'telephone';
+    applySEO({
+      title: t('seo.cat.title.' + slug),
+      description: t('seo.cat.desc.' + slug),
+      canonical: SEO_BASE + '/category.html?cat=' + slug,
+      image: OG_IMG,
+      type: 'website'
+    });
+    setBreadcrumb([
+      { name: t('nav.home'), url: SEO_BASE + '/' },
+      { name: t('category.' + slug), url: SEO_BASE + '/category.html?cat=' + slug }
+    ]);
+
+  } else if (page === 'product') {
+    const id = new URLSearchParams(location.search).get('id');
+    const p = id ? getProductById(id) : null;
+    if (!p) return;
+    const url = SEO_BASE + '/product.html?id=' + p.id;
+    const desc = p.description[currentLang];
+
+    applySEO({
+      title: p.name[currentLang] + ' | MLR TECH Madagascar',
+      description: desc,
+      canonical: url,
+      image: p.image,
+      type: 'product'
+    });
+    setBreadcrumb([
+      { name: t('nav.home'), url: SEO_BASE + '/' },
+      { name: t('category.' + p.category), url: SEO_BASE + '/category.html?cat=' + p.category },
+      { name: p.name[currentLang], url }
+    ]);
+
+    // Données structurées Product (prix, note, disponibilité)
+    injectJsonLd('ld-product', {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: p.name[currentLang],
+      description: desc,
+      image: p.image,
+      sku: p.id,
+      brand: { '@type': 'Brand', name: 'MLR TECH' },
+      category: t('category.' + p.category),
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: p.rating,
+        bestRating: 5,
+        ratingCount: 1
+      },
+      offers: {
+        '@type': 'Offer',
+        url: url,
+        priceCurrency: 'EUR',
+        price: p.price_eur,
+        availability: 'https://schema.org/InStock',
+        seller: { '@type': 'Organization', name: 'MLR TECH' }
+      }
+    });
+  }
 }
 
 /* ── Scroll fade-in animations ──────────────────────────── */
