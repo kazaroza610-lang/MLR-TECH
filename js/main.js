@@ -375,6 +375,7 @@ function renderProductDetail(p) {
               <button class="pd-storage-btn${i === 0 ? ' active' : ''}"
                       data-storage-id="${s.id}"
                       data-storage-label="${s.label}"
+                      data-storage-price="${s.price_eur || ''}"
                       aria-pressed="${i === 0 ? 'true' : 'false'}">
                 ${s.label}
               </button>`).join('')}
@@ -491,6 +492,12 @@ function renderProductDetail(p) {
       btn.setAttribute('aria-pressed', 'true');
       const lbl = el.querySelector('#storageOptionName');
       if (lbl) lbl.textContent = btn.dataset.storageLabel;
+      if (btn.dataset.storagePrice) {
+        const priceEl = document.querySelector('.product-detail-price');
+        const stickyEl = document.querySelector('.sticky-cart-price');
+        if (priceEl) priceEl.textContent = btn.dataset.storagePrice + ' €';
+        if (stickyEl) stickyEl.textContent = btn.dataset.storagePrice + ' €';
+      }
     });
   });
 

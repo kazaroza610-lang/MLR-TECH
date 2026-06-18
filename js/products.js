@@ -51,8 +51,8 @@ const PRODUCTS = [
       { id: 'sarcelle',  label: 'Sarcelle', colorHex: '#4a8c8c', image: 'assets/images/products/iphone-16-sarcelle.png' },
     ],
     storageOptions: [
-      { id: '128go', label: '128 Go' },
-      { id: '256go', label: '256 Go' },
+      { id: '128go', label: '128 Go', price_eur: 600 },
+      { id: '256go', label: '256 Go', price_eur: 759 },
     ],
     isNew: true,
     price_eur:600, image:'assets/images/products/iphone-16-noir.png', rating:4.9
