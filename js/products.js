@@ -222,7 +222,7 @@ const PRODUCTS = [
     ],
     features:{ fr:['512 Go SSD NVMe custom','Résolution 1440p / 4K upscaling','Jusqu\'à 120 FPS','10 Go RAM GDDR6','Rétrocompatibilité Xbox One / 360 / Original'], mg:['512 Go SSD NVMe','1440p / 4K upscaling','Hatramin\'ny 120 FPS','10 Go RAM GDDR6','Mifanaraka Xbox One / 360 / Original'] },
     isNew: true,
-    price_eur:300, image:'https://picsum.photos/seed/xbox-series-s/600/600', rating:4.7
+    price_eur:300, image:'assets/images/products/xbox-series-s.webp', rating:4.7
   },
 
   /* ── MAISON INTELLIGENTE ─────────────────── */
