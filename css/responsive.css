@@ -60,33 +60,54 @@
 /* ── Desktop (1024px+) ─────────────────────── */
 @media (min-width: 1024px) {
 
-  /* ── Header desktop : 3 zones sur une seule ligne ── */
-  .header-container { padding: 0 40px; gap: 24px; }
+  /* ── Header desktop : 2 rangées ── */
+  .header-container { padding: 0 40px; gap: 16px; }
 
-  /* Burger caché ; langue/devise inline visibles */
+  /* Burger + extras mobiles cachés */
   .menu-toggle { display: none; }
   .nav-overlay { display: none !important; }
   .nav-mobile-extras { display: none; }
-  .header-actions .desktop-only { display: inline-block; }
-  .header-actions { gap: 12px; }
 
-  /* Logo : retour au flux normal (centrage mobile annulé) */
-  .logo {
-    position: static;
-    transform: none;
+  /* RANGÉE 1 : logo · recherche centrée · actions */
+  .header-row-main > .header-container {
+    flex-wrap: nowrap;
+    min-height: 64px;
   }
+  .logo { order: 1; margin-right: 0; }
   .logo img { width: 120px; }
+  .header-search {
+    order: 2;
+    flex: 1 1 auto;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 42px;
+  }
+  .header-actions { order: 3; gap: 4px; }
+  .header-action { min-width: 58px; }
 
-  /* Navigation horizontale centrée (zone centre) */
+  /* RANGÉE 2 : catégories (séparées par ·) + pills langue/devise */
+  .header-row-nav { border-top: 1px solid #222; }
+  .header-row-nav > .header-container {
+    min-height: 42px;
+  }
+  .header-tools.desktop-only {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* Navigation horizontale (zone gauche) */
   .nav {
     position: static;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    flex: 1;
+    justify-content: flex-start;
+    flex: 0 1 auto;
     width: auto;
     max-width: none;
-    gap: 24px;                 /* 24px entre chaque catégorie */
+    gap: 0;
     padding: 0;
     background: transparent;
     border-right: none;
@@ -94,11 +115,19 @@
     overflow: visible;
     z-index: auto;
   }
+  /* Séparateur · entre catégories */
+  .nav-item:not(:first-child)::before {
+    content: "·";
+    align-self: center;
+    color: rgba(255,255,255,.4);
+    margin: 0 8px;
+  }
   .nav-link {
     min-height: 0;
     height: auto;
-    padding: 6px 2px;
-    font-size: 15px;
+    padding: 8px 2px;
+    font-size: 14px;
+    font-weight: 600;
     border-radius: 0;
     border-bottom: 2px solid transparent;   /* soulignement au hover */
     white-space: nowrap;
@@ -115,7 +144,7 @@
     border-bottom-color: #ffffff;
   }
 
-  /* ── Nav items desktop : flex row + dropdown hover ── */
+  /* Nav items desktop : flex row + dropdown hover */
   .nav-item {
     position: relative;
     flex-direction: row;

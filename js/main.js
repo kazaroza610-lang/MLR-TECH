@@ -113,49 +113,47 @@ function initMenu() {
   });
 }
 
-/* ── Barre de recherche (toggle via l'icône 🔍) ─────────── */
+/* ── Barre de recherche (toujours visible dans le header) ──── */
+function filterProductGrid(q) {
+  const grid = document.getElementById('productsGrid');
+  if (!grid) return false;
+  const query = (q || '').trim().toLowerCase();
+  const filtered = query
+    ? PRODUCTS.filter(p =>
+        p.name[currentLang].toLowerCase().includes(query) ||
+        p.description[currentLang].toLowerCase().includes(query))
+    : currentProducts;
+  renderProductGrid(filtered, grid);
+  return true;
+}
+
 function initSearch() {
-  const toggle = document.getElementById('searchToggle');
-  const bar    = document.getElementById('searchBar');
-  const input  = document.getElementById('searchInput');
-  const close  = document.getElementById('searchClose');
+  const form  = document.getElementById('headerSearch');
+  const input = document.getElementById('searchInput');
+  if (!input) return;
 
-  const openBar = () => {
-    bar?.classList.add('open');
-    toggle?.setAttribute('aria-expanded', 'true');
-    input?.focus();
-  };
-  const closeBar = () => {
-    bar?.classList.remove('open');
-    toggle?.setAttribute('aria-expanded', 'false');
-  };
+  // Filtrage en direct sur les pages qui ont une grille produits
+  input.addEventListener('input', debounce(() => filterProductGrid(input.value), 250));
 
-  if (toggle && bar) {
-    toggle.addEventListener('click', () => {
-      bar.classList.contains('open') ? closeBar() : openBar();
-    });
-  }
-  close?.addEventListener('click', closeBar);
-
-  // Fermer la recherche avec Échap
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeBar();
+  // Validation (clic loupe ou touche Entrée)
+  form?.addEventListener('submit', e => {
+    // Si la page affiche une grille, on filtre sur place (pas de navigation).
+    // Sinon on laisse le <form action="index.html"> renvoyer vers l'accueil avec ?q=
+    if (document.getElementById('productsGrid')) {
+      e.preventDefault();
+      filterProductGrid(input.value);
+      input.blur();
+    }
   });
+}
 
-  // Filtrage en direct de la grille produits (si présente sur la page)
-  if (input) {
-    input.addEventListener('input', debounce(() => {
-      const q = input.value.trim().toLowerCase();
-      const grid = document.getElementById('productsGrid');
-      if (!grid) return;
-      const filtered = q
-        ? PRODUCTS.filter(p =>
-            p.name[currentLang].toLowerCase().includes(q) ||
-            p.description[currentLang].toLowerCase().includes(q))
-        : currentProducts;
-      renderProductGrid(filtered, grid);
-    }, 250));
-  }
+// Applique une recherche passée en ?q= dans l'URL (accueil / catégorie)
+function applySearchQueryFromURL() {
+  const q = new URLSearchParams(location.search).get('q');
+  if (!q) return;
+  const input = document.getElementById('searchInput');
+  if (input) input.value = q;
+  filterProductGrid(q);
 }
 
 function debounce(fn, ms) {
@@ -198,6 +196,9 @@ function initHome() {
 
   // Set active nav
   markActiveNav('index.html');
+
+  // Recherche passée via ?q= (depuis une autre page)
+  applySearchQueryFromURL();
 
   // SEO dynamique (titre, description, canonical, OG, fil d'Ariane)
   updateSEOForPage();
@@ -255,6 +256,9 @@ function initCategory() {
 
   initPriceFilter();
   markActiveNav(`category.html?cat=${slug}`);
+
+  // Recherche passée via ?q=
+  applySearchQueryFromURL();
 
   // SEO dynamique selon la catégorie
   updateSEOForPage();

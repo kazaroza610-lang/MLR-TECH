@@ -31,7 +31,7 @@ ul { list-style: none; }
 }
 
 /* ═══════════════════════════════════════════════
-   HEADER  (mobile-first — menu burger jusqu'à 1024px)
+   HEADER  (2 rangées — leboncoin style ; burger jusqu'à 1024px)
    ═══════════════════════════════════════════════ */
 .header {
   position: sticky;            /* reste visible au scroll */
@@ -43,29 +43,40 @@ ul { list-style: none; }
   transition: transform var(--t-med); /* slide doux pour l'auto-hide */
 }
 .header--hidden { transform: translateY(-100%); } /* masqué au scroll vers le bas */
+
+.header-row { width: 100%; }
 .header-container {
   display: flex;
-  align-items: center;         /* alignement vertical centré */
+  align-items: center;
   gap: 8px;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 12px;
-  height: var(--header-h);     /* 70px */
-  position: relative;          /* ancre pour logo centré en mobile */
+  position: relative;
 }
 
-/* ── Menu burger (mobile / tablette) — ZONE GAUCHE ── */
+/* ── RANGÉE 1 : logo · recherche · actions ── */
+.header-row-main > .header-container {
+  flex-wrap: wrap;             /* mobile : la recherche bascule en 2e ligne */
+  min-height: 60px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  row-gap: 8px;
+}
+
+/* Menu burger (mobile / tablette) */
 .menu-toggle {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 48px; height: 48px;   /* touch target 48px */
-  padding: 12px;
+  width: 44px; height: 44px;
+  padding: 11px;
   flex-shrink: 0;
   background: none;
   border: none;
   cursor: pointer;
+  order: 1;
 }
 .menu-toggle span {
   display: block;
@@ -79,181 +90,100 @@ ul { list-style: none; }
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Logo — centré en mobile, gauche en desktop ── */
+/* Logo */
 .logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  order: 2;
+  margin-right: auto;          /* pousse les actions à droite (mobile) */
 }
 .logo img {
-  width: 92px;                 /* mobile : compact */
+  width: 96px;
   height: auto;
   display: block;
 }
 
-/* ── Navigation catégories — ZONE CENTRE ──
-   Mobile / tablette : panneau latéral (slide depuis la gauche) */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 82%;
-  max-width: 320px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: calc(var(--header-h) + 18px) 18px 24px;
-  background: #000000;
-  border-right: 1px solid #333;
-  z-index: 95;
-  transform: translateX(-100%);
-  transition: transform var(--t-med);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.nav.open { transform: translateX(0); }
-.nav-link {
+/* Barre de recherche (centre, toujours visible) */
+.header-search {
+  order: 4;                    /* mobile : pleine largeur sur 2e ligne */
+  flex: 1 0 100%;
   display: flex;
   align-items: center;
-  min-height: 48px;            /* touch target */
-  padding: 0 14px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  border-radius: var(--radius);
-  transition: background var(--t-fast), color var(--t-fast);
-}
-.nav-link:hover,
-.nav-link:focus-visible { background: #1a1a1a; }
-.nav-link.active { background: #1a1a1a; }
-
-/* ── Nav items avec sous-menus (mobile : accordéon) ── */
-.nav-item {
-  display: flex;
-  flex-direction: column;
-}
-.nav-item > .nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-.nav-caret {
-  font-style: normal;
-  font-size: 11px;
-  margin-left: 8px;
-  transition: transform var(--t-fast);
-  flex-shrink: 0;
-  opacity: .6;
-}
-.nav-item.open > .nav-link .nav-caret { transform: rotate(90deg); }
-.nav-sub {
-  display: none;
-  flex-direction: column;
-  margin: 4px 0 4px 14px;
-  padding-left: 12px;
-  border-left: 1px solid #333;
-  gap: 0;
-}
-.nav-item.open > .nav-sub { display: flex; }
-.nav-sub a {
-  display: flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 0 10px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(255,255,255,.65);
-  border-radius: var(--radius);
-  transition: background var(--t-fast), color var(--t-fast);
-}
-.nav-sub a:hover,
-.nav-sub a:focus-visible { background: #1a1a1a; color: #fff; }
-
-/* Langue + devise — dans le burger (mobile / tablette) */
-.nav-mobile-extras {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: auto;            /* pousse en bas du menu */
-  padding-top: 20px;
-  border-top: 1px solid #333;
-}
-.nav-mobile-extras select {
-  height: 48px;
-  padding: 0 12px;
+  height: 44px;
+  background: #1a1a1a;
   border: 1px solid #555;
   border-radius: var(--radius);
-  font-size: 15px;
+  overflow: hidden;
+}
+.header-search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 14px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 16px;
+}
+.header-search input::placeholder { color: #999; }
+.header-search-btn {
+  flex-shrink: 0;
+  width: 48px; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #1a1a1a;
   color: #ffffff;
+  border: none;
+  border-left: 1px solid #333;
   cursor: pointer;
+  transition: background var(--t-fast);
 }
+.header-search-btn:hover { background: #333; }
 
-/* Overlay sombre derrière le menu mobile */
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, .5);
-  z-index: 94;
-}
-.nav-overlay.open { display: block; }
-
-/* ── Actions — ZONE DROITE ── */
+/* Actions : Favoris · Compte · Panier */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-left: auto;           /* pousse tout le bloc à droite */
+  gap: 2px;
+  order: 3;
   flex-shrink: 0;
 }
-.header-actions .desktop-only { display: none; }   /* langue/devise cachées en mobile/tablette */
-
-/* Boutons recherche + panier */
-.search-btn,
-.cart-btn {
+.header-action {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 48px; height: 48px;   /* touch target 48px */
-  font-size: 20px;
+  gap: 3px;
+  min-width: 54px; height: 50px;
+  padding: 4px 6px;
   color: #ffffff;
   background: none;
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
+  text-decoration: none;
   transition: background var(--t-fast);
 }
-.search-btn:hover,
-.cart-btn:hover { background: #333; }
+.header-action:hover { background: #333; }
+.header-action svg { display: block; }
+.header-action-label {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+  white-space: nowrap;
+}
 
-/* ── Compte client (header) ── */
 .account-wrap { position: relative; display: flex; align-items: center; flex-shrink: 0; }
-.account-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px; height: 48px;
-  color: #ffffff;
-  background: none;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: background var(--t-fast);
-}
-.account-btn:hover { background: #333; }
-.account-btn svg { display: block; }
+
 /* Pastille « connecté » (affichée par JS) */
 .account-dot {
   position: absolute;
-  top: 8px; right: 8px;
+  top: 4px; right: 12px;
   width: 8px; height: 8px;
   border-radius: 50%;
   background: #22c55e;
@@ -262,7 +192,24 @@ ul { list-style: none; }
 }
 .account-dot.show { display: block; }
 
-/* Menu déroulant compte */
+/* Badge compteur du panier (vert conservé) */
+.cart-count {
+  position: absolute;
+  top: 2px; right: 10px;
+  display: none;               /* affiché par JS quand > 0 */
+  align-items: center;
+  justify-content: center;
+  min-width: 18px; height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Menu déroulant compte (panneau blanc) */
 .account-menu {
   position: absolute;
   top: calc(100% + 8px);
@@ -316,85 +263,171 @@ ul { list-style: none; }
 .account-menu .am-primary:hover { background: var(--c-accent); }
 .account-menu .am-logout { color: var(--c-error); }
 
-/* Badge compteur du panier */
-.cart-count {
-  position: absolute;
-  top: 3px; right: 3px;
-  display: none;               /* affiché par JS quand > 0 */
-  align-items: center;
-  justify-content: center;
-  min-width: 18px; height: 18px;
-  padding: 0 4px;
-  border-radius: 9px;
-  background: #22c55e;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
+/* ── RANGÉE 2 : catégories · langue · devise ──
+   Mobile : invisible (catégories + langue/devise dans le panneau burger).
+   La <nav> reste un enfant mais devient un panneau fixe (voir .nav). */
+.header-row-nav > .header-container {
+  min-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-/* ── Barre de recherche (slide-down sous le header) ── */
-.search-bar {
-  max-height: 0;
-  overflow: hidden;
+/* Navigation catégories — panneau latéral (mobile / tablette) */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 82%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: calc(var(--header-h) + 18px) 18px 24px;
   background: #000000;
-  transition: max-height 200ms ease;   /* slide down smooth 200ms */
+  border-right: 1px solid #333;
+  z-index: 95;
+  transform: translateX(-100%);
+  transition: transform var(--t-med);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
-.search-bar.open {
-  max-height: 88px;
+.nav.open { transform: translateX(0); }
+.nav-link {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: var(--radius);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.nav-link:hover,
+.nav-link:focus-visible { background: #1a1a1a; }
+.nav-link.active { background: #1a1a1a; }
+
+/* Nav items avec sous-menus (mobile : accordéon) */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+}
+.nav-item > .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-caret {
+  font-style: normal;
+  font-size: 11px;
+  margin-left: 8px;
+  transition: transform var(--t-fast);
+  flex-shrink: 0;
+  opacity: .6;
+}
+.nav-item.open > .nav-link .nav-caret { transform: rotate(90deg); }
+.nav-sub {
+  display: none;
+  flex-direction: column;
+  margin: 4px 0 4px 14px;
+  padding-left: 12px;
+  border-left: 1px solid #333;
+  gap: 0;
+}
+.nav-item.open > .nav-sub { display: flex; }
+.nav-sub a {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,.65);
+  transition: background var(--t-fast), color var(--t-fast);
+  border-radius: var(--radius);
+}
+.nav-sub a:hover,
+.nav-sub a:focus-visible { background: #1a1a1a; color: #fff; }
+
+/* Langue + devise dans le burger (mobile) */
+.nav-mobile-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
   border-top: 1px solid #333;
 }
-.search-bar-inner {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 12px 16px;
-}
-.search-bar input {
-  flex: 1;
-  min-width: 0;
+.nav-mobile-extras .lang-select,
+.nav-mobile-extras .currency-select {
   height: 46px;
-  padding: 0 14px;
+  padding: 0 12px;
   border: 1px solid #555;
   border-radius: var(--radius);
-  font-size: 16px;
+  font-size: 15px;
   background: #1a1a1a;
   color: #ffffff;
-}
-.search-bar input::placeholder { color: #999; }
-.search-close {
-  flex-shrink: 0;
-  width: 46px; height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: #ffffff;
-  background: #1a1a1a;
-  border: 1px solid #555;
-  border-radius: var(--radius);
   cursor: pointer;
-  transition: background var(--t-fast);
 }
-.search-close:hover { background: #333; }
 
-/* Sélecteurs langue / devise (visibles en desktop — voir responsive.css) */
-.lang-select,
-.currency-select {
-  height: 38px;
-  padding: 0 8px;
-  border: 1px solid #555;
-  border-radius: var(--radius);
-  font-size: 14px;
-  background: #1a1a1a;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background var(--t-fast);
+/* Overlay du menu mobile */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 90;
 }
-.lang-select:hover,
-.currency-select:hover { background: #333; }
+.nav-overlay.open { display: block; }
+
+/* Outils desktop (langue/devise en pills) — cachés en mobile */
+.header-tools { display: none; }
+.header-tools.desktop-only { display: none; }
+
+/* Pills langue / devise */
+.header-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 22px 0 10px;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 999px;
+  color: #ffffff;
+  transition: background var(--t-fast), border-color var(--t-fast);
+}
+.header-pill:hover { background: #333; border-color: #666; }
+.header-pill::after {
+  content: "▾";
+  position: absolute;
+  right: 9px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  opacity: .7;
+  pointer-events: none;
+}
+.header-pill .pill-globe { opacity: .8; flex-shrink: 0; }
+.header-pill .lang-select,
+.header-pill .currency-select {
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+}
+.header-pill .lang-select:focus,
+.header-pill .currency-select:focus { outline: none; }
+.header-pill option { color: #000; }
 
 /* ═══════════════════════════════════════════════
    HERO

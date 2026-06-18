@@ -120,124 +120,147 @@
 
   <!-- ══ HEADER ══════════════════════════════ -->
   <header class="header">
-    <div class="header-container">
 
-      <!-- Menu burger (mobile / tablette) — ZONE GAUCHE -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
-        <span></span><span></span><span></span>
-      </button>
+    <!-- ═══ RANGÉE 1 : logo · recherche · favoris/compte/panier ═══ -->
+    <div class="header-row header-row-main">
+      <div class="header-container">
 
-      <!-- Logo — ZONE GAUCHE -->
-      <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
-        <img src="logo.svg" alt="Logo MLR TECH — N°1 de l'électronique à Madagascar" width="120" height="60">
-      </a>
-
-      <!-- Catégories — ZONE CENTRE
-           (desktop : barre horizontale / mobile : panneau latéral du burger) -->
-      <nav class="nav" id="mainNav" aria-label="Navigation principale">
-        <div class="nav-item has-sub">
-          <a href="category.html?cat=telephone" class="nav-link"><span data-i18n="category.telephone">Téléphone</span><span class="nav-caret" aria-hidden="true">▸</span></a>
-          <ul class="nav-sub">
-            <li><a href="category.html?cat=telephone" data-i18n="subcat.all">Tout voir</a></li>
-            <li><a href="category.html?cat=telephone&amp;subcat=coques-protections" data-i18n="subcat.coques-protections">Coques &amp; Protections</a></li>
-            <li><a href="category.html?cat=telephone&amp;subcat=chargeurs-cables" data-i18n="subcat.chargeurs-cables">Chargeurs &amp; Câbles</a></li>
-            <li><a href="category.html?cat=telephone&amp;subcat=batterie-externe" data-i18n="subcat.batterie-externe">Batterie externe</a></li>
-            <li><a href="category.html?cat=telephone&amp;subcat=smartphones" data-i18n="subcat.smartphones">Téléphone</a></li>
-            <li><a href="category.html?cat=telephone&amp;subcat=supports" data-i18n="subcat.supports">Supports voiture &amp; bureau</a></li>
-          </ul>
-        </div>
-        <div class="nav-item has-sub">
-          <a href="category.html?cat=son-image" class="nav-link"><span data-i18n="category.son-image">Son &amp; Image</span><span class="nav-caret" aria-hidden="true">▸</span></a>
-          <ul class="nav-sub">
-            <li><a href="category.html?cat=son-image" data-i18n="subcat.all">Tout voir</a></li>
-            <li><a href="category.html?cat=son-image&amp;subcat=ecouteurs-sans-fil" data-i18n="subcat.ecouteurs-sans-fil">Écouteurs sans fil</a></li>
-            <li><a href="category.html?cat=son-image&amp;subcat=enceintes-bluetooth" data-i18n="subcat.enceintes-bluetooth">Enceintes Bluetooth</a></li>
-            <li><a href="category.html?cat=son-image&amp;subcat=tablette" data-i18n="subcat.tablette">Tablette</a></li>
-            <li><a href="category.html?cat=son-image&amp;subcat=videoprojecteur" data-i18n="subcat.videoprojecteur">Vidéoprojecteur</a></li>
-            <li><a href="category.html?cat=son-image&amp;subcat=iptv" data-i18n="subcat.iptv">IPTV</a></li>
-          </ul>
-        </div>
-        <div class="nav-item has-sub">
-          <a href="category.html?cat=bureau-gaming" class="nav-link"><span data-i18n="category.bureau-gaming">Bureau &amp; Gaming</span><span class="nav-caret" aria-hidden="true">▸</span></a>
-          <ul class="nav-sub">
-            <li><a href="category.html?cat=bureau-gaming" data-i18n="subcat.all">Tout voir</a></li>
-            <li><a href="category.html?cat=bureau-gaming&amp;subcat=casque-gaming" data-i18n="subcat.casque-gaming">Casque gaming</a></li>
-            <li><a href="category.html?cat=bureau-gaming&amp;subcat=claviers-souris" data-i18n="subcat.claviers-souris">Claviers &amp; souris</a></li>
-            <li><a href="category.html?cat=bureau-gaming&amp;subcat=routeurs-wifi" data-i18n="subcat.routeurs-wifi">Routeurs WiFi</a></li>
-            <li><a href="category.html?cat=bureau-gaming&amp;subcat=repeteur-wifi" data-i18n="subcat.repeteur-wifi">Répéteur WiFi</a></li>
-            <li><a href="category.html?cat=bureau-gaming&amp;subcat=montre-connectee" data-i18n="subcat.montre-connectee">Montre connectée</a></li>
-          </ul>
-        </div>
-        <div class="nav-item has-sub">
-          <a href="category.html?cat=consoles-jeux" class="nav-link"><span data-i18n="category.consoles-jeux">Consoles &amp; Jeux vidéo</span><span class="nav-caret" aria-hidden="true">▸</span></a>
-          <ul class="nav-sub">
-            <li><a href="category.html?cat=consoles-jeux" data-i18n="subcat.all">Tout voir</a></li>
-            <li><a href="category.html?cat=consoles-jeux&amp;subcat=consoles" data-i18n="subcat.consoles">Consoles</a></li>
-            <li><a href="category.html?cat=consoles-jeux&amp;subcat=jeux" data-i18n="subcat.jeux">Jeux</a></li>
-            <li><a href="category.html?cat=consoles-jeux&amp;subcat=accessoires-console" data-i18n="subcat.accessoires-console">Accessoires console</a></li>
-          </ul>
-        </div>
-        <div class="nav-item has-sub">
-          <a href="category.html?cat=maison-intelligente" class="nav-link"><span data-i18n="category.maison-intelligente">Maison Intelligente</span><span class="nav-caret" aria-hidden="true">▸</span></a>
-          <ul class="nav-sub">
-            <li><a href="category.html?cat=maison-intelligente" data-i18n="subcat.all">Tout voir</a></li>
-            <li><a href="category.html?cat=maison-intelligente&amp;subcat=ampoules-led" data-i18n="subcat.ampoules-led">Ampoules LED connectées</a></li>
-            <li><a href="category.html?cat=maison-intelligente&amp;subcat=cameras-surveillance" data-i18n="subcat.cameras-surveillance">Caméras de surveillance</a></li>
-            <li><a href="category.html?cat=maison-intelligente&amp;subcat=traceur-gps" data-i18n="subcat.traceur-gps">Traceur GPS</a></li>
-            <li><a href="category.html?cat=maison-intelligente&amp;subcat=alarme-connectee" data-i18n="subcat.alarme-connectee">Alarme connectée</a></li>
-          </ul>
-        </div>
-
-        <!-- Langue + devise (affichées dans le burger mobile/tablette) -->
-        <div class="nav-mobile-extras">
-          <select class="lang-select" aria-label="Langue">
-            <option value="fr">🇫🇷 Français</option>
-            <option value="mg">🇲🇬 Malagasy</option>
-          </select>
-          <select class="currency-select" aria-label="Devise">
-            <option value="EUR">EUR €</option>
-            <option value="AR">AR Ar</option>
-          </select>
-        </div>
-      </nav>
-
-      <!-- Actions — ZONE DROITE -->
-      <div class="header-actions">
-        <!-- Langue + devise (desktop) -->
-        <select class="lang-select desktop-only" aria-label="Langue">
-          <option value="fr">🇫🇷 Français</option>
-          <option value="mg">🇲🇬 Malagasy</option>
-        </select>
-        <select class="currency-select desktop-only" aria-label="Devise">
-          <option value="EUR">EUR €</option>
-          <option value="AR">AR Ar</option>
-        </select>
-
-        <!-- Recherche (ouvre / ferme la barre de recherche) -->
-        <button class="search-btn" id="searchToggle" aria-label="Rechercher" aria-expanded="false" aria-controls="searchBar">🔍</button>
-
-        <!-- Compte client -->
-        <div class="account-wrap">
-          <button class="account-btn" id="accountToggle" aria-label="Mon compte" aria-haspopup="true" aria-expanded="false" aria-controls="accountMenu">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20.5C4 16.9 7.6 15 12 15s8 1.9 8 5.5"/></svg>
-            <span class="account-dot" id="accountDot" aria-hidden="true"></span>
-          </button>
-          <div class="account-menu" id="accountMenu" role="menu" aria-hidden="true"></div>
-        </div>
-
-        <!-- Panier -->
-        <button class="cart-btn" aria-label="Ouvrir le panier">
-          🛒
-          <span class="cart-count" aria-live="polite">0</span>
+        <!-- Menu burger (mobile / tablette) -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
         </button>
+
+        <!-- Logo -->
+        <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
+          <img src="logo.svg" alt="Logo MLR TECH — N°1 de l'électronique à Madagascar" width="120" height="60">
+        </a>
+
+        <!-- Barre de recherche (centre, toujours visible) -->
+        <form class="header-search" id="headerSearch" role="search" action="index.html" method="get">
+          <input type="search" id="searchInput" name="q" placeholder="Rechercher un produit…" data-i18n-placeholder="search.placeholder" aria-label="Rechercher un produit" autocomplete="off">
+          <button type="submit" class="header-search-btn" aria-label="Rechercher">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </form>
+
+        <!-- Actions : Favoris · Compte · Panier -->
+        <div class="header-actions">
+
+          <!-- Favoris -->
+          <a href="#favoris" class="header-action" aria-label="Favoris">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <span class="header-action-label" data-i18n="header.favoris">Favoris</span>
+          </a>
+
+          <!-- Compte -->
+          <div class="account-wrap">
+            <button class="account-btn header-action" id="accountToggle" aria-label="Mon compte" aria-haspopup="true" aria-expanded="false" aria-controls="accountMenu">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20.5C4 16.9 7.6 15 12 15s8 1.9 8 5.5"/></svg>
+              <span class="account-dot" id="accountDot" aria-hidden="true"></span>
+              <span class="header-action-label" data-i18n="header.compte">Compte</span>
+            </button>
+            <div class="account-menu" id="accountMenu" role="menu" aria-hidden="true"></div>
+          </div>
+
+          <!-- Panier -->
+          <button class="cart-btn header-action" aria-label="Ouvrir le panier">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+            <span class="cart-count" aria-live="polite">0</span>
+            <span class="header-action-label" data-i18n="header.panier">Panier</span>
+          </button>
+
+        </div>
       </div>
     </div>
 
-    <!-- Barre de recherche (cachée par défaut — slide-down) -->
-    <div class="search-bar" id="searchBar" role="search">
-      <div class="search-bar-inner">
-        <input type="search" id="searchInput" placeholder="Rechercher des produits…" data-i18n-placeholder="search.placeholder" aria-label="Rechercher des produits">
-        <button class="search-close" id="searchClose" aria-label="Fermer la recherche">✕</button>
+    <!-- ═══ RANGÉE 2 : catégories · langue · devise ═══ -->
+    <div class="header-row header-row-nav">
+      <div class="header-container">
+
+        <!-- Catégories (desktop : barre · / mobile : panneau latéral du burger) -->
+        <nav class="nav" id="mainNav" aria-label="Navigation principale">
+          <div class="nav-item has-sub">
+            <a href="category.html?cat=telephone" class="nav-link"><span data-i18n="category.telephone">Téléphone</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+            <ul class="nav-sub">
+              <li><a href="category.html?cat=telephone" data-i18n="subcat.all">Tout voir</a></li>
+              <li><a href="category.html?cat=telephone&amp;subcat=coques-protections" data-i18n="subcat.coques-protections">Coques &amp; Protections</a></li>
+              <li><a href="category.html?cat=telephone&amp;subcat=chargeurs-cables" data-i18n="subcat.chargeurs-cables">Chargeurs &amp; Câbles</a></li>
+              <li><a href="category.html?cat=telephone&amp;subcat=batterie-externe" data-i18n="subcat.batterie-externe">Batterie externe</a></li>
+              <li><a href="category.html?cat=telephone&amp;subcat=smartphones" data-i18n="subcat.smartphones">Téléphone</a></li>
+              <li><a href="category.html?cat=telephone&amp;subcat=supports" data-i18n="subcat.supports">Supports voiture &amp; bureau</a></li>
+            </ul>
+          </div>
+          <div class="nav-item has-sub">
+            <a href="category.html?cat=son-image" class="nav-link"><span data-i18n="category.son-image">Son &amp; Image</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+            <ul class="nav-sub">
+              <li><a href="category.html?cat=son-image" data-i18n="subcat.all">Tout voir</a></li>
+              <li><a href="category.html?cat=son-image&amp;subcat=ecouteurs-sans-fil" data-i18n="subcat.ecouteurs-sans-fil">Écouteurs sans fil</a></li>
+              <li><a href="category.html?cat=son-image&amp;subcat=enceintes-bluetooth" data-i18n="subcat.enceintes-bluetooth">Enceintes Bluetooth</a></li>
+              <li><a href="category.html?cat=son-image&amp;subcat=tablette" data-i18n="subcat.tablette">Tablette</a></li>
+              <li><a href="category.html?cat=son-image&amp;subcat=videoprojecteur" data-i18n="subcat.videoprojecteur">Vidéoprojecteur</a></li>
+              <li><a href="category.html?cat=son-image&amp;subcat=iptv" data-i18n="subcat.iptv">IPTV</a></li>
+            </ul>
+          </div>
+          <div class="nav-item has-sub">
+            <a href="category.html?cat=bureau-gaming" class="nav-link"><span data-i18n="category.bureau-gaming">Bureau &amp; Gaming</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+            <ul class="nav-sub">
+              <li><a href="category.html?cat=bureau-gaming" data-i18n="subcat.all">Tout voir</a></li>
+              <li><a href="category.html?cat=bureau-gaming&amp;subcat=casque-gaming" data-i18n="subcat.casque-gaming">Casque gaming</a></li>
+              <li><a href="category.html?cat=bureau-gaming&amp;subcat=claviers-souris" data-i18n="subcat.claviers-souris">Claviers &amp; souris</a></li>
+              <li><a href="category.html?cat=bureau-gaming&amp;subcat=routeurs-wifi" data-i18n="subcat.routeurs-wifi">Routeurs WiFi</a></li>
+              <li><a href="category.html?cat=bureau-gaming&amp;subcat=repeteur-wifi" data-i18n="subcat.repeteur-wifi">Répéteur WiFi</a></li>
+              <li><a href="category.html?cat=bureau-gaming&amp;subcat=montre-connectee" data-i18n="subcat.montre-connectee">Montre connectée</a></li>
+            </ul>
+          </div>
+          <div class="nav-item has-sub">
+            <a href="category.html?cat=consoles-jeux" class="nav-link"><span data-i18n="category.consoles-jeux">Consoles &amp; Jeux vidéo</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+            <ul class="nav-sub">
+              <li><a href="category.html?cat=consoles-jeux" data-i18n="subcat.all">Tout voir</a></li>
+              <li><a href="category.html?cat=consoles-jeux&amp;subcat=consoles" data-i18n="subcat.consoles">Consoles</a></li>
+              <li><a href="category.html?cat=consoles-jeux&amp;subcat=jeux" data-i18n="subcat.jeux">Jeux</a></li>
+              <li><a href="category.html?cat=consoles-jeux&amp;subcat=accessoires-console" data-i18n="subcat.accessoires-console">Accessoires console</a></li>
+            </ul>
+          </div>
+          <div class="nav-item has-sub">
+            <a href="category.html?cat=maison-intelligente" class="nav-link"><span data-i18n="category.maison-intelligente">Maison Intelligente</span><span class="nav-caret" aria-hidden="true">▸</span></a>
+            <ul class="nav-sub">
+              <li><a href="category.html?cat=maison-intelligente" data-i18n="subcat.all">Tout voir</a></li>
+              <li><a href="category.html?cat=maison-intelligente&amp;subcat=ampoules-led" data-i18n="subcat.ampoules-led">Ampoules LED connectées</a></li>
+              <li><a href="category.html?cat=maison-intelligente&amp;subcat=cameras-surveillance" data-i18n="subcat.cameras-surveillance">Caméras de surveillance</a></li>
+              <li><a href="category.html?cat=maison-intelligente&amp;subcat=traceur-gps" data-i18n="subcat.traceur-gps">Traceur GPS</a></li>
+              <li><a href="category.html?cat=maison-intelligente&amp;subcat=alarme-connectee" data-i18n="subcat.alarme-connectee">Alarme connectée</a></li>
+            </ul>
+          </div>
+
+          <!-- Langue + devise (panneau burger mobile/tablette) -->
+          <div class="nav-mobile-extras">
+            <select class="lang-select" aria-label="Langue">
+              <option value="fr">🇫🇷 Français</option>
+              <option value="mg">🇲🇬 Malagasy</option>
+            </select>
+            <select class="currency-select" aria-label="Devise">
+              <option value="EUR">EUR €</option>
+              <option value="AR">AR Ar</option>
+            </select>
+          </div>
+        </nav>
+
+        <!-- Langue + devise en pills (desktop) -->
+        <div class="header-tools desktop-only">
+          <span class="header-pill">
+            <svg class="pill-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z"/></svg>
+            <select class="lang-select" aria-label="Langue">
+              <option value="fr">FR</option>
+              <option value="mg">MG</option>
+            </select>
+          </span>
+          <span class="header-pill">
+            <select class="currency-select" aria-label="Devise">
+              <option value="EUR">€ EUR</option>
+              <option value="AR">Ar AR</option>
+            </select>
+          </span>
+        </div>
       </div>
     </div>
   </header>
