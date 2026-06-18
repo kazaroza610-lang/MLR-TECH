@@ -293,6 +293,24 @@ const PRODUCTS = [
     price_eur:50, image:'assets/images/products/batterie-manette-ps5.jpg', rating:4.6
   },
 
+  {
+    id:'p029', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Manette Pro Sans Fil Nintendo Switch', mg:'Manette Pro Sans Fil Nintendo Switch' },
+    description:{ fr:'Manette sans fil Pro pour Nintendo Switch, Switch 2, Lite & OLED. Joysticks Hall Effect anti-dérive, gyroscope 6 axes, boutons programmables M1/M2, vibration réglable.', mg:'Manette sans fil Pro ho an\'ny Nintendo Switch rehetra. Hall Effect joystick tsy mivily, gyroscope 6 axes, bouton programmable M1/M2.' },
+    description_complete: 'Profitez d\'une expérience de jeu premium sur Nintendo Switch avec cette manette Pro sans fil AceGamer. Ses joysticks à effet Hall élimine définitivement le problème de dérive de stick grâce à leur technologie magnétique — sans pièces en contact, pas d\'usure. Le gyroscope 6 axes permet un contrôle de mouvement précis, idéal pour les jeux de tir ou de sport. Les deux boutons programmables M1 et M2 situés sous la manette vous permettent d\'assigner n\'importe quelle touche pour un avantage tactique. La vibration est réglable selon vos préférences. L\'indicateur 4 LED vous informe en temps réel du niveau de batterie. Compatible avec toute la gamme Nintendo Switch : Switch 1, Switch 2, Switch Lite et Switch OLED.',
+    poids_kg: 0.28,
+    dimensions: { longueur_cm: 15.2, largeur_cm: 10.3, hauteur_cm: 6.1, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 manette Pro sans fil AceGamer (Rouge & Bleu Néon)',
+      '1 câble USB-C de recharge',
+      '1 manuel d\'utilisation',
+    ],
+    features:{ fr:['Joysticks Hall Effect anti-dérive','Gyroscope 6 axes','2 boutons programmables M1/M2','Vibration réglable','Compatible Switch / Switch 2 / Lite / OLED'], mg:['Hall Effect joystick tsy mivily','Gyroscope 6 axes','Bouton M1/M2 programmable','Vibration azo apetraka','Mifanaraka Switch / Switch 2 / Lite / OLED'] },
+    isNew: true,
+    price_eur:50, image:'assets/images/products/manette-pro-switch.jpg', rating:4.5
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
