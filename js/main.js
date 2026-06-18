@@ -334,8 +334,8 @@ function renderProductDetail(p) {
       </div>` : ''}
 
       ${hasSpecs ? `
-      <div class="pd-section pd-accordion open" id="pd-specs">
-        <button class="pd-acc-toggle" aria-expanded="true"><span class="pd-acc-title">Caractéristiques</span>${caretIcon}</button>
+      <div class="pd-section pd-accordion" id="pd-specs">
+        <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Caractéristiques</span>${caretIcon}</button>
         <div class="pd-acc-body"><div class="pd-acc-inner">
           ${(hasDims || p.poids_kg || hasStock) ? `<div class="pd-dims-grid">
             ${hasDims ? `
