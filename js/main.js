@@ -14,7 +14,39 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'cart-page') initCartPage();
 
   initScrollAnimations();
+  initHeaderScroll();
 });
+
+/* ── Header auto-hide au scroll ──────────────────────────────
+   Descend → header masqué (slide vers le haut). Monte → réapparaît.
+   En haut de page (scroll 0) → toujours visible. Détection via
+   requestAnimationFrame pour ne pas saturer le thread au scroll. */
+function initHeaderScroll() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  let lastY = window.scrollY || 0;
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY || 0;
+    if (y <= 0) {
+      header.classList.remove('header--hidden');          // tout en haut
+    } else if (y > lastY + 4) {
+      // on descend → masquer (sauf si le menu burger est ouvert)
+      if (!document.getElementById('mainNav')?.classList.contains('open')) {
+        header.classList.add('header--hidden');
+      }
+    } else if (y < lastY - 4) {
+      header.classList.remove('header--hidden');           // on remonte
+    }
+    lastY = y;
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+}
 
 /* ── Language init ──────────────────────────────────────── */
 function initLang() {
@@ -47,6 +79,7 @@ function initMenu() {
     toggle.classList.add('active');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    document.querySelector('.header')?.classList.remove('header--hidden'); // header visible quand le menu s'ouvre
   };
 
   toggle.addEventListener('click', () => {
@@ -280,7 +313,6 @@ function renderProductDetail(p) {
         <div class="product-detail-rating" id="pdRating">${renderStars(p.rating)} <span>${p.rating}/5</span></div>
         <div class="product-detail-price" data-price-eur="${p.price_eur}">${formatPrice(p.price_eur)}</div>
         <div class="pd-delivery-inline">${truckIcon}<span>Livraison estimée : <strong>${DELIVERY_DAYS} jours ouvrés</strong></span></div>
-        <p class="dhl-badge dhl-detail">${t('dhl.badge')}</p>
         <button class="btn btn-primary btn-full btn-add-big" data-product-id="${p.id}">${t('products.add')}</button>
       </div>
     </div>
@@ -290,21 +322,21 @@ function renderProductDetail(p) {
       ${hasDesc ? `
       <div class="pd-section pd-accordion open" id="pd-desc">
         <button class="pd-acc-toggle" aria-expanded="true"><span class="pd-acc-title">Description</span>${caretIcon}</button>
-        <div class="pd-acc-body"><p class="pd-desc-text">${p.description_complete}</p></div>
+        <div class="pd-acc-body"><div class="pd-acc-inner"><p class="pd-desc-text">${p.description_complete}</p></div></div>
       </div>` : ''}
 
       ${hasBox ? `
       <div class="pd-section pd-accordion" id="pd-box">
-        <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Contenu de la boîte</span>${caretIcon}</button>
-        <div class="pd-acc-body">
+        <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Contenu du carton</span>${caretIcon}</button>
+        <div class="pd-acc-body"><div class="pd-acc-inner">
           <ul class="pd-box-list">${p.contenu_boite.map(item => `<li>${checkIcon}<span>${item}</span></li>`).join('')}</ul>
-        </div>
+        </div></div>
       </div>` : ''}
 
       ${hasSpecs ? `
       <div class="pd-section pd-accordion" id="pd-specs">
         <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Caractéristiques</span>${caretIcon}</button>
-        <div class="pd-acc-body">
+        <div class="pd-acc-body"><div class="pd-acc-inner">
           ${(hasDims || p.poids_kg || hasStock) ? `<div class="pd-dims-grid">
             ${hasDims ? `
             <div class="pd-dim-card"><span class="pd-dim-icon">${lengthIcon}</span><span class="pd-dim-val">${p.dimensions.longueur_cm} cm</span><span class="pd-dim-label">Longueur</span></div>
@@ -314,16 +346,16 @@ function renderProductDetail(p) {
             ${hasStock ? `<div class="pd-dim-card"><span class="pd-dim-icon">${storageIcon}</span><span class="pd-dim-val">${p.stockage}</span><span class="pd-dim-label">Capacité de stockage</span></div>` : ''}
           </div>` : ''}
           ${p.features[currentLang].length ? `<ul class="product-features">${p.features[currentLang].map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
-        </div>
+        </div></div>
       </div>` : ''}
 
       <div class="pd-section pd-accordion" id="pd-reviews">
         <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Avis clients</span>${caretIcon}</button>
-        <div class="pd-acc-body">
+        <div class="pd-acc-body"><div class="pd-acc-inner">
           <div id="reviewsSummary" class="reviews-summary"></div>
           <div id="reviewsList" class="reviews-list"></div>
           <div id="reviewFormContainer"></div>
-        </div>
+        </div></div>
       </div>
     </div>
 
@@ -340,17 +372,38 @@ function renderProductDetail(p) {
   loadProductReviews(p.id);
 }
 
+/* Accordéon fiche produit — desktop ET mobile, animation max-height douce.
+   Chaque panneau s'ouvre/se ferme indépendamment. La section ouverte au
+   chargement (Description) reçoit la classe « open » dans le HTML. */
 function initProductAccordion(container) {
-  container.querySelectorAll('.pd-acc-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (window.innerWidth >= 1024) return;
-      const section = btn.closest('.pd-accordion');
-      const isOpen = section.classList.contains('open');
-      container.querySelectorAll('.pd-accordion.open').forEach(s => {
-        s.classList.remove('open');
-        s.querySelector('.pd-acc-toggle').setAttribute('aria-expanded', 'false');
+  const setOpen = (section, open) => {
+    const body  = section.querySelector('.pd-acc-body');
+    const inner = section.querySelector('.pd-acc-inner');
+    const btn   = section.querySelector('.pd-acc-toggle');
+    if (!body || !inner || !btn) return;
+    btn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      section.classList.add('open');
+      body.style.maxHeight = inner.scrollHeight + 'px';
+      // une fois ouvert, on libère la contrainte pour gérer le contenu dynamique (avis…)
+      body.addEventListener('transitionend', function done(e) {
+        if (e.propertyName === 'max-height' && section.classList.contains('open')) {
+          body.style.maxHeight = 'none';
+        }
+        body.removeEventListener('transitionend', done);
       });
-      if (!isOpen) { section.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    } else {
+      section.classList.remove('open');
+      body.style.maxHeight = inner.scrollHeight + 'px';       // valeur concrète…
+      requestAnimationFrame(() => { body.style.maxHeight = '0'; }); // …puis on referme
+    }
+  };
+
+  container.querySelectorAll('.pd-accordion').forEach(section => {
+    const body = section.querySelector('.pd-acc-body');
+    if (section.classList.contains('open') && body) body.style.maxHeight = 'none';
+    section.querySelector('.pd-acc-toggle')?.addEventListener('click', () => {
+      setOpen(section, !section.classList.contains('open'));
     });
   });
 }

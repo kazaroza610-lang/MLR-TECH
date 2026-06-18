@@ -173,10 +173,6 @@
   .pd-main { gap: 60px; }
   .pd-main .product-detail-img { flex: 0 0 50%; }
   .product-detail-section { padding: 48px 40px; }
-  /* Accordéon : tout visible sur desktop */
-  .pd-acc-toggle { pointer-events: none; cursor: default; }
-  .pd-acc-caret { display: none; }
-  .pd-acc-body { display: block !important; }
   /* Sticky bar : inutile sur desktop */
   .sticky-cart-bar { display: none; }
   .similar-section { padding: 48px 40px 80px; }

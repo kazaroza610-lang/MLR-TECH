@@ -139,9 +139,9 @@ const PRODUCTS = [
   /* ── CONSOLES & JEUX VIDÉO ───────────────── */
   {
     id:'p022', category:'consoles-jeux', subcategory:'consoles',
-    name:{ fr:'PlayStation 5 Slim Édition Numérique', mg:'PlayStation 5 Slim Édition Numérique' },
+    name:{ fr:'Console SONY PS5 Slim Digital', mg:'Console SONY PS5 Slim Digital' },
     description:{ fr:'Console next-gen 100% numérique, plus compacte, avec SSD ultra-rapide, Ray Tracing, Audio 3D et manette DualSense.', mg:'Console next-gen nomerika manontolo, SSD haingana, Ray Tracing, Audio 3D ary DualSense.' },
-    description_complete: 'La PlayStation 5 Slim Édition Numérique est la version compacte de la console next-gen de Sony, entièrement dématérialisée. Son SSD ultra-rapide élimine presque totalement les temps de chargement : les jeux se lancent en quelques secondes. Le Ray Tracing offre des graphismes photoréalistes avec des reflets et des ombres calculés en temps réel. L\'Audio 3D plonge le joueur dans une expérience sonore immersive. La manette DualSense révolutionne les sensations avec son retour haptique précis et ses gâchettes adaptatives qui résistent différemment selon l\'action — tirer à l\'arc, conduire sur une route mouillée, marcher sur du sable.',
+    description_complete: 'La PS5 Slim est l\'édition 100 % numérique et compacte de la console next-gen de Sony. Son atout maître : un SSD ultra-rapide qui élimine quasiment les temps de chargement — vos jeux se lancent en quelques secondes.',
     contenu_boite: [
       '1 console PlayStation 5 Slim Édition Numérique',
       '1 manette sans fil DualSense',
@@ -154,7 +154,7 @@ const PRODUCTS = [
     // Dimensions PS5 Slim (CFI-2016) — source : Sony officiel. À vérifier sur fr.playstation.com si besoin.
     dimensions: { longueur_cm: 35.8, largeur_cm: 21.6, hauteur_cm: 9.6, unite: 'cm' },
     poids_kg: 2.6, // poids approximatif PS5 Slim Digital — à confirmer sur le site Sony
-    stockage: '1 To SSD', // capacité officielle PS5 Slim Édition Numérique
+    stockage: '825 Go', // capacité SSD officielle PS5 Slim Digital
     features:{ fr:['SSD ultra-rapide','Ray Tracing','Audio 3D immersif','Manette DualSense incluse','Gâchettes adaptatives'], mg:['SSD haingana','Ray Tracing','Audio 3D','DualSense','Gâchettes adaptatives'] },
     price_eur:600, image:'images/products/ps5-digital.jpeg', rating:4.9
   },
