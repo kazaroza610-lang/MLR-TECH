@@ -359,8 +359,6 @@ const PRODUCTS = [
     features:{ fr:['Charge 2 manettes simultanément','Ventilateur de refroidissement intégré','2 batteries rechargeables incluses','Indicateurs LED de charge','Compatible Xbox Series X|S et Xbox One'], mg:['Charge manette 2 miaraka','Ventilateur an\'ny hafanana','Bateria 2 azo rechargé','LED indicator','Mifanaraka Xbox Series X|S sy Xbox One'] },
     compatibility: [
       { platform: 'xbox', label: 'Xbox Series X' },
-      { platform: 'xbox', label: 'Xbox Series S' },
-      { platform: 'xbox', label: 'Xbox One' },
     ],
     isNew: true,
     price_eur:80, image:'assets/images/products/station-charge-xbox.jpg', rating:4.4
