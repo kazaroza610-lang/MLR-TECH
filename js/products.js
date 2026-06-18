@@ -342,6 +342,30 @@ const PRODUCTS = [
     price_eur:70, image:'assets/images/products/joy-con-switch.jpg', rating:4.7
   },
 
+  {
+    id:'p031', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Station de Charge Xbox avec Ventilateur', mg:'Station de Charge Xbox miaraka amin\'ny Ventilateur' },
+    description:{ fr:'Station de charge verticale pour manettes Xbox avec ventilateur de refroidissement intégré. 2 emplacements de charge simultanés, batteries rechargeables incluses.', mg:'Station de charge verticale ho an\'ny Xbox miaraka amin\'ny ventilateur. Fitoerana 2 miaraka, bateria azo rechargé.' },
+    description_complete: 'Gardez vos manettes Xbox toujours prêtes à l\'emploi avec cette station de charge verticale tout-en-un. Elle accueille simultanément 2 manettes Xbox et les recharge grâce aux batteries rechargeables incluses — fini les piles jetables. Le ventilateur de refroidissement intégré dissipe la chaleur pendant la charge pour prolonger la durée de vie de vos manettes. Le support vertical économise de la place sur votre bureau et met en valeur vos manettes. Compatible avec les manettes Xbox Series X|S et Xbox One. Les indicateurs LED vous indiquent en temps réel le statut de charge.',
+    poids_kg: 0.32,
+    dimensions: { longueur_cm: 18.5, largeur_cm: 9.2, hauteur_cm: 12.0, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 station de charge verticale',
+      '2 batteries rechargeables',
+      '1 câble USB de charge',
+      '1 manuel d\'utilisation',
+    ],
+    features:{ fr:['Charge 2 manettes simultanément','Ventilateur de refroidissement intégré','2 batteries rechargeables incluses','Indicateurs LED de charge','Compatible Xbox Series X|S et Xbox One'], mg:['Charge manette 2 miaraka','Ventilateur an\'ny hafanana','Bateria 2 azo rechargé','LED indicator','Mifanaraka Xbox Series X|S sy Xbox One'] },
+    compatibility: [
+      { platform: 'xbox', label: 'Xbox Series X' },
+      { platform: 'xbox', label: 'Xbox Series S' },
+      { platform: 'xbox', label: 'Xbox One' },
+    ],
+    isNew: true,
+    price_eur:80, image:'assets/images/products/station-charge-xbox.jpg', rating:4.4
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
