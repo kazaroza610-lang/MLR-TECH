@@ -710,6 +710,10 @@ ul { list-style: none; }
 .pd-compat-switch .pd-compat-dot { background: #e60012; }
 .pd-compat-xbox  { background: #e8f4e8; color: #107c10; border-color: #a8d8a8; }
 .pd-compat-xbox  .pd-compat-dot { background: #107c10; }
+.pd-compat-pc    { background: #f0f0f0; color: #333333; border-color: #cccccc; }
+.pd-compat-pc    .pd-compat-dot { background: #555555; }
+.pd-compat-mobile { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
+.pd-compat-mobile .pd-compat-dot { background: #f57c00; }
 
 .product-cat-label { font-size: 12px; text-transform: uppercase; color: var(--c-muted); letter-spacing: .6px; margin-bottom: 8px; }
 .product-detail-name { font-size: clamp(22px, 4vw, 32px); font-weight: 800; line-height: 1.25; margin-bottom: 10px; }

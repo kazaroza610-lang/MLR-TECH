@@ -402,6 +402,7 @@ const PRODUCTS = [
     features:{ fr:['Gâchettes adaptatives L2/R2','Retour haptique avancé','Microphone et haut-parleur intégrés','Connexion sans fil Bluetooth','Compatible PS5 et PC'], mg:['Gâchette adaptive L2/R2','Retour haptique','Mikro sy speaker','Bluetooth','Mifanaraka PS5 sy PC'] },
     compatibility: [
       { platform: 'ps5', label: 'PlayStation 5' },
+      { platform: 'pc', label: 'PC' },
     ],
     isNew: false,
     price_eur:80, image:'assets/images/products/dualsense-blanc.jpg', rating:4.8
@@ -452,6 +453,10 @@ const PRODUCTS = [
     ],
     compatibility: [
       { platform: 'ps5', label: 'PlayStation 5' },
+      { platform: 'pc', label: 'PC / Mac' },
+      { platform: 'mobile', label: 'iPhone' },
+      { platform: 'mobile', label: 'Smartphone' },
+      { platform: 'mobile', label: 'Tablette' },
     ],
     isNew: true,
     price_eur:150, image:'assets/images/products/pulse-elite-2.jpg', rating:4.7
@@ -476,8 +481,6 @@ const PRODUCTS = [
     ],
     compatibility: [
       { platform: 'ps5', label: 'PlayStation 5' },
-      { platform: 'ps5', label: 'PlayStation 4' },
-      { platform: 'switch', label: 'Nintendo Switch' },
     ],
     isNew: true,
     price_eur:45, image:'assets/images/products/avantree-c81-1.jpg', rating:4.5
@@ -511,9 +514,10 @@ const PRODUCTS = [
       { platform: 'xbox', label: 'Xbox Series X' },
       { platform: 'xbox', label: 'Xbox Series S' },
       { platform: 'xbox', label: 'Xbox One' },
+      { platform: 'pc', label: 'PC Windows' },
     ],
     isNew: false,
-    price_eur:70, image:'assets/images/products/manette-xbox-noir.jpg', rating:4.8
+    price_eur:70, image:'assets/images/products/manette-xbox-blanc.jpg', rating:4.8
   },
 
   /* ── MAISON INTELLIGENTE ─────────────────── */
