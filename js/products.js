@@ -431,6 +431,32 @@ const PRODUCTS = [
     price_eur:250, image:'assets/images/products/ps-portal-blanc.jpg', rating:4.5
   },
 
+  {
+    id:'p035', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Casque Sans Fil PULSE Elite™ + Housse PS5', mg:'Casque Sans Fil PULSE Elite™ + Housse PS5' },
+    description:{ fr:'Casque sans fil premium Sony PULSE Elite™ avec housse de transport. Audio 3D PS5, microphone rétractable à tige, connexion sans fil PS Link et Bluetooth.', mg:'Casque Sony PULSE Elite™ premium miaraka amin\'ny sac. Audio 3D PS5, mikro retractable, PS Link sy Bluetooth.' },
+    description_complete: 'Le PULSE Elite™ est le casque sans fil haut de gamme de Sony conçu pour tirer le meilleur du Tempest 3D Audio de la PS5. Ses transducteurs planaires délivrent un son d\'une clarté et d\'une précision exceptionnelles avec une large scène sonore. Le microphone rétractable à tige se replie discrètement dans l\'arceau quand vous n\'en avez pas besoin. La connexion sans fil PS Link assure une latence ultra-faible, tandis que le Bluetooth permet une utilisation avec PC, Mac et appareils mobiles. La housse de transport incluse protège votre casque lors des déplacements. Jusqu\'à 30 heures d\'autonomie avec charge USB-C.',
+    poids_kg: 0.33,
+    dimensions: { longueur_cm: 19.5, largeur_cm: 8.5, hauteur_cm: 17.0, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 casque sans fil PULSE Elite™',
+      '1 housse de transport',
+      '1 câble USB-C de charge',
+      '1 adaptateur PS Link USB',
+    ],
+    features:{ fr:['Transducteurs planaires haute fidélité','Audio 3D PS5 (Tempest)','Microphone rétractable à tige','Connexion PS Link + Bluetooth','Jusqu\'à 30 h d\'autonomie'], mg:['Transducteur planaire','Audio 3D PS5 Tempest','Mikro retractable','PS Link + Bluetooth','Hatramin\'ny 30 ora'] },
+    images: [
+      'assets/images/products/pulse-elite-2.jpg',
+      'assets/images/products/pulse-elite-1.jpg',
+    ],
+    compatibility: [
+      { platform: 'ps5', label: 'PlayStation 5' },
+    ],
+    isNew: true,
+    price_eur:150, image:'assets/images/products/pulse-elite-2.jpg', rating:4.7
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
