@@ -342,6 +342,21 @@ function renderProductDetail(p) {
         <h1 class="product-detail-name">${p.name[currentLang]}</h1>
         <div class="product-detail-rating" id="pdRating">${renderStars(p.rating)} <span>${p.rating}/5</span></div>
         <div class="product-detail-price" data-price-eur="${p.price_eur}">${formatPrice(p.price_eur)}</div>
+        ${p.variants && p.variants.length ? `
+        <div class="pd-variants">
+          <p class="pd-variant-label">Couleur : <strong id="variantColorName">${p.variants[0].label}</strong></p>
+          <div class="pd-variant-swatches">
+            ${p.variants.map((v, i) => `
+              <button class="pd-variant-swatch${i === 0 ? ' active' : ''}"
+                      data-variant-image="${v.image}"
+                      data-variant-label="${v.label}"
+                      title="${v.label}"
+                      style="background:${v.colorHex};"
+                      aria-label="${v.label}"
+                      aria-pressed="${i === 0 ? 'true' : 'false'}">
+              </button>`).join('')}
+          </div>
+        </div>` : ''}
         <div class="pd-delivery-inline">${truckIcon}<span>Livraison estimée : <strong>${DELIVERY_DAYS} jours ouvrés</strong></span></div>
         <button class="btn btn-primary btn-full btn-add-big" data-product-id="${p.id}">${t('products.add')}</button>
         <button class="btn-fav-detail" data-fav-id="${p.id}" aria-pressed="false" aria-label="${t('favoris.add')}">
@@ -401,6 +416,23 @@ function renderProductDetail(p) {
 
   el.querySelector('.btn-add-big').addEventListener('click', () => addToCart(p.id));
   el.querySelector('.sticky-cart-btn').addEventListener('click', () => addToCart(p.id));
+
+  // Variantes couleur : switch image + label au clic sur un swatch
+  el.querySelectorAll('.pd-variant-swatch').forEach(btn => {
+    btn.addEventListener('click', () => {
+      el.querySelectorAll('.pd-variant-swatch').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      const img = el.querySelector('.product-detail-img img');
+      if (img) img.src = btn.dataset.variantImage;
+      const lbl = el.querySelector('#variantColorName');
+      if (lbl) lbl.textContent = btn.dataset.variantLabel;
+    });
+  });
+
   if (typeof updateWishlistUI === 'function') updateWishlistUI();
   initProductAccordion(el);
   initStickyCartBar();

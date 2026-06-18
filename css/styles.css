@@ -679,6 +679,26 @@ ul { list-style: none; }
 .product-detail-rating { font-size: 14px; color: #f59e0b; margin-bottom: 12px; }
 .product-detail-rating span { color: var(--c-muted); font-size: 13px; margin-left: 6px; }
 .product-detail-price { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
+
+/* Sélecteur de variante couleur */
+.pd-variants { margin-bottom: 16px; }
+.pd-variant-label { font-size: 14px; color: var(--c-muted); margin-bottom: 10px; }
+.pd-variant-label strong { color: var(--c-text); }
+.pd-variant-swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+.pd-variant-swatch {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 2.5px solid #ccc;
+  cursor: pointer;
+  transition: border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+  position: relative;
+}
+.pd-variant-swatch:hover { transform: scale(1.1); }
+.pd-variant-swatch.active {
+  border-color: var(--c-black);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--c-black);
+}
+
 .product-features { margin-bottom: 24px; }
 .product-features li { padding: 8px 0; border-bottom: 1px solid var(--c-border); font-size: 14px; }
 .product-features li::before { content: '✓  '; font-weight: 700; }

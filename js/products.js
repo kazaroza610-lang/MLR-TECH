@@ -225,6 +225,30 @@ const PRODUCTS = [
     price_eur:300, image:'assets/images/products/xbox-series-s.webp', rating:4.7
   },
 
+  {
+    id:'p026', category:'consoles-jeux', subcategory:'consoles',
+    name:{ fr:'Xbox Series X 1 To', mg:'Xbox Series X 1 To' },
+    description:{ fr:'La console next-gen la plus puissante de Microsoft. 1 To SSD, 4K natif, jusqu\'à 120 FPS, lecteur Blu-ray 4K UHD, rétrocompatibilité totale Xbox. Disponible en noir ou blanc.', mg:'Console next-gen mahery indrindra amin\'i Microsoft. 1 To SSD, 4K, hatramin\'ny 120 FPS, lecteur Blu-ray, mifanaraka Xbox rehetra. Mainty na fotsy.' },
+    description_complete: 'La Xbox Series X est la console de jeux vidéo la plus puissante jamais conçue par Microsoft. Grâce à son SSD NVMe personnalisé d\'1 To, les temps de chargement sont quasi instantanés — jusqu\'à 40 fois plus rapides que la génération précédente. Elle cible le 4K natif à 60 FPS avec la possibilité d\'atteindre 120 FPS sur les titres compatibles, pour une fluidité de jeu sans compromis. Le ray tracing matériel, l\'audio spatial Dolby Atmos et le HDR10 garantissent une immersion totale. Son lecteur Blu-ray 4K UHD intégré vous permet de profiter de vos films en qualité maximale. Compatible avec 100 % des jeux Xbox One et des milliers de titres Xbox 360 et Xbox Original, la Series X est la porte d\'entrée vers l\'un des catalogues les plus vastes du gaming. Disponible en Carbon Black (noir) et Robot White (blanc).',
+    poids_kg: 4.46,
+    dimensions: { longueur_cm: 30.1, largeur_cm: 15.1, hauteur_cm: 15.1, unite: 'cm' },
+    stockage: '1 To SSD NVMe',
+    variants: [
+      { id: 'black', label: 'Carbon Black', colorHex: '#1a1a1a', image: 'assets/images/products/xbox-series-x-black.jpg' },
+      { id: 'white', label: 'Robot White',  colorHex: '#e8e8e8', image: 'assets/images/products/xbox-series-x-white.jpg' },
+    ],
+    contenu_boite: [
+      '1 console Xbox Series X',
+      '1 manette sans fil Xbox (Carbon Black)',
+      '1 câble HDMI haute vitesse',
+      '1 câble d\'alimentation',
+      '2 piles AA',
+    ],
+    features:{ fr:['4K natif / 120 FPS','1 To SSD NVMe custom','16 Go RAM GDDR6','Lecteur Blu-ray 4K UHD intégré','Rétrocompatibilité Xbox One / 360 / Original'], mg:['4K natif / 120 FPS','1 To SSD NVMe','16 Go RAM GDDR6','Lecteur Blu-ray 4K UHD','Mifanaraka Xbox One / 360 / Original'] },
+    isNew: false,
+    price_eur:500, image:'assets/images/products/xbox-series-x-black.jpg', rating:4.9
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
