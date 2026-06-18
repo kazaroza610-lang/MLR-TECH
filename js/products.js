@@ -162,7 +162,11 @@ const PRODUCTS = [
     id:'p023', category:'consoles-jeux', subcategory:'consoles',
     name:{ fr:'Nintendo Switch Joy-Con Rouge & Bleu Néon', mg:'Nintendo Switch Joy-Con Mena & Manga Néon' },
     description:{ fr:'Console hybride portable et salon avec Joy-Con rouge et bleu néon détachables. Profitez de vos jeux en TV, en mode tablette ou en nomade. Jusqu\'à 8 joueurs en multijoueur local.', mg:'Console hybride entin-dalana sy efitrano miaraka amin\'ny Joy-Con mena sy manga azo esorina. Miraketrika hatramin\'ny 8 mpilalao amin\'ny multiplayer local.' },
-    features:{ fr:['Écran 6,2" LCD tactile 1280×720','32 Go de stockage interne','WiFi 802.11ac + Bluetooth 4.1','Autonomie 6,5 h','Dimensions : 238,6 × 102 × 14 mm'], mg:['Sary 6,2" LCD tactile','32 Go fitahirizana','WiFi + Bluetooth 4.1','6,5h bateria','238,6 × 102 × 14 mm'] },
+    description_complete: 'La Nintendo Switch est une console hybride qui s\'adapte à votre style de vie : branchez-la sur votre TV en mode console salon, posez-la sur une table en mode tablette, ou emportez-la partout en mode portable. Les Joy-Con rouge et bleu néon se détachent facilement pour jouer à deux sans accessoire supplémentaire. Avec plus de 6 500 jeux disponibles et jusqu\'à 8 consoles en multijoueur local, c\'est la console idéale pour toute la famille.',
+    poids_kg: 0.398,
+    dimensions: { longueur_cm: 23.86, largeur_cm: 10.2, hauteur_cm: 1.4, unite: 'cm' },
+    stockage: '32 Go',
+    features:{ fr:['Écran 6,2" LCD tactile 1280×720','WiFi 802.11ac + Bluetooth 4.1','Autonomie jusqu\'à 6,5 h','Compatible TV via station d\'accueil','2 Joy-Con détachables inclus'], mg:['Sary 6,2" LCD tactile','WiFi + Bluetooth 4.1','6,5h bateria','Mifandray TV','Joy-Con 2 azo esorina'] },
     isNew: true,
     price_eur:280, image:'assets/images/products/nintendo-switch-neon.jpg', rating:4.8
   },
