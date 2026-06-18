@@ -285,6 +285,11 @@ const PRODUCTS = [
       '1 manuel d\'utilisation',
     ],
     features:{ fr:['Jusqu\'à 6 h d\'autonomie supplémentaire','Compatible DualSense™ et DualSense Edge™','Connexion USB-C universelle','Indicateur de niveau de batterie intégré','Câble de charge 50 cm inclus'], mg:['Hatramin\'ny 6 ora fanampiny','Mifanaraka DualSense™ sy DualSense Edge™','USB-C','Fampisehoana bateria','Tariby 50 cm'] },
+    compatibility: [
+      { platform: 'ps5', label: 'PlayStation 5' },
+      { platform: 'ps5', label: 'DualSense™' },
+      { platform: 'ps5', label: 'DualSense Edge™' },
+    ],
     images: [
       'assets/images/products/batterie-manette-ps5.jpg',
       'assets/images/products/batterie-manette-ps5-solo.jpg',
@@ -307,6 +312,12 @@ const PRODUCTS = [
       '1 manuel d\'utilisation',
     ],
     features:{ fr:['Joysticks Hall Effect anti-dérive','Gyroscope 6 axes','2 boutons programmables M1/M2','Vibration réglable','Compatible Switch / Switch 2 / Lite / OLED'], mg:['Hall Effect joystick tsy mivily','Gyroscope 6 axes','Bouton M1/M2 programmable','Vibration azo apetraka','Mifanaraka Switch / Switch 2 / Lite / OLED'] },
+    compatibility: [
+      { platform: 'switch', label: 'Nintendo Switch' },
+      { platform: 'switch', label: 'Nintendo Switch 2' },
+      { platform: 'switch', label: 'Nintendo Switch Lite' },
+      { platform: 'switch', label: 'Nintendo Switch OLED' },
+    ],
     isNew: true,
     price_eur:60, image:'assets/images/products/manette-pro-switch.jpg', rating:4.5
   },

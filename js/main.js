@@ -408,6 +408,21 @@ function renderProductDetail(p) {
         </div></div>
       </div>` : ''}
 
+      ${p.subcategory === 'accessoires-console' && p.compatibility && p.compatibility.length ? `
+      <div class="pd-section pd-accordion" id="pd-compat">
+        <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Compatibilité</span>${caretIcon}</button>
+        <div class="pd-acc-body"><div class="pd-acc-inner">
+          <p class="pd-compat-intro">Cet accessoire est compatible avec les appareils suivants :</p>
+          <div class="pd-compat-grid">
+            ${p.compatibility.map(c => `
+              <div class="pd-compat-chip pd-compat-${c.platform}">
+                <span class="pd-compat-dot"></span>
+                <span class="pd-compat-label">${c.label}</span>
+              </div>`).join('')}
+          </div>
+        </div></div>
+      </div>` : ''}
+
       <div class="pd-section pd-accordion" id="pd-reviews">
         <button class="pd-acc-toggle" aria-expanded="false"><span class="pd-acc-title">Avis clients</span>${caretIcon}</button>
         <div class="pd-acc-body"><div class="pd-acc-inner">

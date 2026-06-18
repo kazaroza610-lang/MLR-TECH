@@ -692,6 +692,25 @@ ul { list-style: none; }
 .pd-thumb:hover { border-color: #888; }
 .pd-thumb.active { border-color: var(--c-black); border-width: 2.5px; }
 .pd-main-img { flex: 1; width: 0; min-width: 0; max-height: 70vh; object-fit: contain; border-radius: var(--radius); background: #fff; }
+
+/* Compatibilité accessoire */
+.pd-compat-intro { font-size: 13px; color: var(--c-muted); margin-bottom: 14px; }
+.pd-compat-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.pd-compat-chip {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  border: 1.5px solid transparent;
+}
+.pd-compat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.pd-compat-ps5   { background: #e8eef8; color: #003087; border-color: #b3c6e8; }
+.pd-compat-ps5   .pd-compat-dot { background: #003087; }
+.pd-compat-switch { background: #fde8e8; color: #c0000d; border-color: #f5b3b3; }
+.pd-compat-switch .pd-compat-dot { background: #e60012; }
+.pd-compat-xbox  { background: #e8f4e8; color: #107c10; border-color: #a8d8a8; }
+.pd-compat-xbox  .pd-compat-dot { background: #107c10; }
+
 .product-cat-label { font-size: 12px; text-transform: uppercase; color: var(--c-muted); letter-spacing: .6px; margin-bottom: 8px; }
 .product-detail-name { font-size: clamp(22px, 4vw, 32px); font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
 .product-detail-rating { font-size: 14px; color: #f59e0b; margin-bottom: 12px; }
