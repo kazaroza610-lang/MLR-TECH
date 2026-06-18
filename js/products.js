@@ -158,6 +158,14 @@ const PRODUCTS = [
     features:{ fr:['SSD ultra-rapide','Ray Tracing','Audio 3D immersif','Manette DualSense incluse','Gâchettes adaptatives'], mg:['SSD haingana','Ray Tracing','Audio 3D','DualSense','Gâchettes adaptatives'] },
     price_eur:600, image:'images/products/ps5-digital.jpeg', rating:4.9
   },
+  {
+    id:'p023', category:'consoles-jeux', subcategory:'consoles',
+    name:{ fr:'Nintendo Switch Joy-Con Rouge & Bleu Néon', mg:'Nintendo Switch Joy-Con Mena & Manga Néon' },
+    description:{ fr:'Console hybride portable et salon avec Joy-Con rouge et bleu néon détachables. Profitez de vos jeux en TV, en mode tablette ou en nomade. Jusqu\'à 8 joueurs en multijoueur local.', mg:'Console hybride entin-dalana sy efitrano miaraka amin\'ny Joy-Con mena sy manga azo esorina. Miraketrika hatramin\'ny 8 mpilalao amin\'ny multiplayer local.' },
+    features:{ fr:['Écran 6,2" LCD tactile 1280×720','32 Go de stockage interne','WiFi 802.11ac + Bluetooth 4.1','Autonomie 6,5 h','Dimensions : 238,6 × 102 × 14 mm'], mg:['Sary 6,2" LCD tactile','32 Go fitahirizana','WiFi + Bluetooth 4.1','6,5h bateria','238,6 × 102 × 14 mm'] },
+    isNew: true,
+    price_eur:280, image:'assets/images/products/nintendo-switch-neon.jpg', rating:4.8
+  },
 
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
