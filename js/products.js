@@ -234,8 +234,8 @@ const PRODUCTS = [
     dimensions: { longueur_cm: 30.1, largeur_cm: 15.1, hauteur_cm: 15.1, unite: 'cm' },
     stockage: '1 To SSD NVMe',
     variants: [
-      { id: 'black', label: 'Carbon Black', colorHex: '#1a1a1a', image: 'assets/images/products/xbox-series-x-black.jpg' },
-      { id: 'white', label: 'Robot White',  colorHex: '#e8e8e8', image: 'assets/images/products/xbox-series-x-white.jpg' },
+      { id: 'black', label: 'Noir',  colorHex: '#1a1a1a', image: 'assets/images/products/xbox-series-x-black.jpg' },
+      { id: 'white', label: 'Blanc', colorHex: '#e8e8e8', image: 'assets/images/products/xbox-series-x-white.jpg' },
     ],
     contenu_boite: [
       '1 console Xbox Series X',
