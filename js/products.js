@@ -181,6 +181,30 @@ const PRODUCTS = [
     price_eur:280, image:'assets/images/products/nintendo-switch-neon.jpg', rating:4.8
   },
 
+  {
+    id:'p024', category:'consoles-jeux', subcategory:'consoles',
+    name:{ fr:'Nintendo Switch 2', mg:'Nintendo Switch 2' },
+    description:{ fr:'La nouvelle génération de console hybride Nintendo. Écran Full HD 7,9", 256 Go de stockage, Joy-Con 2 repensés. Jouez en mode TV, tablette ou portable, où que vous soyez.', mg:'Console hybride vaovao Nintendo. Sary Full HD 7,9", 256 Go, Joy-Con 2 vaovao. Lalao amin\'ny TV, tablette na entin-dalana.' },
+    description_complete: 'La Nintendo Switch 2 est la nouvelle génération de console hybride qui repousse les limites du gaming. Son écran Full HD de 7,9 pouces offre une image nette et lumineuse, que ce soit en mode portable ou posé sur une table. Avec 256 Go de stockage intégré, vous pouvez emporter toute votre bibliothèque de jeux sans carte microSD. Les Joy-Con 2 entièrement repensés sont plus ergonomiques, plus précis et intègrent de nouvelles fonctionnalités. Compatible avec une grande partie du catalogue Nintendo Switch, la Switch 2 est la console idéale pour les gamers exigeants.',
+    poids_kg: 0.53,
+    dimensions: { longueur_cm: 27.18, largeur_cm: 11.43, hauteur_cm: 1.4, unite: 'cm' },
+    stockage: '256 Go',
+    contenu_boite: [
+      '1 console Nintendo Switch 2',
+      '1 Joy-Con 2 gauche',
+      '1 Joy-Con 2 droit',
+      '1 support Joy-Con 2',
+      '2 dragonnes Joy-Con 2',
+      '1 station d\'accueil Nintendo Switch 2',
+      '1 câble HDMI ultra haute vitesse',
+      '1 adaptateur secteur',
+      '1 câble de recharge USB-C',
+    ],
+    features:{ fr:['Écran Full HD 1080p 7,9" tactile','256 Go de stockage interne','2 ports USB-C','Joy-Con 2 repensés et améliorés','Compatible jeux Nintendo Switch'], mg:['Sary Full HD 1080p 7,9"','256 Go fitahirizana','2 ports USB-C','Joy-Con 2 vaovao','Mifanaraka Switch 1'] },
+    isNew: true,
+    price_eur:500, image:'assets/images/products/nintendo-switch-2.jpg', rating:4.9
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
