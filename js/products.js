@@ -387,6 +387,26 @@ const PRODUCTS = [
     price_eur:80, image:'assets/images/products/station-charge-ps5.jpg', rating:4.6
   },
 
+  {
+    id:'p033', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Manette Sans Fil DualSense Blanche PS5', mg:'Manette Sans Fil DualSense Fotsy PS5' },
+    description:{ fr:'Manette officielle Sony DualSense pour PS5. Gâchettes adaptatives, retour haptique avancé, micro et haut-parleur intégrés. Coloris Blanc.', mg:'Manette ofisialy Sony DualSense ho an\'ny PS5. Gâchette adaptive, haptique, mikro sy speaker. Fotsy.' },
+    description_complete: 'La manette DualSense de Sony redéfinit l\'expérience de jeu sur PS5 grâce à ses technologies immersives inédites. Les gâchettes adaptatives L2 et R2 offrent une résistance variable selon l\'action en jeu — ressentez la tension d\'un arc, la pression d\'une détente ou le freinage d\'un véhicule. Le retour haptique remplace la vibration classique par des sensations précises et directionnelles. Le microphone intégré vous permet de discuter sans casque, tandis que le haut-parleur diffuse des sons d\'ambiance directement dans la manette. La batterie rechargeable offre plusieurs heures d\'autonomie. Connexion sans fil via Bluetooth, compatible PS5 et PC.',
+    poids_kg: 0.28,
+    dimensions: { longueur_cm: 16.0, largeur_cm: 10.6, hauteur_cm: 6.6, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 manette DualSense Blanche',
+      '1 câble USB-C',
+    ],
+    features:{ fr:['Gâchettes adaptatives L2/R2','Retour haptique avancé','Microphone et haut-parleur intégrés','Connexion sans fil Bluetooth','Compatible PS5 et PC'], mg:['Gâchette adaptive L2/R2','Retour haptique','Mikro sy speaker','Bluetooth','Mifanaraka PS5 sy PC'] },
+    compatibility: [
+      { platform: 'ps5', label: 'PlayStation 5' },
+    ],
+    isNew: false,
+    price_eur:80, image:'assets/images/products/dualsense-blanc.jpg', rating:4.8
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
