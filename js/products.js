@@ -38,6 +38,25 @@ const PRODUCTS = [
     features:{ fr:['Rotation 360°','Fixation magnétique forte','Tableau de bord / grille','Installation en 1 clic','Universel'], mg:['Fihodinana 360°','Magnétique mahery','Tableau de bord / grille','1 click','Eran-tsefo'] },
     price_eur:15, image:'https://picsum.photos/seed/carphold/400/400', rating:4.4
   },
+  {
+    id:'p038', category:'telephone', subcategory:'smartphones',
+    name:{ fr:'Apple iPhone 16', mg:'Apple iPhone 16' },
+    description:{ fr:'iPhone 16 avec la puce A18, écran Super Retina XDR 6,1", appareil photo 48 MP, bouton Action et bouton Appareil photo', mg:'iPhone 16 misy chip A18, screen Super Retina XDR 6.1", faka sary 48 MP, bouton Action sy bouton Faka sary' },
+    features:{ fr:['Puce A18','Écran 6,1" Super Retina XDR','Appareil photo 48 MP','Bouton Action','Compatibilité iOS 18','Face ID'], mg:['Chip A18','Screen 6.1" Super Retina XDR','Faka sary 48 MP','Bouton Action','iOS 18','Face ID'] },
+    variants: [
+      { id: 'noir',      label: 'Noir',     colorHex: '#1c1c1c', image: 'assets/images/products/iphone-16-noir.png' },
+      { id: 'blanc',     label: 'Blanc',    colorHex: '#f5f5f0', image: 'assets/images/products/iphone-16-blanc.png' },
+      { id: 'rose',      label: 'Rose',     colorHex: '#f4b8c1', image: 'assets/images/products/iphone-16-rose.png' },
+      { id: 'outremer',  label: 'Outremer', colorHex: '#3a5ba0', image: 'assets/images/products/iphone-16-outremer.png' },
+      { id: 'sarcelle',  label: 'Sarcelle', colorHex: '#4a8c8c', image: 'assets/images/products/iphone-16-sarcelle.png' },
+    ],
+    storageOptions: [
+      { id: '128go', label: '128 Go' },
+      { id: '256go', label: '256 Go' },
+    ],
+    isNew: true,
+    price_eur:600, image:'assets/images/products/iphone-16-noir.png', rating:4.9
+  },
 
   /* ── SON & IMAGE ──────────────────────────── */
   {

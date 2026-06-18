@@ -740,6 +740,26 @@ ul { list-style: none; }
   box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--c-black);
 }
 
+.pd-storage { margin-bottom: 16px; }
+.pd-storage-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.pd-storage-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 2px solid var(--c-border);
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+.pd-storage-btn:hover { border-color: var(--c-black); }
+.pd-storage-btn.active {
+  border-color: var(--c-black);
+  background: var(--c-black);
+  color: #fff;
+}
+
 .product-features { margin-bottom: 24px; }
 .product-features li { padding: 8px 0; border-bottom: 1px solid var(--c-border); font-size: 14px; }
 .product-features li::before { content: '✓  '; font-weight: 700; }

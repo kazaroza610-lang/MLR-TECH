@@ -367,6 +367,19 @@ function renderProductDetail(p) {
               </button>`).join('')}
           </div>
         </div>` : ''}
+        ${p.storageOptions && p.storageOptions.length ? `
+        <div class="pd-storage">
+          <p class="pd-variant-label">Stockage : <strong id="storageOptionName">${p.storageOptions[0].label}</strong></p>
+          <div class="pd-storage-btns">
+            ${p.storageOptions.map((s, i) => `
+              <button class="pd-storage-btn${i === 0 ? ' active' : ''}"
+                      data-storage-id="${s.id}"
+                      data-storage-label="${s.label}"
+                      aria-pressed="${i === 0 ? 'true' : 'false'}">
+                ${s.label}
+              </button>`).join('')}
+          </div>
+        </div>` : ''}
         <div class="pd-delivery-inline">${truckIcon}<span>Livraison estimée : <strong>${DELIVERY_DAYS} jours ouvrés</strong></span></div>
         <button class="btn btn-primary btn-full btn-add-big" data-product-id="${p.id}">${t('products.add')}</button>
         <button class="btn-fav-detail" data-fav-id="${p.id}" aria-pressed="false" aria-label="${t('favoris.add')}">
@@ -465,6 +478,19 @@ function renderProductDetail(p) {
       if (img) img.src = btn.dataset.variantImage;
       const lbl = el.querySelector('#variantColorName');
       if (lbl) lbl.textContent = btn.dataset.variantLabel;
+    });
+  });
+
+  el.querySelectorAll('.pd-storage-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      el.querySelectorAll('.pd-storage-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      const lbl = el.querySelector('#storageOptionName');
+      if (lbl) lbl.textContent = btn.dataset.storageLabel;
     });
   });
 
