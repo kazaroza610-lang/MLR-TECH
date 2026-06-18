@@ -308,7 +308,7 @@ const PRODUCTS = [
     ],
     features:{ fr:['Joysticks Hall Effect anti-dérive','Gyroscope 6 axes','2 boutons programmables M1/M2','Vibration réglable','Compatible Switch / Switch 2 / Lite / OLED'], mg:['Hall Effect joystick tsy mivily','Gyroscope 6 axes','Bouton M1/M2 programmable','Vibration azo apetraka','Mifanaraka Switch / Switch 2 / Lite / OLED'] },
     isNew: true,
-    price_eur:50, image:'assets/images/products/manette-pro-switch.jpg', rating:4.5
+    price_eur:60, image:'assets/images/products/manette-pro-switch.jpg', rating:4.5
   },
 
   /* ── MAISON INTELLIGENTE ─────────────────── */
