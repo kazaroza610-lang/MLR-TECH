@@ -335,7 +335,17 @@ function renderProductDetail(p) {
   el.innerHTML = `
     <div class="pd-main">
       <div class="product-detail-img">
-        <img src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">
+        ${p.images && p.images.length > 1 ? `
+        <div class="pd-gallery">
+          <div class="pd-thumbs">
+            ${p.images.map((src, i) => `
+              <button class="pd-thumb${i === 0 ? ' active' : ''}" data-src="${src}" aria-label="Image ${i+1}">
+                <img src="${src}" alt="${p.name[currentLang]} vue ${i+1}" loading="lazy">
+              </button>`).join('')}
+          </div>
+          <img class="pd-main-img" src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">
+        </div>` : `
+        <img src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">`}
       </div>
       <div class="product-detail-info">
         <p class="product-cat-label">${t('category.' + p.category)}</p>
@@ -416,6 +426,16 @@ function renderProductDetail(p) {
 
   el.querySelector('.btn-add-big').addEventListener('click', () => addToCart(p.id));
   el.querySelector('.sticky-cart-btn').addEventListener('click', () => addToCart(p.id));
+
+  // Galerie miniatures : clic sur thumb → image principale change
+  el.querySelectorAll('.pd-thumb').forEach(btn => {
+    btn.addEventListener('click', () => {
+      el.querySelectorAll('.pd-thumb').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mainImg = el.querySelector('.pd-main-img');
+      if (mainImg) mainImg.src = btn.dataset.src;
+    });
+  });
 
   // Variantes couleur : switch image + label au clic sur un swatch
   el.querySelectorAll('.pd-variant-swatch').forEach(btn => {
