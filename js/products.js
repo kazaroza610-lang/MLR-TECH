@@ -457,6 +457,32 @@ const PRODUCTS = [
     price_eur:150, image:'assets/images/products/pulse-elite-2.jpg', rating:4.7
   },
 
+  {
+    id:'p036', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Clé USB Bluetooth Avantree C81 — Connectez n\'importe quel casque à la PS5', mg:'Clé USB Bluetooth Avantree C81 — Ampidiro casque rehetra amin\'ny PS5' },
+    description:{ fr:'Cette clé USB-C Bluetooth aptX Adaptive permet de connecter N\'IMPORTE QUEL casque Bluetooth à votre PS5. Branchez, associez, jouez — sans limite de marque.', mg:'Clé USB-C Bluetooth aptX Adaptive mampiditra casque Bluetooth rehetra amin\'ny PS5. Plug, pair, lalao.' },
+    description_complete: 'La PS5 ne supporte pas nativement le Bluetooth pour les casques audio — la clé USB Avantree C81 résout ce problème une bonne fois pour toutes. Branchez simplement cette petite clé USB-C sur votre PS5, associez n\'importe quel casque Bluetooth (Sony, Bose, JBL, AirPods, Samsung, etc.) et jouez sans fil instantanément. La technologie aptX Adaptive 2024 garantit une latence ultra-faible (moins de 50 ms) pour une synchronisation audio parfaite en jeu. Compatible aussi avec PS4, Nintendo Switch, PC et Mac. Aucune installation de logiciel requise — plug & play immédiat.',
+    poids_kg: 0.02,
+    dimensions: { longueur_cm: 3.5, largeur_cm: 1.8, hauteur_cm: 1.2, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 clé USB-C Bluetooth Avantree C81',
+      '1 manuel d\'utilisation',
+    ],
+    features:{ fr:['Compatible avec TOUS les casques Bluetooth','aptX Adaptive — latence < 50 ms','Plug & Play, aucune installation','Compatible PS5, PS4, Switch, PC, Mac','Connexion USB-C'], mg:['Mifanaraka casque Bluetooth rehetra','aptX Adaptive — latence < 50 ms','Plug & Play','Mifanaraka PS5, PS4, Switch, PC, Mac','USB-C'] },
+    images: [
+      'assets/images/products/avantree-c81-1.jpg',
+      'assets/images/products/avantree-c81-2.jpg',
+    ],
+    compatibility: [
+      { platform: 'ps5', label: 'PlayStation 5' },
+      { platform: 'ps5', label: 'PlayStation 4' },
+      { platform: 'switch', label: 'Nintendo Switch' },
+    ],
+    isNew: true,
+    price_eur:45, image:'assets/images/products/avantree-c81-1.jpg', rating:4.5
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
