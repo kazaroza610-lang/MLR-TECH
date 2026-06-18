@@ -407,6 +407,30 @@ const PRODUCTS = [
     price_eur:80, image:'assets/images/products/dualsense-blanc.jpg', rating:4.8
   },
 
+  {
+    id:'p034', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'PlayStation Portal — Lecteur à Distance PS5', mg:'PlayStation Portal — Lecteur à Distance PS5' },
+    description:{ fr:'Jouez à vos jeux PS5 depuis n\'importe où via le Wi-Fi. Écran LCD 8" 60 FPS, gâchettes adaptatives DualSense intégrées. Disponible en Blanc et Noir.', mg:'Lalao PS5 avy any WiFi. Ekrana LCD 8" 60 FPS, gâchette adaptive DualSense. Fotsy sy Mainty.' },
+    description_complete: 'Le PlayStation Portal est le lecteur à distance officiel de Sony qui vous permet de jouer à vos jeux PS5 depuis n\'importe quelle pièce de la maison ou en déplacement via le Wi-Fi. Son écran LCD de 8 pouces affiche vos jeux en 1080p à 60 FPS pour une expérience fluide et précise. Les touches DualSense intégrées reproduisent fidèlement les gâchettes adaptatives et le retour haptique pour une immersion complète. La connexion se fait directement avec votre PS5 sans abonnement supplémentaire requis — il vous suffit d\'un réseau Wi-Fi 5 GHz pour une latence minimale. Disponible en coloris Blanc (standard) et Noir (Deep Earth).',
+    poids_kg: 0.53,
+    dimensions: { longueur_cm: 28.0, largeur_cm: 11.7, hauteur_cm: 4.3, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 PlayStation Portal',
+      '1 câble USB-C',
+    ],
+    features:{ fr:['Écran LCD 8" 1080p 60 FPS','Gâchettes adaptatives DualSense','Connexion Wi-Fi 5 GHz','Sans abonnement supplémentaire','Compatible PS5 uniquement'], mg:['Ekrana LCD 8" 1080p 60 FPS','Gâchette adaptive DualSense','Wi-Fi 5 GHz','Tsy mila souscription fanampiny','Mifanaraka PS5 irery'] },
+    variants: [
+      { id: 'blanc', label: 'Blanc', colorHex: '#f0f0f0', image: 'assets/images/products/ps-portal-blanc.jpg' },
+      { id: 'noir', label: 'Noir', colorHex: '#1a1a2e', image: 'assets/images/products/ps-portal-noir.jpg' },
+    ],
+    compatibility: [
+      { platform: 'ps5', label: 'PlayStation 5' },
+    ],
+    isNew: true,
+    price_eur:250, image:'assets/images/products/ps-portal-blanc.jpg', rating:4.5
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
