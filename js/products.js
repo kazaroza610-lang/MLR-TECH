@@ -320,6 +320,28 @@ const PRODUCTS = [
     price_eur:60, image:'assets/images/products/manette-pro-switch.jpg', rating:4.5
   },
 
+  {
+    id:'p030', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Joy-Con Nintendo Switch (Paire)', mg:'Joy-Con Nintendo Switch (Paire)' },
+    description:{ fr:'Paire de manettes Joy-Con officielles Nintendo pour Switch. Détection de mouvement, retour HD Rumble, capteur IR et connexion sans fil Bluetooth.', mg:'Joy-Con ofisialy Nintendo roa ho an\'ny Switch. Fihetsika detection, HD Rumble, IR sensor ary Bluetooth.' },
+    description_complete: 'Les Joy-Con sont les manettes iconiques de la Nintendo Switch, offrant une expérience de jeu unique et polyvalente. Utilisez-les attachés à la console en mode portable, posés sur la poignée en mode TV, ou tenus séparément pour jouer à deux sans accessoire supplémentaire. Chaque Joy-Con intègre un gyroscope et un accéléromètre pour la détection de mouvement précise, un moteur HD Rumble pour des retours haptiques réalistes, et un capteur IR pour détecter formes et distances. Le bouton NFC intégré permet de lire les figurines amiibo. Les Joy-Con se rechargent directement sur la console Switch.',
+    poids_kg: 0.099,
+    dimensions: { longueur_cm: 10.2, largeur_cm: 3.5, hauteur_cm: 5.6, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '2 manettes Joy-Con',
+      '2 dragonne Joy-Con',
+    ],
+    features:{ fr:['Gyroscope et accéléromètre intégrés','Retour haptique HD Rumble','Capteur infrarouge (IR)','Compatible amiibo (NFC)','Connexion Bluetooth sans fil'], mg:['Gyroscope sy accelerometre','HD Rumble haptique','Capteur IR','Amiibo NFC','Bluetooth'] },
+    compatibility: [
+      { platform: 'switch', label: 'Nintendo Switch' },
+      { platform: 'switch', label: 'Nintendo Switch 2' },
+      { platform: 'switch', label: 'Nintendo Switch OLED' },
+    ],
+    isNew: false,
+    price_eur:70, image:'assets/images/products/joy-con-switch.jpg', rating:4.7
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
