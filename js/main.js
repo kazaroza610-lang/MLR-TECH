@@ -335,17 +335,20 @@ function renderProductDetail(p) {
   el.innerHTML = `
     <div class="pd-main">
       <div class="product-detail-img">
-        ${p.images && p.images.length > 1 ? `
+        ${(() => {
+          const galleryImgs = (p.variants && p.variants[0] && p.variants[0].images) ? p.variants[0].images : (p.images && p.images.length > 1 ? p.images : null);
+          if (galleryImgs) return `
         <div class="pd-gallery">
           <div class="pd-thumbs">
-            ${p.images.map((src, i) => `
+            ${galleryImgs.map((src, i) => `
               <button class="pd-thumb${i === 0 ? ' active' : ''}" data-src="${src}" aria-label="Image ${i+1}">
                 <img src="${src}" alt="${p.name[currentLang]} vue ${i+1}" loading="lazy">
               </button>`).join('')}
           </div>
-          <img class="pd-main-img" src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">
-        </div>` : `
-        <img src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">`}
+          <img class="pd-main-img" src="${galleryImgs[0]}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">
+        </div>`;
+          return `<img src="${p.image}" alt="${p.name[currentLang]} — ${t('category.' + p.category)} | MLR TECH Madagascar" width="600" height="600">`;
+        })()}
       </div>
       <div class="product-detail-info">
         <p class="product-cat-label">${t('category.' + p.category)}</p>
@@ -360,6 +363,7 @@ function renderProductDetail(p) {
               <button class="pd-variant-swatch${i === 0 ? ' active' : ''}"
                       data-variant-image="${v.image}"
                       data-variant-label="${v.label}"
+                      data-variant-images="${v.images ? v.images.join('|') : v.image}"
                       title="${v.label}"
                       style="background:${v.colorHex};"
                       aria-label="${v.label}"
@@ -475,10 +479,19 @@ function renderProductDetail(p) {
       });
       btn.classList.add('active');
       btn.setAttribute('aria-pressed', 'true');
-      const img = el.querySelector('.product-detail-img img');
-      if (img) img.src = btn.dataset.variantImage;
       const lbl = el.querySelector('#variantColorName');
       if (lbl) lbl.textContent = btn.dataset.variantLabel;
+      const variantImages = btn.dataset.variantImages ? btn.dataset.variantImages.split('|') : [btn.dataset.variantImage];
+      const mainImg = el.querySelector('.pd-main-img, .product-detail-img > img');
+      if (mainImg) mainImg.src = variantImages[0];
+      const thumbs = el.querySelectorAll('.pd-thumb');
+      thumbs.forEach((thumb, i) => {
+        const src = variantImages[i] || variantImages[0];
+        thumb.dataset.src = src;
+        const tImg = thumb.querySelector('img');
+        if (tImg) tImg.src = src;
+        thumb.classList.toggle('active', i === 0);
+      });
     });
   });
 

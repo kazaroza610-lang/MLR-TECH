@@ -44,11 +44,11 @@ const PRODUCTS = [
     description:{ fr:'iPhone 16 avec la puce A18, écran Super Retina XDR 6,1", appareil photo 48 MP, bouton Action et bouton Appareil photo', mg:'iPhone 16 misy chip A18, screen Super Retina XDR 6.1", faka sary 48 MP, bouton Action sy bouton Faka sary' },
     features:{ fr:['Puce A18','Écran 6,1" Super Retina XDR','Appareil photo 48 MP','Bouton Action','Compatibilité iOS 18','Face ID'], mg:['Chip A18','Screen 6.1" Super Retina XDR','Faka sary 48 MP','Bouton Action','iOS 18','Face ID'] },
     variants: [
-      { id: 'noir',      label: 'Noir',     colorHex: '#1c1c1c', image: 'assets/images/products/iphone-16-noir.png' },
-      { id: 'blanc',     label: 'Blanc',    colorHex: '#f5f5f0', image: 'assets/images/products/iphone-16-blanc.png' },
-      { id: 'rose',      label: 'Rose',     colorHex: '#f4b8c1', image: 'assets/images/products/iphone-16-rose.png' },
-      { id: 'outremer',  label: 'Outremer', colorHex: '#3a5ba0', image: 'assets/images/products/iphone-16-outremer.png' },
-      { id: 'sarcelle',  label: 'Sarcelle', colorHex: '#4a8c8c', image: 'assets/images/products/iphone-16-sarcelle.png' },
+      { id: 'noir',      label: 'Noir',     colorHex: '#1c1c1c', image: 'assets/images/products/iphone-16-noir.png',      images: ['assets/images/products/iphone-16-noir.png',      'assets/images/products/iphone-16-noir-dos.png'] },
+      { id: 'blanc',     label: 'Blanc',    colorHex: '#f5f5f0', image: 'assets/images/products/iphone-16-blanc.png',     images: ['assets/images/products/iphone-16-blanc.png',     'assets/images/products/iphone-16-blanc-dos.png'] },
+      { id: 'rose',      label: 'Rose',     colorHex: '#f4b8c1', image: 'assets/images/products/iphone-16-rose.png',      images: ['assets/images/products/iphone-16-rose.png',      'assets/images/products/iphone-16-rose-dos.png'] },
+      { id: 'outremer',  label: 'Outremer', colorHex: '#3a5ba0', image: 'assets/images/products/iphone-16-outremer.png',  images: ['assets/images/products/iphone-16-outremer.png',  'assets/images/products/iphone-16-outremer-dos.png'] },
+      { id: 'sarcelle',  label: 'Sarcelle', colorHex: '#4a8c8c', image: 'assets/images/products/iphone-16-sarcelle.png', images: ['assets/images/products/iphone-16-sarcelle.png', 'assets/images/products/iphone-16-sarcelle-dos.png'] },
     ],
     storageOptions: [
       { id: '128go', label: '128 Go', price_eur: 600 },
