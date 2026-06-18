@@ -271,6 +271,24 @@ const PRODUCTS = [
     price_eur:650, image:'assets/images/products/ps5-slim-chassis-e.jpg', rating:4.9
   },
 
+  {
+    id:'p028', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Batterie Externe pour Manettes PS5®', mg:'Bateria ivelany ho an\'ny Manette PS5®' },
+    description:{ fr:'Prolongez vos sessions de jeu jusqu\'à 6 heures supplémentaires. Compatible DualSense™ et DualSense Edge™ via USB-C. Indicateur de niveau de batterie intégré.', mg:'Halavao ny fotoana filalaovana hatramin\'ny 6 ora fanampiny. Mifanaraka amin\'ny DualSense™ sy DualSense Edge™ USB-C.' },
+    description_complete: 'Ne laissez plus jamais votre manette PS5 à plat en pleine partie. La Batterie Externe pour Manettes PS5® ajoute jusqu\'à 6 heures d\'autonomie supplémentaire à votre DualSense™ ou DualSense Edge™ grâce à sa connexion USB-C simple et rapide. Son indicateur de niveau de batterie intégré vous permet de suivre la charge restante en un coup d\'œil. Le câble de charge de 50 cm inclus assure une prise en main confortable pendant le jeu. Compacte et légère, elle se glisse facilement dans votre sac pour jouer partout sans interruption.',
+    poids_kg: 0.09,
+    dimensions: { longueur_cm: 10.5, largeur_cm: 4.2, hauteur_cm: 2.1, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 batterie externe pour manette PS5',
+      '1 câble de charge USB-C (50 cm)',
+      '1 manuel d\'utilisation',
+    ],
+    features:{ fr:['Jusqu\'à 6 h d\'autonomie supplémentaire','Compatible DualSense™ et DualSense Edge™','Connexion USB-C universelle','Indicateur de niveau de batterie intégré','Câble de charge 50 cm inclus'], mg:['Hatramin\'ny 6 ora fanampiny','Mifanaraka DualSense™ sy DualSense Edge™','USB-C','Fampisehoana bateria','Tariby 50 cm'] },
+    isNew: true,
+    price_eur:50, image:'assets/images/products/batterie-manette-ps5.jpg', rating:4.6
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
