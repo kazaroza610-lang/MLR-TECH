@@ -156,7 +156,7 @@ const PRODUCTS = [
     poids_kg: 2.6, // poids approximatif PS5 Slim Digital — à confirmer sur le site Sony
     stockage: '825 Go', // capacité SSD officielle PS5 Slim Digital
     features:{ fr:['SSD ultra-rapide','Ray Tracing','Audio 3D immersif','Manette DualSense incluse','Gâchettes adaptatives'], mg:['SSD haingana','Ray Tracing','Audio 3D','DualSense','Gâchettes adaptatives'] },
-    price_eur:600, image:'images/products/ps5-digital.jpeg', rating:4.9
+    price_eur:550, image:'images/products/ps5-digital.jpeg', rating:4.9
   },
   {
     id:'p023', category:'consoles-jeux', subcategory:'consoles',
