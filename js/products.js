@@ -205,6 +205,26 @@ const PRODUCTS = [
     price_eur:500, image:'assets/images/products/nintendo-switch-2.jpg', rating:4.9
   },
 
+  {
+    id:'p025', category:'consoles-jeux', subcategory:'consoles',
+    name:{ fr:'Xbox Series S 512 Go', mg:'Xbox Series S 512 Go' },
+    description:{ fr:'La console next-gen la plus compacte de Microsoft. 512 Go SSD, résolution 1440p native, jusqu\'à 120 FPS, rétrocompatibilité totale Xbox.', mg:'Console next-gen kely indrindra amin\'i Microsoft. 512 Go SSD, 1440p, hatramin\'ny 120 FPS, mifanaraka Xbox rehetra.' },
+    description_complete: 'La Xbox Series S est la console next-gen la plus abordable et la plus compacte de Microsoft. Grâce à son SSD NVMe custom de 512 Go, les temps de chargement sont quasi instantanés. Elle affiche en 1440p natif et supporte l\'upscaling 4K, pour une image nette sur tous vos écrans. Avec jusqu\'à 120 FPS sur les jeux compatibles, le rendu est fluide comme jamais. Le ray tracing et l\'audio spatial Dolby Atmos garantissent une immersion totale. Compatible avec 100 % des jeux Xbox One et des centaines de jeux Xbox 360 et Xbox Original, elle donne accès à une bibliothèque immense dès le premier jour. Idéale en complément de Xbox Game Pass Ultimate.',
+    poids_kg: 1.93,
+    dimensions: { longueur_cm: 27.5, largeur_cm: 15.1, hauteur_cm: 6.5, unite: 'cm' },
+    stockage: '512 Go SSD NVMe',
+    contenu_boite: [
+      '1 console Xbox Series S (Robot White)',
+      '1 manette sans fil Xbox (Carbon Black)',
+      '1 câble HDMI haute vitesse',
+      '1 câble d\'alimentation',
+      '2 piles AA',
+    ],
+    features:{ fr:['512 Go SSD NVMe custom','Résolution 1440p / 4K upscaling','Jusqu\'à 120 FPS','10 Go RAM GDDR6','Rétrocompatibilité Xbox One / 360 / Original'], mg:['512 Go SSD NVMe','1440p / 4K upscaling','Hatramin\'ny 120 FPS','10 Go RAM GDDR6','Mifanaraka Xbox One / 360 / Original'] },
+    isNew: true,
+    price_eur:300, image:'https://picsum.photos/seed/xbox-series-s/600/600', rating:4.7
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
