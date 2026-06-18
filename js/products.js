@@ -249,6 +249,28 @@ const PRODUCTS = [
     price_eur:500, image:'assets/images/products/xbox-series-x-black.jpg', rating:4.9
   },
 
+  {
+    id:'p027', category:'consoles-jeux', subcategory:'consoles',
+    name:{ fr:'PlayStation 5 Slim (Chassis E)', mg:'PlayStation 5 Slim (Chassis E)' },
+    description:{ fr:'La PS5 Slim Chassis E : design épuré, 1 To SSD, 4K 120 FPS, lecteur de disque intégré, ray tracing et audio 3D. La next-gen PlayStation à son meilleur.', mg:'PS5 Slim Chassis E vaovao : 1 To SSD, 4K 120 FPS, lecteur disque, ray tracing sy audio 3D. Next-gen PlayStation tsara indrindra.' },
+    description_complete: 'La PlayStation 5 Slim Chassis E est la nouvelle révision de la console next-gen de Sony, alliant puissance et compacité. Son SSD ultra-rapide de 1 To (5 500 Mo/s) élimine quasiment les temps de chargement. Elle affiche jusqu\'en 4K à 120 FPS sur les jeux compatibles, avec le ray tracing pour un rendu visuel réaliste et le Tempest 3D Audio pour une immersion sonore totale. La manette DualSense intègre des gâchettes adaptatives et un retour haptique qui font vivre chaque action. Compatible avec toute la bibliothèque PS4 et la majorité des jeux PS5. Astro\'s Playroom est préinstallé pour découvrir les capacités de la console dès le premier allumage.',
+    poids_kg: 3.2,
+    dimensions: { longueur_cm: 35.8, largeur_cm: 21.6, hauteur_cm: 8.0, unite: 'cm' },
+    stockage: '1 To SSD',
+    contenu_boite: [
+      '1 console PlayStation 5 Slim (Chassis E)',
+      '1 manette DualSense',
+      '1 pied console',
+      '1 câble HDMI 2.1',
+      '1 câble d\'alimentation',
+      '1 câble USB Type-C',
+      'Astro\'s Playroom (préinstallé)',
+    ],
+    features:{ fr:['4K natif / 120 FPS','1 To SSD (5 500 Mo/s)','16 Go RAM GDDR6','Lecteur disque Blu-ray 4K intégré','Gâchettes adaptatives + retour haptique DualSense'], mg:['4K / 120 FPS','1 To SSD haingana','16 Go RAM GDDR6','Lecteur disque Blu-ray 4K','DualSense gâchettes adaptatives'] },
+    isNew: true,
+    price_eur:650, image:'assets/images/products/ps5-slim-chassis-e.jpg', rating:4.9
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
