@@ -364,6 +364,29 @@ const PRODUCTS = [
     price_eur:80, image:'assets/images/products/station-charge-xbox.jpg', rating:4.4
   },
 
+  {
+    id:'p032', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Station de Charge PS5 avec Ventilateur RGB', mg:'Station de Charge PS5 miaraka amin\'ny Ventilateur RGB' },
+    description:{ fr:'Support vertical PS5 tout-en-un : charge 2 manettes DualSense, ventilateur de refroidissement, hub USB 3 ports et éclairage RGB. Compatible toutes versions PS5.', mg:'Support vertical PS5 : charge DualSense 2, ventilateur, hub USB 3 ports sy RGB. Mifanaraka amin\'ny PS5 rehetra.' },
+    description_complete: 'Optimisez votre setup PS5 avec cette station multifonction haut de gamme. Elle positionne votre console PS5 en mode vertical tout en la refroidissant activement grâce à son ventilateur intégré à vitesse automatique. Deux emplacements de charge accueillent simultanément vos manettes DualSense™ et DualSense Edge™ pour ne jamais manquer de batterie. Le hub USB 3 ports vous permet de brancher facilement vos accessoires sans chercher les ports de la console. L\'éclairage RGB ambiant ajoute une touche gaming à votre espace de jeu. Compatible avec toutes les versions PS5 : originale (2020), Slim et Pro.',
+    poids_kg: 0.45,
+    dimensions: { longueur_cm: 32.0, largeur_cm: 14.5, hauteur_cm: 12.0, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 station de charge verticale PS5',
+      '1 câble USB d\'alimentation',
+      '1 manuel d\'utilisation',
+    ],
+    features:{ fr:['Charge 2 manettes DualSense simultanément','Ventilateur de refroidissement automatique','Hub USB 3 ports intégré','Éclairage RGB ambiant','Compatible PS5 originale, Slim et Pro'], mg:['Charge DualSense 2 miaraka','Ventilateur automatique','Hub USB 3 ports','RGB ambiant','Mifanaraka PS5 / Slim / Pro'] },
+    compatibility: [
+      { platform: 'ps5', label: 'PlayStation 5' },
+      { platform: 'ps5', label: 'PlayStation 5 Slim' },
+      { platform: 'ps5', label: 'PlayStation 5 Pro' },
+    ],
+    isNew: true,
+    price_eur:80, image:'assets/images/products/station-charge-ps5.jpg', rating:4.6
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
