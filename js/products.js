@@ -483,6 +483,39 @@ const PRODUCTS = [
     price_eur:45, image:'assets/images/products/avantree-c81-1.jpg', rating:4.5
   },
 
+  {
+    id:'p037', category:'consoles-jeux', subcategory:'accessoires-console',
+    name:{ fr:'Manette Xbox Sans Fil — Toutes Couleurs', mg:'Manette Xbox Sans Fil — Loko rehetra' },
+    description:{ fr:'Manette Xbox sans fil officielle Microsoft pour Xbox Series X|S, Xbox One et PC Windows. Disponible en 8 coloris : Noir, Blanc, Rouge, Bleu, Volt, Rose, Vert, Violet.', mg:'Manette Xbox ofisialy Microsoft ho an\'ny Xbox Series X|S, One sy PC. Loko 8 : Mainty, Fotsy, Mena, Manga, Volt, Vovonana, Maitso, Violet.' },
+    description_complete: 'La manette Xbox sans fil officielle Microsoft offre une prise en main ergonomique pensée pour des heures de jeu confortables. Sa technologie sans fil Bluetooth permet de jouer à plus de 9 mètres de distance, et la connexion hybride D+Bluetooth est compatible Xbox Series X|S, Xbox One, PC Windows 10/11, iOS et Android. Les gâchettes texturées et les bumpers offrent une précision maximale. Le bouton Share intégré permet de capturer et partager vos meilleurs moments instantanément. Disponible en 8 coloris exclusifs : Carbon Black, Robot White, Pulse Red, Shock Blue, Electric Volt, Deep Pink, Velocity Green et Astral Purple.',
+    poids_kg: 0.29,
+    dimensions: { longueur_cm: 15.3, largeur_cm: 10.6, hauteur_cm: 6.5, unite: 'cm' },
+    stockage: null,
+    contenu_boite: [
+      '1 manette Xbox sans fil',
+      '2 piles AA',
+      '1 câble USB-C (selon version)',
+    ],
+    features:{ fr:['Connexion sans fil Bluetooth','Compatible Xbox Series X|S, One, PC, iOS, Android','Bouton Share intégré','Gâchettes et bumpers texturés','8 coloris disponibles'], mg:['Bluetooth sans fil','Mifanaraka Xbox, PC, iOS, Android','Bouton Share','Gâchette texturée','Loko 8'] },
+    variants: [
+      { id: 'noir',   label: 'Noir',   colorHex: '#1a1a1a', image: 'assets/images/products/manette-xbox-noir.jpg' },
+      { id: 'blanc',  label: 'Blanc',  colorHex: '#e8e8e8', image: 'assets/images/products/manette-xbox-blanc.jpg' },
+      { id: 'rouge',  label: 'Rouge',  colorHex: '#c0392b', image: 'assets/images/products/manette-xbox-rouge.jpg' },
+      { id: 'bleu',   label: 'Bleu',   colorHex: '#2563eb', image: 'assets/images/products/manette-xbox-bleu.jpg' },
+      { id: 'volt',   label: 'Volt',   colorHex: '#d4e600', image: 'assets/images/products/manette-xbox-volt.jpg' },
+      { id: 'rose',   label: 'Rose',   colorHex: '#e91e8c', image: 'assets/images/products/manette-xbox-rose.jpg' },
+      { id: 'vert',   label: 'Vert',   colorHex: '#16a34a', image: 'assets/images/products/manette-xbox-vert.jpg' },
+      { id: 'violet', label: 'Violet', colorHex: '#7c3aed', image: 'assets/images/products/manette-xbox-violet.jpg' },
+    ],
+    compatibility: [
+      { platform: 'xbox', label: 'Xbox Series X' },
+      { platform: 'xbox', label: 'Xbox Series S' },
+      { platform: 'xbox', label: 'Xbox One' },
+    ],
+    isNew: false,
+    price_eur:70, image:'assets/images/products/manette-xbox-noir.jpg', rating:4.8
+  },
+
   /* ── MAISON INTELLIGENTE ─────────────────── */
   {
     id:'p014', category:'maison-intelligente', subcategory:'ampoules-led',
