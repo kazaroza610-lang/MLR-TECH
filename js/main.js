@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMenu();
   initSearch();
   initCart();
+  initWishlist();
   applyTranslations();
 
   const page = document.body.dataset.page;
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'category') initCategory();
   if (page === 'product')  initProduct();
   if (page === 'cart-page') initCartPage();
+  if (page === 'favoris')  initFavoris();
 
   initScrollAnimations();
   initHeaderScroll();
@@ -264,6 +266,30 @@ function initCategory() {
   updateSEOForPage();
 }
 
+/* ── FAVORIS page ───────────────────────────────────────── */
+function initFavoris() {
+  const titleEl = document.getElementById('favorisTitle');
+  if (titleEl) titleEl.textContent = t('favoris.title');
+  const backLink = document.querySelector('#backLink a');
+  if (backLink) backLink.textContent = t('back');
+  renderFavoris();
+}
+
+function renderFavoris() {
+  const grid  = document.getElementById('productsGrid');
+  const empty = document.getElementById('favEmpty');
+  if (!grid) return;
+  const ids = getWishlist();
+  const products = PRODUCTS.filter(p => ids.includes(p.id));
+  if (!products.length) {
+    grid.innerHTML = '';
+    if (empty) { empty.style.display = 'block'; empty.textContent = t('favoris.empty'); }
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  renderProductGrid(products, grid);
+}
+
 /* ── PRODUCT detail page ────────────────────────────────── */
 function initProduct() {
   const params = new URLSearchParams(window.location.search);
@@ -318,6 +344,10 @@ function renderProductDetail(p) {
         <div class="product-detail-price" data-price-eur="${p.price_eur}">${formatPrice(p.price_eur)}</div>
         <div class="pd-delivery-inline">${truckIcon}<span>Livraison estimée : <strong>${DELIVERY_DAYS} jours ouvrés</strong></span></div>
         <button class="btn btn-primary btn-full btn-add-big" data-product-id="${p.id}">${t('products.add')}</button>
+        <button class="btn-fav-detail" data-fav-id="${p.id}" aria-pressed="false" aria-label="${t('favoris.add')}">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          <span data-i18n="favoris.add">${t('favoris.add')}</span>
+        </button>
       </div>
     </div>
 
@@ -371,6 +401,7 @@ function renderProductDetail(p) {
 
   el.querySelector('.btn-add-big').addEventListener('click', () => addToCart(p.id));
   el.querySelector('.sticky-cart-btn').addEventListener('click', () => addToCart(p.id));
+  if (typeof updateWishlistUI === 'function') updateWishlistUI();
   initProductAccordion(el);
   initStickyCartBar();
   loadProductReviews(p.id);

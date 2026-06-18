@@ -85,25 +85,31 @@
   .header-actions { order: 3; gap: 4px; }
   .header-action { min-width: 58px; }
 
-  /* RANGÉE 2 : catégories (séparées par ·) + pills langue/devise */
+  /* RANGÉE 2 : catégories centrées + pills langue/devise à droite
+     Grille 3 colonnes : [1fr vide] [catégories auto, centrées] [1fr → outils à droite] */
   .header-row-nav { border-top: 1px solid #222; }
   .header-row-nav > .header-container {
     min-height: 42px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
   }
   .header-tools.desktop-only {
+    grid-column: 3;
+    justify-self: end;
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-left: auto;
     flex-shrink: 0;
   }
 
-  /* Navigation horizontale (zone gauche) */
+  /* Navigation horizontale (centrée, colonne du milieu) */
   .nav {
     position: static;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    grid-column: 2;
     flex: 0 1 auto;
     width: auto;
     max-width: none;

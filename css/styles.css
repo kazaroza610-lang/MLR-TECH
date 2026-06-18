@@ -192,21 +192,42 @@ ul { list-style: none; }
 }
 .account-dot.show { display: block; }
 
-/* Badge compteur du panier (vert conservé) */
+/* Badge compteur du panier (vert drapeau Madagascar) */
 .cart-count {
   position: absolute;
-  top: 2px; right: 10px;
-  display: none;               /* affiché par JS quand > 0 */
+  top: 0; right: 8px;
+  display: none;               /* affiché par JS quand > 0 (flex) */
   align-items: center;
   justify-content: center;
   min-width: 18px; height: 18px;
   padding: 0 4px;
   border-radius: 9px;
-  background: #22c55e;
+  background: #007e3a;         /* vert du drapeau malgache */
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
+  border: 1.5px solid #000;
+}
+
+/* Cœur Favoris (header) : contour rouge, label blanc */
+.header-action--fav svg { stroke: #e11d2a; }
+/* Pastille compteur favoris (header) */
+.fav-count {
+  position: absolute;
+  top: 0; right: 8px;
+  display: none;               /* affiché par JS quand > 0 (flex) */
+  align-items: center;
+  justify-content: center;
+  min-width: 18px; height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: #e11d2a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  border: 1.5px solid #000;
 }
 
 /* Menu déroulant compte (panneau blanc) */
@@ -587,9 +608,31 @@ ul { list-style: none; }
 }
 .product-card:hover { box-shadow: var(--shadow-md); }
 .product-card-link { display: flex; flex-direction: column; flex: 1; }
-.product-img-wrap { aspect-ratio: 1; overflow: hidden; background: #fff; }
+.product-img-wrap { position: relative; aspect-ratio: 1; overflow: hidden; background: #fff; }
 .product-img-wrap img { width: 100%; height: 100%; object-fit: contain; transition: transform var(--t-med); }
 .product-card:hover .product-img-wrap img { transform: scale(1.04); }
+
+/* Cœur favori sur la carte produit (contour rouge, rempli si actif) */
+.fav-toggle {
+  position: absolute;
+  top: 8px; right: 8px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  padding: 0;
+  background: rgba(255,255,255,.92);
+  border: none;
+  border-radius: 50%;
+  color: #e11d2a;              /* contour rouge (stroke = currentColor) */
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,.18);
+  transition: transform var(--t-fast), background var(--t-fast);
+}
+.fav-toggle svg { fill: none; stroke: currentColor; transition: fill var(--t-fast); }
+.fav-toggle:hover { transform: scale(1.1); background: #fff; }
+.fav-toggle.active svg { fill: #e11d2a; }
 .product-card-body { padding: 10px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
 .product-cat { font-size: 11px; text-transform: uppercase; color: var(--c-muted); letter-spacing: .6px; }
 .product-name {
@@ -715,6 +758,40 @@ ul { list-style: none; }
 
 /* ── No results ─────────────────────────────── */
 .no-results { grid-column: 1/-1; text-align: center; color: var(--c-muted); padding: 40px; }
+
+/* État vide de la page Favoris */
+.fav-empty {
+  text-align: center;
+  color: var(--c-muted);
+  font-size: 16px;
+  padding: 60px 24px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Bouton « Ajouter aux favoris » sur la fiche produit */
+.btn-fav-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 10px;
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #e11d2a;
+  background: #fff;
+  border: 1.5px solid #e11d2a;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.btn-fav-detail svg { fill: none; stroke: currentColor; transition: fill var(--t-fast); }
+.btn-fav-detail:hover { background: #fff0f1; }
+.btn-fav-detail.active { background: #e11d2a; color: #fff; }
+.btn-fav-detail.active svg { fill: #fff; }
 
 /* ═══════════════════════════════════════════════
    CART PANEL

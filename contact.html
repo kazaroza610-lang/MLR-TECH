@@ -75,8 +75,9 @@
         <div class="header-actions">
 
           <!-- Favoris -->
-          <a href="#favoris" class="header-action" aria-label="Favoris">
+          <a href="favoris.html" class="header-action header-action--fav" aria-label="Favoris">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <span class="fav-count" aria-live="polite">0</span>
             <span class="header-action-label" data-i18n="header.favoris">Favoris</span>
           </a>
 
@@ -176,10 +177,9 @@
         <!-- Langue + devise en pills (desktop) -->
         <div class="header-tools desktop-only">
           <span class="header-pill">
-            <svg class="pill-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z"/></svg>
             <select class="lang-select" aria-label="Langue">
-              <option value="fr">FR</option>
-              <option value="mg">MG</option>
+              <option value="fr">🇫🇷 FR</option>
+              <option value="mg">🇲🇬 MG</option>
             </select>
           </span>
           <span class="header-pill">
@@ -301,6 +301,7 @@
   <script src="js/i18n.js"></script>
   <script src="js/currency.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/wishlist.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/seo.js"></script>
   <script src="js/account.js"></script>

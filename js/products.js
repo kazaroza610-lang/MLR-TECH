@@ -310,6 +310,9 @@ function createProductCard(product) {
   card.innerHTML = `
     <a href="product.html?id=${product.id}" class="product-card-link" aria-label="${product.name[currentLang]}">
       <div class="product-img-wrap">
+        <button class="fav-toggle" data-fav-id="${product.id}" aria-pressed="false" aria-label="${t('favoris.add')}" title="${t('favoris.add')}">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </button>
         <img src="${product.image}" alt="${product.name[currentLang]} — ${t('category.' + product.category)} | MLR TECH Madagascar" loading="lazy" width="400" height="400">
       </div>
       <div class="product-card-body">
@@ -340,4 +343,5 @@ function renderProductGrid(products, container) {
     return;
   }
   products.forEach(p => container.appendChild(createProductCard(p)));
+  if (typeof updateWishlistUI === 'function') updateWishlistUI();
 }
