@@ -287,8 +287,6 @@ const PRODUCTS = [
     features:{ fr:['Jusqu\'à 6 h d\'autonomie supplémentaire','Compatible DualSense™ et DualSense Edge™','Connexion USB-C universelle','Indicateur de niveau de batterie intégré','Câble de charge 50 cm inclus'], mg:['Hatramin\'ny 6 ora fanampiny','Mifanaraka DualSense™ sy DualSense Edge™','USB-C','Fampisehoana bateria','Tariby 50 cm'] },
     compatibility: [
       { platform: 'ps5', label: 'PlayStation 5' },
-      { platform: 'ps5', label: 'DualSense™' },
-      { platform: 'ps5', label: 'DualSense Edge™' },
     ],
     images: [
       'assets/images/products/batterie-manette-ps5.jpg',
