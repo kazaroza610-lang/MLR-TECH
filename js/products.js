@@ -52,7 +52,7 @@ const PRODUCTS = [
     ],
     storageOptions: [
       { id: '128go', label: '128 Go', price_eur: 600 },
-      { id: '256go', label: '256 Go', price_eur: 759 },
+      { id: '256go', label: '256 Go', price_eur: 750 },
     ],
     isNew: true,
     price_eur:600, image:'assets/images/products/iphone-16-noir.png', rating:4.9
