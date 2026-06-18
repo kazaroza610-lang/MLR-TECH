@@ -166,6 +166,16 @@ const PRODUCTS = [
     poids_kg: 0.398,
     dimensions: { longueur_cm: 23.86, largeur_cm: 10.2, hauteur_cm: 1.4, unite: 'cm' },
     stockage: '32 Go',
+    contenu_boite: [
+      '1 console Nintendo Switch',
+      '1 station d\'accueil Nintendo Switch (dock TV)',
+      '1 Joy-Con rouge néon (gauche)',
+      '1 Joy-Con bleu néon (droit)',
+      '2 sangles Joy-Con',
+      '1 grip Joy-Con',
+      '1 câble HDMI',
+      '1 adaptateur secteur',
+    ],
     features:{ fr:['Écran 6,2" LCD tactile 1280×720','WiFi 802.11ac + Bluetooth 4.1','Autonomie jusqu\'à 6,5 h','Compatible TV via station d\'accueil','2 Joy-Con détachables inclus'], mg:['Sary 6,2" LCD tactile','WiFi + Bluetooth 4.1','6,5h bateria','Mifandray TV','Joy-Con 2 azo esorina'] },
     isNew: true,
     price_eur:280, image:'assets/images/products/nintendo-switch-neon.jpg', rating:4.8
