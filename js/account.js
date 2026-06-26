@@ -405,6 +405,9 @@ async function doCheckout() {
     return;
   }
   const items = cart.map(i => {
+    if (i.custom) {
+      return { product_id: i.id, name: i.custom.caseLabel, price_eur: i.custom.price_eur, qty: i.qty };
+    }
     const p = getProductById(i.id);
     return p ? { product_id: p.id, name: p.name.fr, price_eur: p.price_eur, qty: i.qty } : null;
   }).filter(Boolean);

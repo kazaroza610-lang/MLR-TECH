@@ -1205,3 +1205,159 @@ ul { list-style: none; }
 .cart-page { max-width: 800px; margin: 0 auto; padding: 32px 16px; }
 .cart-page h1 { font-size: 28px; font-weight: 800; margin-bottom: 24px; }
 .cart-page-total { font-size: 20px; font-weight: 700; text-align: right; margin: 20px 0; }
+
+/* ═══════════════════════════════════════════════
+   CTA bannière coque personnalisée (category.html)
+   ═══════════════════════════════════════════════ */
+.cz-cta-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  background: var(--c-black); color: var(--c-white);
+  border-radius: var(--radius);
+  padding: 18px 22px; margin-bottom: 20px;
+  text-decoration: none;
+  transition: transform var(--t-fast);
+}
+.cz-cta-banner:hover { transform: scale(1.01); }
+.cz-cta-text { display: flex; flex-direction: column; gap: 4px; }
+.cz-cta-text strong { font-size: 17px; }
+.cz-cta-text span { font-size: 13px; color: #ccc; }
+.cz-cta-btn {
+  flex-shrink: 0; background: var(--c-white); color: var(--c-black);
+  padding: 10px 18px; border-radius: 999px; font-weight: 700; font-size: 14px;
+}
+
+/* ═══════════════════════════════════════════════
+   CONFIGURATEUR DE COQUES (coque-personnalisee.html)
+   ═══════════════════════════════════════════════ */
+.cz-section { padding: 0 16px 60px; }
+.cz-wrap { max-width: 1200px; margin: 0 auto; }
+
+.cz-stepper { display: flex; justify-content: center; gap: 0; margin: 24px 0 40px; flex-wrap: wrap; }
+.cz-step {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 20px; opacity: .4; transition: opacity var(--t-fast);
+}
+.cz-step.active, .cz-step.done { opacity: 1; }
+.cz-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--c-border); color: var(--c-text);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+.cz-step.active .cz-step-num, .cz-step.done .cz-step-num { background: var(--c-black); color: var(--c-white); }
+.cz-step-label { font-size: 14px; font-weight: 600; }
+
+.cz-stepbox { display: none; }
+.cz-stepbox.active { display: block; }
+.cz-step-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+
+/* Étape 1 — marques & modèles */
+.cz-brands { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; margin-bottom: 32px; }
+.cz-brand-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 18px 8px; border: 2px solid var(--c-border); border-radius: var(--radius);
+  background: var(--c-white); cursor: pointer; font-weight: 600; font-size: 14px;
+  transition: border-color var(--t-fast);
+}
+.cz-brand-btn:hover { border-color: var(--c-black); }
+.cz-brand-btn.active { border-color: var(--c-black); background: #f5f5f5; }
+.cz-brand-icon { color: var(--c-text); }
+
+.cz-models-wrap { margin-top: 8px; }
+.cz-models { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.cz-model-btn {
+  padding: 12px 14px; border: 2px solid var(--c-border); border-radius: var(--radius);
+  background: var(--c-white); cursor: pointer; font-size: 14px; text-align: left;
+  transition: border-color var(--t-fast);
+}
+.cz-model-btn:hover { border-color: var(--c-black); }
+.cz-model-btn.active { border-color: var(--c-black); background: #f5f5f5; font-weight: 700; }
+
+/* Étape 2 — types de coque */
+.cz-types { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.cz-type-card {
+  position: relative; text-align: left;
+  padding: 18px; border: 2px solid var(--c-border); border-radius: var(--radius);
+  background: var(--c-white); cursor: pointer;
+  transition: border-color var(--t-fast);
+}
+.cz-type-card:hover { border-color: var(--c-black); }
+.cz-type-card.active { border-color: var(--c-black); background: #f5f5f5; }
+.cz-type-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; padding-right: 70px; }
+.cz-type-desc { font-size: 13px; color: var(--c-muted); margin-bottom: 6px; }
+.cz-type-sides { font-size: 12px; color: var(--c-muted); margin-bottom: 10px; }
+.cz-type-price { font-size: 16px; font-weight: 800; }
+.cz-badge-popular {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--c-black); color: var(--c-white);
+  font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 999px;
+}
+
+.cz-back-btn { margin-top: 10px; }
+
+/* Étape 3 — éditeur */
+.cz-editor { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.cz-canvas-wrap { position: relative; }
+#czCanvas {
+  width: 100%; max-width: 480px; aspect-ratio: 1/1; display: block; margin: 0 auto;
+  touch-action: none; cursor: grab; border-radius: var(--radius);
+  background: #fafafa;
+}
+.cz-upload-zone {
+  margin: 16px auto 0; max-width: 480px;
+  border: 2px dashed var(--c-border); border-radius: var(--radius);
+  padding: 20px; text-align: center; cursor: pointer;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+.cz-upload-zone:hover, .cz-upload-zone.dragover { border-color: var(--c-black); background: #fafafa; }
+.cz-upload-zone.has-image { padding: 10px; }
+.cz-upload-zone p { font-size: 13px; margin: 0; }
+.cz-upload-hint { color: var(--c-muted); font-size: 11px !important; margin-top: 6px !important; }
+.cz-upload-warning { color: var(--c-error); font-size: 12px; text-align: center; margin-top: 8px; max-width: 480px; margin-inline: auto; }
+
+.cz-tools { display: flex; flex-direction: column; gap: 22px; }
+.cz-tool-group h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.cz-tool-label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--c-muted); margin-bottom: 10px; }
+.cz-tool-label input[type="range"] { width: 100%; }
+.cz-mirror-btns { display: flex; gap: 8px; }
+.btn-storage-like {
+  flex: 1; padding: 9px 12px; border: 2px solid var(--c-border); border-radius: var(--radius);
+  background: var(--c-white); cursor: pointer; font-size: 13px; font-weight: 600;
+  transition: border-color var(--t-fast);
+}
+.btn-storage-like:hover { border-color: var(--c-black); }
+
+.cz-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.cz-filter-btn {
+  padding: 8px 14px; border: 2px solid var(--c-border); border-radius: 999px;
+  background: var(--c-white); cursor: pointer; font-size: 13px; font-weight: 600;
+  transition: border-color var(--t-fast);
+}
+.cz-filter-btn:hover { border-color: var(--c-black); }
+.cz-filter-btn.active { border-color: var(--c-black); background: var(--c-black); color: var(--c-white); }
+
+.cz-text-input {
+  width: 100%; padding: 10px 12px; border: 2px solid var(--c-border); border-radius: var(--radius);
+  font-size: 14px; margin-bottom: 12px;
+}
+.cz-text-row { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 12px; }
+.cz-text-size { flex: 1; margin-bottom: 0; }
+.cz-text-pos { display: flex; gap: 8px; }
+.cz-pos-btn {
+  flex: 1; padding: 8px; border: 2px solid var(--c-border); border-radius: var(--radius);
+  background: var(--c-white); cursor: pointer; font-size: 13px; font-weight: 600;
+  transition: border-color var(--t-fast);
+}
+.cz-pos-btn:hover { border-color: var(--c-black); }
+.cz-pos-btn.active { border-color: var(--c-black); background: var(--c-black); color: var(--c-white); }
+
+.cz-summary {
+  background: #fafafa; border-radius: var(--radius); padding: 16px;
+  display: flex; flex-direction: column; gap: 4px; font-size: 14px;
+}
+.cz-summary h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.cz-sum-price { font-size: 16px; margin-top: 6px; }
+
+@media (max-width: 860px) {
+  .cz-editor { grid-template-columns: 1fr; }
+}

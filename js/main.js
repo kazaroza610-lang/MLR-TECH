@@ -256,6 +256,9 @@ function initCategory() {
   const grid = document.getElementById('productsGrid');
   if (grid) renderProductGrid(currentProducts, grid);
 
+  const czBanner = document.getElementById('czCtaBanner');
+  if (czBanner) czBanner.hidden = subcat !== 'coques-protections';
+
   initPriceFilter();
   markActiveNav(`category.html?cat=${slug}`);
 

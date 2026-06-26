@@ -1,87 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- ═══ CHARSET & VIEWPORT ═══ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ═══ TITRE & DESCRIPTION (raffinés dynamiquement par js/seo.js selon ?cat=) ═══ -->
-  <title>Catégories — MLR TECH Madagascar</title>
-  <meta name="description" content="Découvrez les catégories MLR TECH : téléphone, son & image, bureau & gaming, maison intelligente et montres connectées. Livraison rapide à Madagascar.">
-  <meta name="keywords" content="électronique Madagascar, accessoires téléphone, audio, gaming, maison intelligente, montre connectée">
-  <meta name="author" content="MLR TECH">
+  <title>Créez votre coque personnalisée — MLR TECH Madagascar</title>
+  <meta name="description" content="Personnalisez votre coque de téléphone : choisissez votre modèle, le type de coque, uploadez votre photo et voyez l'aperçu en temps réel. Livraison rapide à Madagascar.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://mlr-tech.com/coque-personnalisee.html">
 
-  <!-- ═══ CANONICAL (raffiné par JS) ═══ -->
-  <link rel="canonical" href="https://mlr-tech.com/category.html">
-
-  <!-- ═══ OPEN GRAPH ═══ -->
-  <meta property="og:title" content="Catégories — MLR TECH Madagascar">
-  <meta property="og:description" content="Téléphone, audio, gaming, maison intelligente, montres connectées. Livraison rapide à Madagascar.">
-  <meta property="og:url" content="https://mlr-tech.com/category.html">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://mlr-tech.com/og-image.png">
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:site_name" content="MLR TECH">
-
-  <!-- ═══ TWITTER CARD ═══ -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Catégories — MLR TECH Madagascar">
-  <meta name="twitter:description" content="Téléphone, audio, gaming, maison intelligente, montres connectées.">
-  <meta name="twitter:image" content="https://mlr-tech.com/og-image.png">
-
-  <!-- ═══ FAVICONS ═══ -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
   <link rel="manifest" href="site.webmanifest">
 
-  <!-- ═══ STYLES ═══ -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css?v=3">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body data-page="category">
+<body data-page="customizer">
 
   <!-- ══ HEADER ══════════════════════════════ -->
   <header class="header">
-
-    <!-- ═══ RANGÉE 1 : logo · recherche · favoris/compte/panier ═══ -->
     <div class="header-row header-row-main">
       <div class="header-container">
-
-        <!-- Menu burger (mobile / tablette) -->
         <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNav">
           <span></span><span></span><span></span>
         </button>
-
-        <!-- Logo -->
         <a href="index.html" class="logo" aria-label="MLR TECH — Accueil">
           <img src="logo.svg" alt="Logo MLR TECH — N°1 de l'électronique à Madagascar" width="120" height="60">
         </a>
-
-        <!-- Barre de recherche (centre, toujours visible) -->
         <form class="header-search" id="headerSearch" role="search" action="index.html" method="get">
           <input type="search" id="searchInput" name="q" placeholder="Rechercher un produit…" data-i18n-placeholder="search.placeholder" aria-label="Rechercher un produit" autocomplete="off">
           <button type="submit" class="header-search-btn" aria-label="Rechercher">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
         </form>
-
-        <!-- Actions : Favoris · Compte · Panier -->
         <div class="header-actions">
-
-          <!-- Favoris -->
           <a href="favoris.html" class="header-action header-action--fav" aria-label="Favoris">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
             <span class="fav-count" aria-live="polite">0</span>
             <span class="header-action-label" data-i18n="header.favoris">Favoris</span>
           </a>
-
-          <!-- Compte -->
           <div class="account-wrap">
             <button class="account-btn header-action" id="accountToggle" aria-label="Mon compte" aria-haspopup="true" aria-expanded="false" aria-controls="accountMenu">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20.5C4 16.9 7.6 15 12 15s8 1.9 8 5.5"/></svg>
@@ -90,23 +51,17 @@
             </button>
             <div class="account-menu" id="accountMenu" role="menu" aria-hidden="true"></div>
           </div>
-
-          <!-- Panier -->
           <button class="cart-btn header-action" aria-label="Ouvrir le panier">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
             <span class="cart-count" aria-live="polite">0</span>
             <span class="header-action-label" data-i18n="header.panier">Panier</span>
           </button>
-
         </div>
       </div>
     </div>
 
-    <!-- ═══ RANGÉE 2 : catégories · langue · devise ═══ -->
     <div class="header-row header-row-nav">
       <div class="header-container">
-
-        <!-- Catégories (desktop : barre · / mobile : panneau latéral du burger) -->
         <nav class="nav" id="mainNav" aria-label="Navigation principale">
           <div class="nav-item has-sub">
             <a href="category.html?cat=telephone" class="nav-link"><span data-i18n="category.telephone">Téléphone</span><span class="nav-caret" aria-hidden="true">▸</span></a>
@@ -161,7 +116,6 @@
             </ul>
           </div>
 
-          <!-- Langue + devise (panneau burger mobile/tablette) -->
           <div class="nav-mobile-extras">
             <select class="lang-select" aria-label="Langue">
               <option value="fr">🇫🇷 Français</option>
@@ -174,7 +128,6 @@
           </div>
         </nav>
 
-        <!-- Langue + devise en pills (desktop) -->
         <div class="header-tools desktop-only">
           <span class="header-pill">
             <select class="lang-select" aria-label="Langue">
@@ -193,44 +146,124 @@
     </div>
   </header>
 
-  <!-- Overlay du menu mobile -->
   <div class="nav-overlay" id="navOverlay"></div>
+
   <main>
     <section class="page-hero">
-      <div style="max-width:1440px;margin:0 auto;padding:0 16px">
-        <p class="product-back" id="backLink" style="margin-bottom:12px">
-          <a href="index.html" data-i18n="back">← Retour</a>
+      <div style="max-width:1200px;margin:0 auto;padding:0 16px">
+        <p class="product-back" style="margin-bottom:12px">
+          <a href="category.html?cat=telephone&amp;subcat=coques-protections">← Retour aux coques</a>
         </p>
-        <h1 id="categoryTitle">Catégorie</h1>
+        <h1>Créez votre coque personnalisée</h1>
       </div>
     </section>
 
-    <section class="products" aria-labelledby="categoryTitle">
-      <div style="max-width:1440px;margin:0 auto">
-        <a href="coque-personnalisee.html" class="cz-cta-banner" id="czCtaBanner" hidden>
-          <div class="cz-cta-text">
-            <strong>Créez votre coque personnalisée</strong>
-            <span>Uploadez votre photo et voyez l'aperçu en temps réel sur votre modèle</span>
-          </div>
-          <span class="cz-cta-btn">Personnaliser →</span>
-        </a>
-        <div class="products-header">
-          <div class="filter-row">
-            <label for="priceFilter" data-i18n="filter.price" style="font-size:14px;font-weight:600">Prix max</label>
-            <input type="range" id="priceFilter" class="price-slider" min="0" max="5000" step="5" aria-label="Filtrer par prix">
-            <span id="priceDisplay">200 €</span>
+    <section class="cz-section">
+      <div class="cz-wrap">
+
+        <!-- Barre de progression -->
+        <div class="cz-stepper" id="czStepper">
+          <div class="cz-step active" data-step="1"><span class="cz-step-num">1</span><span class="cz-step-label">Modèle</span></div>
+          <div class="cz-step" data-step="2"><span class="cz-step-num">2</span><span class="cz-step-label">Type de coque</span></div>
+          <div class="cz-step" data-step="3"><span class="cz-step-num">3</span><span class="cz-step-label">Personnalisation</span></div>
+        </div>
+
+        <!-- ÉTAPE 1 : Marque & modèle -->
+        <div class="cz-stepbox active" id="stepModel">
+          <h2 class="cz-step-title">Choisissez votre marque</h2>
+          <div class="cz-brands" id="czBrands"></div>
+
+          <div id="czModelsWrap" class="cz-models-wrap" hidden>
+            <h2 class="cz-step-title">Choisissez votre modèle</h2>
+            <div class="cz-models" id="czModels"></div>
           </div>
         </div>
-        <div class="products-grid" id="productsGrid" aria-label="Produits de la catégorie">
-          <!-- Rempli par JS -->
+
+        <!-- ÉTAPE 2 : Type de coque -->
+        <div class="cz-stepbox" id="stepType">
+          <h2 class="cz-step-title">Choisissez le type de coque</h2>
+          <div class="cz-types" id="czTypes"></div>
+          <button class="btn btn-ghost cz-back-btn" data-go-step="1">← Retour</button>
         </div>
+
+        <!-- ÉTAPE 3 : Personnalisation -->
+        <div class="cz-stepbox" id="stepCustomize">
+          <div class="cz-editor">
+
+            <div class="cz-canvas-wrap">
+              <canvas id="czCanvas" width="600" height="600"></canvas>
+              <div class="cz-upload-zone" id="czUploadZone">
+                <input type="file" id="czFileInput" accept="image/jpeg,image/png,image/webp" hidden>
+                <p><strong>Glissez votre image ici</strong><br>ou cliquez pour choisir un fichier</p>
+                <p class="cz-upload-hint">JPG, PNG ou WEBP — 20 Mo max — résolution recommandée : 1200×1200 px</p>
+              </div>
+              <p class="cz-upload-warning" id="czUploadWarning" hidden></p>
+            </div>
+
+            <div class="cz-tools">
+
+              <div class="cz-tool-group" id="czAdjustGroup" hidden>
+                <h3>Ajuster l'image</h3>
+                <label class="cz-tool-label">Zoom
+                  <input type="range" id="czZoom" min="50" max="200" value="100">
+                </label>
+                <label class="cz-tool-label">Rotation
+                  <input type="range" id="czRotation" min="-180" max="180" value="0">
+                </label>
+                <div class="cz-mirror-btns">
+                  <button class="btn-storage-like" id="czMirrorH" type="button">↔ Miroir horizontal</button>
+                  <button class="btn-storage-like" id="czMirrorV" type="button">↕ Miroir vertical</button>
+                </div>
+              </div>
+
+              <div class="cz-tool-group" id="czFilterGroup" hidden>
+                <h3>Filtres</h3>
+                <div class="cz-filters" id="czFilters">
+                  <button class="cz-filter-btn active" data-filter="none">Normal</button>
+                  <button class="cz-filter-btn" data-filter="grayscale">N&amp;B</button>
+                  <button class="cz-filter-btn" data-filter="sepia">Sépia</button>
+                  <button class="cz-filter-btn" data-filter="vintage">Vintage</button>
+                  <button class="cz-filter-btn" data-filter="contrast">Contraste+</button>
+                </div>
+              </div>
+
+              <div class="cz-tool-group">
+                <h3>Texte optionnel</h3>
+                <input type="text" id="czTextInput" class="cz-text-input" placeholder="Votre texte…" maxlength="30">
+                <div class="cz-text-row">
+                  <label class="cz-tool-label cz-text-size">Taille
+                    <input type="range" id="czTextSize" min="14" max="48" value="24">
+                  </label>
+                  <input type="color" id="czTextColor" value="#ffffff" aria-label="Couleur du texte">
+                </div>
+                <div class="cz-text-pos" id="czTextPos">
+                  <button class="cz-pos-btn active" data-pos="top">Haut</button>
+                  <button class="cz-pos-btn" data-pos="center">Centre</button>
+                  <button class="cz-pos-btn" data-pos="bottom">Bas</button>
+                </div>
+              </div>
+
+              <div class="cz-summary" id="czSummary">
+                <h3>Résumé</h3>
+                <p><strong>Marque :</strong> <span id="czSumBrand">—</span></p>
+                <p><strong>Modèle :</strong> <span id="czSumModel">—</span></p>
+                <p><strong>Type :</strong> <span id="czSumType">—</span></p>
+                <p><strong>Impression :</strong> <span id="czSumSides">—</span></p>
+                <p class="cz-sum-price"><strong>Prix :</strong> <span id="czSumPrice">—</span></p>
+              </div>
+
+              <button class="btn btn-primary btn-full" id="czAddToCart">Ajouter au panier</button>
+              <button class="btn btn-ghost cz-back-btn" data-go-step="2">← Retour</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="footer-grid">
-      <!-- Besoin d'aide ? -->
       <div class="footer-col">
         <h4 data-i18n="footer.help">Besoin d'aide ?</h4>
         <ul class="footer-links">
@@ -239,8 +272,6 @@
           <li><a href="contact.html" data-i18n="footer.contactus">Contactez-nous</a></li>
         </ul>
       </div>
-
-      <!-- Catégories -->
       <div class="footer-col">
         <h4 data-i18n="footer.categories">Catégories</h4>
         <ul class="footer-links">
@@ -251,8 +282,6 @@
           <li><a href="category.html?cat=maison-intelligente" data-i18n="category.maison-intelligente">Maison Intelligente</a></li>
         </ul>
       </div>
-
-      <!-- Informations & pages légales -->
       <div class="footer-col">
         <h4 data-i18n="footer.info">Informations</h4>
         <ul class="footer-links">
@@ -264,27 +293,10 @@
           <li><a href="faq.html" data-i18n="footer.faq">FAQ</a></li>
         </ul>
       </div>
-
-      <!-- Contact & réseaux sociaux -->
       <div class="footer-col">
         <h4 data-i18n="footer.contact">Contact</h4>
         <p><a href="mailto:contact@mlr-tech.com">contact@mlr-tech.com</a></p>
         <p><a href="https://wa.me/33763220884" target="_blank" rel="noopener">+33 7 63 22 08 84</a></p>
-
-        <div class="social-links">
-          <a href="https://www.facebook.com/mlrtech2026" class="social-fb" target="_blank" rel="noopener" aria-label="MLR TECH sur Facebook">
-            <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#1877F2"/><path fill="#fff" d="M16.5 12.07h-2.9v8.43h-3.49v-8.43H8.06V9.18h2.05V7.6c0-2.02 1.2-3.14 3.04-3.14.88 0 1.8.16 1.8.16v2h-1.02c-1 0-1.31.62-1.31 1.26v1.3h2.23l-.36 2.89z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/mlr.tech/" class="social-ig" target="_blank" rel="noopener" aria-label="MLR TECH sur Instagram">
-            <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><defs><radialGradient id="mlrIg" cx="0.3" cy="1.05" r="1.1"><stop offset="0" stop-color="#FED576"/><stop offset="0.26" stop-color="#F47133"/><stop offset="0.61" stop-color="#BC3081"/><stop offset="1" stop-color="#4C63D2"/></radialGradient></defs><rect width="24" height="24" rx="6" fill="url(#mlrIg)"/><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="16.6" cy="7.4" r="1.1" fill="#fff"/></svg>
-          </a>
-          <a href="https://wa.me/33763220884" class="social-wa" target="_blank" rel="noopener" aria-label="MLR TECH sur WhatsApp">
-            <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M12.04 5.5c-3.6 0-6.52 2.92-6.52 6.52 0 1.15.3 2.27.87 3.26L5.5 18.5l3.32-.87a6.5 6.5 0 0 0 3.22.83c3.6 0 6.52-2.92 6.52-6.52s-2.92-6.52-6.52-6.52zm3.81 9.32c-.16.45-.94.86-1.3.91-.33.05-.75.07-1.21-.08-.28-.09-.64-.21-1.1-.41-1.94-.84-3.2-2.79-3.3-2.92-.1-.13-.79-1.05-.79-2 0-.95.5-1.42.67-1.61.18-.19.39-.24.52-.24l.37.01c.12 0 .28-.05.43.33.16.39.55 1.34.6 1.44.05.1.08.21.02.34-.06.13-.09.21-.18.32l-.27.31c-.09.09-.18.19-.08.37.1.18.44.73.95 1.18.65.58 1.2.76 1.38.85.18.09.28.08.39-.05.1-.13.44-.51.56-.69.12-.18.24-.15.4-.09.16.06 1.04.49 1.22.58.18.09.3.13.34.21.05.08.05.45-.11.9z"/></svg>
-          </a>
-          <a href="mailto:contact@mlr-tech.com" class="social-mail" aria-label="Envoyer un email à MLR TECH">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4-8 5-8-5V6l8 5 8-5z"/></svg>
-          </a>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -297,8 +309,10 @@
   <script src="js/products.js"></script>
   <script src="js/wishlist.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/case-data.js"></script>
   <script src="js/seo.js"></script>
   <script src="js/account.js"></script>
   <script src="js/main.js?v=3"></script>
+  <script src="js/customizer.js"></script>
 </body>
 </html>

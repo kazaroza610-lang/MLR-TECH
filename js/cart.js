@@ -21,6 +21,19 @@ function addToCart(productId) {
   openCart();
 }
 
+function addCustomToCart({ caseLabel, price_eur, previewImage, meta }) {
+  cart.push({
+    id: 'custom-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8),
+    qty: 1,
+    custom: { caseLabel, price_eur, previewImage, meta },
+  });
+  saveCart();
+  updateCartCount();
+  updateCartDisplay();
+  showToast(t('toast.added'));
+  openCart();
+}
+
 function removeFromCart(productId) {
   cart = cart.filter(i => i.id !== productId);
   saveCart();
@@ -39,6 +52,7 @@ function changeQty(productId, delta) {
 
 function getCartTotal() {
   return cart.reduce((sum, item) => {
+    if (item.custom) return sum + item.custom.price_eur * item.qty;
     const p = getProductById(item.id);
     return sum + (p ? p.price_eur * item.qty : 0);
   }, 0);
@@ -62,10 +76,29 @@ function updateCartDisplay() {
   } else {
     body.innerHTML = '';
     cart.forEach(item => {
-      const p = getProductById(item.id);
-      if (!p) return;
       const row = document.createElement('div');
       row.className = 'cart-item';
+
+      if (item.custom) {
+        row.innerHTML = `
+          <img src="${item.custom.previewImage}" alt="${item.custom.caseLabel}" width="60" height="60">
+          <div class="cart-item-info">
+            <p class="cart-item-name">${item.custom.caseLabel}</p>
+            <p class="cart-item-price" data-price-eur="${item.custom.price_eur}">${formatPrice(item.custom.price_eur)}</p>
+          </div>
+          <div class="cart-item-actions">
+            <button class="qty-btn" onclick="changeQty('${item.id}',-1)" aria-label="Diminuer">−</button>
+            <span class="qty-val">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.id}',1)" aria-label="Augmenter">+</button>
+            <button class="remove-btn" onclick="removeFromCart('${item.id}')" aria-label="Supprimer">✕</button>
+          </div>
+        `;
+        body.appendChild(row);
+        return;
+      }
+
+      const p = getProductById(item.id);
+      if (!p) return;
       row.innerHTML = `
         <img src="${p.image}" alt="${p.name[currentLang]}" width="60" height="60">
         <div class="cart-item-info">
