@@ -38,11 +38,33 @@
     TEMPLATE_IMAGES[key] = img;
   });
 
-  function getTintedTemplate(key, color) {
-    const img = TEMPLATE_IMAGES[key];
+  const modelImageCache = {};
+  function getModelImage(src) {
+    if (modelImageCache[src]) return modelImageCache[src];
+    const img = new Image();
+    img.onload = () => renderPreview();
+    img.src = src;
+    modelImageCache[src] = img;
+    return img;
+  }
+
+  /* Détermine le template à utiliser : photo dédiée au modèle si on en a une,
+     sinon la photo générique de la marque (Apple / Samsung / autres). */
+  function getActiveTemplate() {
+    if (state.brand && state.model) {
+      const modelKey = state.brand.id + '|' + state.model;
+      const modelTpl = CASE_MODEL_TEMPLATES[modelKey];
+      if (modelTpl) return { cacheKey: modelKey, img: getModelImage(modelTpl.image), zone: modelTpl.printZone };
+    }
+    const silhouetteKey = state.brand ? state.brand.silhouette : 'generic';
+    const sil = CASE_SILHOUETTES[silhouetteKey];
+    return { cacheKey: silhouetteKey, img: TEMPLATE_IMAGES[silhouetteKey], zone: sil.printZone };
+  }
+
+  function getTintedTemplate(cacheKey, img, color) {
     if (!img.complete || !img.naturalWidth) return null;
-    const cacheKey = key + '_' + (color ? color.id : 'none');
-    if (tintCache[cacheKey]) return tintCache[cacheKey];
+    const tintKey = cacheKey + '_' + (color ? color.id : 'none');
+    if (tintCache[tintKey]) return tintCache[tintKey];
     const off = document.createElement('canvas');
     off.width = img.naturalWidth;
     off.height = img.naturalHeight;
@@ -56,7 +78,7 @@
       octx.globalAlpha = 1;
       octx.globalCompositeOperation = 'source-over';
     }
-    tintCache[cacheKey] = off;
+    tintCache[tintKey] = off;
     return off;
   }
 
@@ -94,19 +116,35 @@
     return `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><line x1="11" y1="18" x2="13" y2="18"/></svg>`;
   }
 
+  const modelSearch = document.getElementById('czModelSearch');
+
+  function renderModels(filter) {
+    modelsEl.innerHTML = '';
+    const q = (filter || '').trim().toLowerCase();
+    state.brand.models
+      .filter(m => !q || m.toLowerCase().includes(q))
+      .forEach(modelLabel => {
+        const btn = document.createElement('button');
+        btn.className = 'cz-model-btn';
+        btn.textContent = modelLabel;
+        if (state.model === modelLabel) btn.classList.add('active');
+        btn.addEventListener('click', () => selectModel(modelLabel));
+        modelsEl.appendChild(btn);
+      });
+    if (!modelsEl.children.length) {
+      modelsEl.innerHTML = '<p class="cz-no-results">Aucun modèle trouvé.</p>';
+    }
+  }
+  modelSearch.addEventListener('input', () => renderModels(modelSearch.value));
+
   function selectBrand(brand) {
     state.brand = brand;
+    state.model = null;
     document.querySelectorAll('.cz-brand-btn').forEach(b => b.classList.remove('active'));
     [...brandsEl.children].find((el, i) => CASE_BRANDS[i].id === brand.id)?.classList.add('active');
 
-    modelsEl.innerHTML = '';
-    brand.models.forEach(modelLabel => {
-      const btn = document.createElement('button');
-      btn.className = 'cz-model-btn';
-      btn.textContent = modelLabel;
-      btn.addEventListener('click', () => selectModel(modelLabel));
-      modelsEl.appendChild(btn);
-    });
+    modelSearch.value = '';
+    renderModels('');
     modelsWrap.hidden = false;
   }
 
@@ -366,9 +404,7 @@
     const S = CANVAS_SIZE;
     ctx.clearRect(0, 0, S, S);
 
-    const silhouetteKey = state.brand ? state.brand.silhouette : 'generic';
-    const sil = CASE_SILHOUETTES[silhouetteKey];
-    const tplImg = TEMPLATE_IMAGES[silhouetteKey];
+    const active = getActiveTemplate();
 
     // Le template (400×800) est centré dans le canvas carré en conservant son ratio
     const TPL_RATIO = 0.5; // largeur / hauteur du template source
@@ -378,7 +414,7 @@
     const drawX = (S - drawW) / 2;
     const drawY = marginY;
 
-    const zone = sil.printZone;
+    const zone = active.zone;
     const zx = drawX + zone.x * drawW, zy = drawY + zone.y * drawH;
     const zw = zone.w * drawW, zh = zone.h * drawH, zr = zone.radius * drawW;
 
@@ -453,11 +489,9 @@
 
     // Photo réelle du téléphone (cadre + caméra) par-dessus : son intérieur
     // transparent laisse apparaître le visuel dessiné juste au-dessus.
-    const tinted = getTintedTemplate(silhouetteKey, state.deviceColor);
+    const tinted = getTintedTemplate(active.cacheKey, active.img, state.deviceColor);
     if (tinted) {
       ctx.drawImage(tinted, drawX, drawY, drawW, drawH);
-    } else if (tplImg.complete === false) {
-      tplImg.onload = renderPreview;
     }
   }
 

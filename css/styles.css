@@ -1264,6 +1264,12 @@ ul { list-style: none; }
 .cz-brand-icon { color: var(--c-text); }
 
 .cz-models-wrap { margin-top: 8px; }
+.cz-model-search {
+  width: 100%; max-width: 360px; padding: 10px 14px; margin-bottom: 14px;
+  border: 2px solid var(--c-border); border-radius: 999px; font-size: 14px;
+}
+.cz-model-search:focus { border-color: var(--c-black); outline: none; }
+.cz-no-results { color: var(--c-muted); font-size: 14px; padding: 12px 0; }
 .cz-models { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
 .cz-model-btn {
   padding: 12px 14px; border: 2px solid var(--c-border); border-radius: var(--radius);

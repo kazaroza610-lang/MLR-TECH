@@ -114,3 +114,23 @@ const CASE_SIDES_LABEL = {
   'front-back-edge': 'Avant + Arrière + Bords',
   'back-edge': 'Arrière + Bords',
 };
+const CASE_MODEL_TEMPLATES = {
+  "apple|iPhone 14 Pro Max": { image: 'assets/images/products/tpl-apple-iphone-14-pro-max.png', printZone: { x: 0.215, y: 0.075, w: 0.5775, h: 0.8575, radius: 0.075 } },
+  "apple|iPhone 14 Pro": { image: 'assets/images/products/tpl-apple-iphone-14-pro.png', printZone: { x: 0.215, y: 0.075, w: 0.5775, h: 0.8575, radius: 0.075 } },
+  "apple|iPhone 13 Pro Max": { image: 'assets/images/products/tpl-apple-iphone-13-pro-max.png', printZone: { x: 0.0975, y: 0.08, w: 0.8, h: 0.8488, radius: 0.105 } },
+  "apple|iPhone 13 Pro": { image: 'assets/images/products/tpl-apple-iphone-13-pro.png', printZone: { x: 0.0975, y: 0.0788, w: 0.8075, h: 0.85, radius: 0.105 } },
+  "apple|iPhone 13": { image: 'assets/images/products/tpl-apple-iphone-13.png', printZone: { x: 0.0975, y: 0.08, w: 0.8075, h: 0.85, radius: 0.105 } },
+  "apple|iPhone 13 Mini": { image: 'assets/images/products/tpl-apple-iphone-13-mini.png', printZone: { x: 0.095, y: 0.08, w: 0.805, h: 0.8475, radius: 0.105 } },
+  "apple|iPhone 11": { image: 'assets/images/products/tpl-apple-iphone-11.png', printZone: { x: 0.0825, y: 0.0712, w: 0.84, h: 0.8575, radius: 0.11 } },
+  "samsung|Galaxy S24 Ultra": { image: 'assets/images/products/tpl-samsung-galaxy-s24-ultra.png', printZone: { x: 0.0575, y: 0.0275, w: 0.885, h: 0.9463, radius: 0.115 } },
+  "samsung|Galaxy S24+": { image: 'assets/images/products/tpl-samsung-galaxy-s24-plus.png', printZone: { x: 0.1025, y: 0.0663, w: 0.795, h: 0.8612, radius: 0.105 } },
+  "samsung|Galaxy S24": { image: 'assets/images/products/tpl-samsung-galaxy-s24.png', printZone: { x: 0.1, y: 0.065, w: 0.8025, h: 0.8662, radius: 0.105 } },
+  "xiaomi|Xiaomi 14": { image: 'assets/images/products/tpl-xiaomi-xiaomi-14.png', printZone: { x: 0.11, y: 0.065, w: 0.7775, h: 0.8625, radius: 0.1 } },
+  "xiaomi|Xiaomi 13T": { image: 'assets/images/products/tpl-xiaomi-xiaomi-13t.png', printZone: { x: 0.1175, y: 0.0788, w: 0.765, h: 0.85, radius: 0.1 } },
+  "google|Pixel 8 Pro": { image: 'assets/images/products/tpl-google-pixel-8-pro.png', printZone: { x: 0.1175, y: 0.0838, w: 0.7675, h: 0.8462, radius: 0.1 } },
+  "google|Pixel 8": { image: 'assets/images/products/tpl-google-pixel-8.png', printZone: { x: 0.115, y: 0.0775, w: 0.77, h: 0.8512, radius: 0.1 } },
+  "google|Pixel 7a": { image: 'assets/images/products/tpl-google-pixel-7a.png', printZone: { x: 0.1075, y: 0.08, w: 0.78, h: 0.8475, radius: 0.1025 } },
+  "google|Pixel 7 Pro": { image: 'assets/images/products/tpl-google-pixel-7-pro.png', printZone: { x: 0.12, y: 0.08, w: 0.7625, h: 0.8438, radius: 0.0975 } },
+  "google|Pixel 7": { image: 'assets/images/products/tpl-google-pixel-7.png', printZone: { x: 0.12, y: 0.08, w: 0.7675, h: 0.8475, radius: 0.1 } },
+  "google|Pixel 6": { image: 'assets/images/products/tpl-google-pixel-6.png', printZone: { x: 0.11, y: 0.07, w: 0.785, h: 0.8612, radius: 0.1025 } },
+};
