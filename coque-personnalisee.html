@@ -16,7 +16,7 @@
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/styles.css?v=3">
+  <link rel="stylesheet" href="css/styles.css?v=4">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body data-page="customizer">
@@ -159,132 +159,154 @@
     </section>
 
     <section class="cz-section">
-      <div class="cz-wrap">
+      <div class="cz-app">
 
-        <!-- Barre de progression -->
-        <div class="cz-stepper" id="czStepper">
-          <div class="cz-step active" data-step="1"><span class="cz-step-num">1</span><span class="cz-step-label">Modèle</span></div>
-          <div class="cz-step" data-step="2"><span class="cz-step-num">2</span><span class="cz-step-label">Type de coque</span></div>
-          <div class="cz-step" data-step="3"><span class="cz-step-num">3</span><span class="cz-step-label">Personnalisation</span></div>
-        </div>
+        <!-- Sidebar d'icônes (Produit / Photo / Texte) -->
+        <nav class="cz-sidebar" id="czSidebar">
+          <button class="cz-tab active" data-tab="produit">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+            <span>Produit</span>
+          </button>
+          <button class="cz-tab" data-tab="photo">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Photo</span>
+          </button>
+          <button class="cz-tab" data-tab="texte">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            <span>Texte</span>
+          </button>
+        </nav>
 
-        <!-- ÉTAPE 1 : Marque & modèle -->
-        <div class="cz-stepbox active" id="stepModel">
-          <h2 class="cz-step-title">Choisissez votre marque</h2>
-          <div class="cz-brands" id="czBrands"></div>
+        <!-- Panneau de réglages -->
+        <div class="cz-panel">
 
-          <div id="czModelsWrap" class="cz-models-wrap" hidden>
-            <h2 class="cz-step-title">Choisissez votre modèle</h2>
-            <input type="search" id="czModelSearch" class="cz-model-search" placeholder="Rechercher un modèle…">
-            <div class="cz-models" id="czModels"></div>
-          </div>
+          <!-- Onglet PRODUIT -->
+          <div class="cz-panel-page active" id="panelProduit">
+            <h2 class="cz-panel-title">Sélectionner un produit</h2>
 
-          <div id="czDeviceColorWrap" class="cz-models-wrap" hidden>
-            <h2 class="cz-step-title">Couleur de votre appareil</h2>
-            <div class="cz-swatches" id="czDeviceColors"></div>
-          </div>
-        </div>
-
-        <!-- ÉTAPE 2 : Type de coque -->
-        <div class="cz-stepbox" id="stepType">
-          <h2 class="cz-step-title">Choisissez le type de coque</h2>
-          <div class="cz-types" id="czTypes"></div>
-
-          <div id="czCaseColorWrap" class="cz-models-wrap" hidden>
-            <h2 class="cz-step-title">Couleur de la coque</h2>
-            <div class="cz-swatches" id="czCaseColors"></div>
-          </div>
-
-          <button class="btn btn-ghost cz-back-btn" data-go-step="1">← Retour</button>
-        </div>
-
-        <!-- ÉTAPE 3 : Personnalisation -->
-        <div class="cz-stepbox" id="stepCustomize">
-          <div class="cz-editor">
-
-            <div class="cz-canvas-wrap">
-              <canvas id="czCanvas" width="600" height="600"></canvas>
-
-              <div class="cz-artwork-toggle">
-                <button class="cz-artwork-btn active" data-artwork="single">Image unique</button>
-                <button class="cz-artwork-btn" data-artwork="collage">Collage</button>
-              </div>
-
-              <div class="cz-upload-zone" id="czUploadZone">
-                <input type="file" id="czFileInput" accept="image/jpeg,image/png,image/webp" hidden>
-                <p><strong>Glissez votre image ici</strong><br>ou cliquez pour choisir un fichier</p>
-                <p class="cz-upload-hint">JPG, PNG ou WEBP — 20 Mo max — résolution recommandée : 1200×1200 px</p>
-              </div>
-
-              <div class="cz-collage-zone" id="czCollageZone" hidden>
-                <div class="cz-collage-slot" data-slot="0"><span>+</span></div>
-                <div class="cz-collage-slot" data-slot="1"><span>+</span></div>
-                <div class="cz-collage-slot" data-slot="2"><span>+</span></div>
-                <div class="cz-collage-slot" data-slot="3"><span>+</span></div>
-                <input type="file" id="czCollageInput" accept="image/jpeg,image/png,image/webp" hidden>
-              </div>
-
-              <p class="cz-upload-warning" id="czUploadWarning" hidden></p>
+            <div class="cz-row" data-row="brand">
+              <span class="cz-row-label">Marque</span>
+              <span class="cz-row-value-wrap"><span class="cz-row-value" id="rowBrandValue">Choisir</span><span class="cz-row-chevron">›</span></span>
+            </div>
+            <div class="cz-row-expand" id="expandBrand" hidden>
+              <div class="cz-brands" id="czBrands"></div>
             </div>
 
-            <div class="cz-tools">
+            <div class="cz-row" data-row="model">
+              <span class="cz-row-label">Modèle de téléphone</span>
+              <span class="cz-row-value-wrap"><span class="cz-row-value" id="rowModelValue">Choisir</span><span class="cz-row-chevron">›</span></span>
+            </div>
+            <div class="cz-row-expand" id="expandModel" hidden>
+              <input type="search" id="czModelSearch" class="cz-model-search" placeholder="Rechercher un modèle…">
+              <div class="cz-models" id="czModels"></div>
+            </div>
 
-              <div class="cz-tool-group" id="czAdjustGroup" hidden>
-                <h3>Ajuster l'image</h3>
-                <label class="cz-tool-label">Zoom
-                  <input type="range" id="czZoom" min="50" max="200" value="100">
-                </label>
-                <label class="cz-tool-label">Rotation
-                  <input type="range" id="czRotation" min="-180" max="180" value="0">
-                </label>
-                <div class="cz-mirror-btns">
-                  <button class="btn-storage-like" id="czMirrorH" type="button">↔ Miroir horizontal</button>
-                  <button class="btn-storage-like" id="czMirrorV" type="button">↕ Miroir vertical</button>
-                </div>
-              </div>
+            <div class="cz-row" data-row="deviceColor">
+              <span class="cz-row-label">Couleur du téléphone</span>
+              <span class="cz-row-value-wrap"><span class="cz-row-swatch-dot" id="rowDeviceColorSwatch" hidden></span><span class="cz-row-value" id="rowDeviceColorValue">Choisir</span><span class="cz-row-chevron">›</span></span>
+            </div>
+            <div class="cz-row-expand" id="expandDeviceColor" hidden>
+              <div class="cz-swatches" id="czDeviceColors"></div>
+            </div>
 
-              <div class="cz-tool-group" id="czFilterGroup" hidden>
-                <h3>Filtres</h3>
-                <div class="cz-filters" id="czFilters">
-                  <button class="cz-filter-btn active" data-filter="none">Normal</button>
-                  <button class="cz-filter-btn" data-filter="grayscale">N&amp;B</button>
-                  <button class="cz-filter-btn" data-filter="sepia">Sépia</button>
-                  <button class="cz-filter-btn" data-filter="vintage">Vintage</button>
-                  <button class="cz-filter-btn" data-filter="contrast">Contraste+</button>
-                </div>
-              </div>
+            <div class="cz-row" data-row="caseType">
+              <span class="cz-row-label">Type de coque</span>
+              <span class="cz-row-value-wrap"><span class="cz-row-value" id="rowCaseTypeValue">Choisir</span><span class="cz-row-chevron">›</span></span>
+            </div>
+            <div class="cz-row-expand" id="expandCaseType" hidden>
+              <div class="cz-types" id="czTypes"></div>
+            </div>
 
-              <div class="cz-tool-group">
-                <h3>Texte optionnel</h3>
-                <input type="text" id="czTextInput" class="cz-text-input" placeholder="Votre texte…" maxlength="30">
-                <div class="cz-text-row">
-                  <label class="cz-tool-label cz-text-size">Taille
-                    <input type="range" id="czTextSize" min="14" max="48" value="24">
-                  </label>
-                  <input type="color" id="czTextColor" value="#ffffff" aria-label="Couleur du texte">
-                </div>
-                <div class="cz-text-pos" id="czTextPos">
-                  <button class="cz-pos-btn active" data-pos="top">Haut</button>
-                  <button class="cz-pos-btn" data-pos="center">Centre</button>
-                  <button class="cz-pos-btn" data-pos="bottom">Bas</button>
-                </div>
-              </div>
-
-              <div class="cz-summary" id="czSummary">
-                <h3>Résumé</h3>
-                <p><strong>Marque :</strong> <span id="czSumBrand">—</span></p>
-                <p><strong>Modèle :</strong> <span id="czSumModel">—</span></p>
-                <p><strong>Couleur appareil :</strong> <span id="czSumDeviceColor">—</span></p>
-                <p><strong>Type :</strong> <span id="czSumType">—</span></p>
-                <p><strong>Couleur coque :</strong> <span id="czSumCaseColor">—</span></p>
-                <p><strong>Impression :</strong> <span id="czSumSides">—</span></p>
-                <p class="cz-sum-price"><strong>Prix :</strong> <span id="czSumPrice">—</span></p>
-              </div>
-
-              <button class="btn btn-primary btn-full" id="czAddToCart">Ajouter au panier</button>
-              <button class="btn btn-ghost cz-back-btn" data-go-step="2">← Retour</button>
+            <div class="cz-row" data-row="caseColor">
+              <span class="cz-row-label">Couleur de la coque</span>
+              <span class="cz-row-value-wrap"><span class="cz-row-swatch-dot" id="rowCaseColorSwatch" hidden></span><span class="cz-row-value" id="rowCaseColorValue">Choisir</span><span class="cz-row-chevron">›</span></span>
+            </div>
+            <div class="cz-row-expand" id="expandCaseColor" hidden>
+              <div class="cz-swatches" id="czCaseColors"></div>
             </div>
           </div>
+
+          <!-- Onglet PHOTO -->
+          <div class="cz-panel-page" id="panelPhoto">
+            <h2 class="cz-panel-title">Photo</h2>
+
+            <div class="cz-artwork-toggle">
+              <button class="cz-artwork-btn active" data-artwork="single">Image unique</button>
+              <button class="cz-artwork-btn" data-artwork="collage">Collage</button>
+            </div>
+
+            <div class="cz-upload-zone" id="czUploadZone">
+              <input type="file" id="czFileInput" accept="image/jpeg,image/png,image/webp" hidden>
+              <p><strong>Glissez votre image ici</strong><br>ou cliquez pour choisir un fichier</p>
+              <p class="cz-upload-hint">JPG, PNG ou WEBP — 20 Mo max — résolution recommandée : 1200×1200 px</p>
+            </div>
+
+            <div class="cz-collage-zone" id="czCollageZone" hidden>
+              <div class="cz-collage-slot" data-slot="0"><span>+</span></div>
+              <div class="cz-collage-slot" data-slot="1"><span>+</span></div>
+              <div class="cz-collage-slot" data-slot="2"><span>+</span></div>
+              <div class="cz-collage-slot" data-slot="3"><span>+</span></div>
+              <input type="file" id="czCollageInput" accept="image/jpeg,image/png,image/webp" hidden>
+            </div>
+
+            <p class="cz-upload-warning" id="czUploadWarning" hidden></p>
+
+            <div class="cz-tool-group" id="czAdjustGroup" hidden>
+              <h3>Ajuster l'image</h3>
+              <label class="cz-tool-label">Zoom
+                <input type="range" id="czZoom" min="50" max="200" value="100">
+              </label>
+              <label class="cz-tool-label">Rotation
+                <input type="range" id="czRotation" min="-180" max="180" value="0">
+              </label>
+              <div class="cz-mirror-btns">
+                <button class="btn-storage-like" id="czMirrorH" type="button">↔ Miroir horizontal</button>
+                <button class="btn-storage-like" id="czMirrorV" type="button">↕ Miroir vertical</button>
+              </div>
+            </div>
+
+            <div class="cz-tool-group" id="czFilterGroup" hidden>
+              <h3>Filtres</h3>
+              <div class="cz-filters" id="czFilters">
+                <button class="cz-filter-btn active" data-filter="none">Normal</button>
+                <button class="cz-filter-btn" data-filter="grayscale">N&amp;B</button>
+                <button class="cz-filter-btn" data-filter="sepia">Sépia</button>
+                <button class="cz-filter-btn" data-filter="vintage">Vintage</button>
+                <button class="cz-filter-btn" data-filter="contrast">Contraste+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Onglet TEXTE -->
+          <div class="cz-panel-page" id="panelTexte">
+            <h2 class="cz-panel-title">Texte</h2>
+            <input type="text" id="czTextInput" class="cz-text-input" placeholder="Votre texte…" maxlength="30">
+            <div class="cz-text-row">
+              <label class="cz-tool-label cz-text-size">Taille
+                <input type="range" id="czTextSize" min="14" max="48" value="24">
+              </label>
+              <input type="color" id="czTextColor" value="#ffffff" aria-label="Couleur du texte">
+            </div>
+            <div class="cz-text-pos" id="czTextPos">
+              <button class="cz-pos-btn active" data-pos="top">Haut</button>
+              <button class="cz-pos-btn" data-pos="center">Centre</button>
+              <button class="cz-pos-btn" data-pos="bottom">Bas</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Aperçu live, toujours visible -->
+        <div class="cz-canvas-area">
+          <div class="cz-canvas-wrap">
+            <canvas id="czCanvas" width="600" height="600"></canvas>
+            <p class="cz-canvas-placeholder" id="czCanvasPlaceholder">Choisissez une marque et un modèle pour commencer</p>
+          </div>
+          <div class="cz-canvas-summary" id="czSummary">
+            <div class="cz-sum-line"><span id="czSumModel">Aucun modèle sélectionné</span></div>
+            <div class="cz-sum-line cz-sum-price"><span id="czSumPrice">—</span></div>
+          </div>
+          <button class="btn btn-primary btn-full" id="czAddToCart">Ajouter au panier</button>
         </div>
 
       </div>

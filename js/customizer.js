@@ -27,6 +27,7 @@
   const canvas = document.getElementById('czCanvas');
   const ctx = canvas.getContext('2d');
   const CANVAS_SIZE = canvas.width;
+  const canvasPlaceholder = document.getElementById('czCanvasPlaceholder');
 
   /* Préchargement des templates photo réels (Apple / Samsung / générique) */
   const TEMPLATE_IMAGES = {};
@@ -82,41 +83,45 @@
     return off;
   }
 
-  /* ── Navigation entre étapes ─────────────────────────────── */
-  function goToStep(n) {
-    document.querySelectorAll('.cz-stepbox').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.cz-step').forEach(s => s.classList.remove('active', 'done'));
-    const target = { 1: 'stepModel', 2: 'stepType', 3: 'stepCustomize' }[n];
-    document.getElementById(target).classList.add('active');
-    document.querySelectorAll('.cz-step').forEach(s => {
-      const sn = Number(s.dataset.step);
-      if (sn === n) s.classList.add('active');
-      if (sn < n) s.classList.add('done');
+  /* ── Onglets de la sidebar (Produit / Photo / Texte) ──────── */
+  document.querySelectorAll('.cz-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cz-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.cz-panel-page').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel' + capitalize(tab.dataset.tab)).classList.add('active');
     });
-    window.scrollTo({ top: document.querySelector('.cz-stepper').offsetTop - 100, behavior: 'smooth' });
+  });
+  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  /* ── Lignes déroulantes du panneau Produit ────────────────── */
+  const ROW_EXPANDS = ['brand', 'model', 'deviceColor', 'caseType', 'caseColor'];
+  function toggleRow(name) {
+    const expand = document.getElementById('expand' + capitalize(name));
+    const wasOpen = !expand.hidden;
+    ROW_EXPANDS.forEach(n => { document.getElementById('expand' + capitalize(n)).hidden = true; });
+    expand.hidden = wasOpen; // referme si déjà ouvert, sinon ouvre
   }
-  document.querySelectorAll('[data-go-step]').forEach(btn => {
-    btn.addEventListener('click', () => goToStep(Number(btn.dataset.goStep)));
+  document.querySelectorAll('.cz-row').forEach(row => {
+    row.addEventListener('click', () => toggleRow(row.dataset.row));
   });
 
-  /* ── Étape 1 : marques & modèles ──────────────────────────── */
+  /* ── Marques ───────────────────────────────────────────────── */
   const brandsEl = document.getElementById('czBrands');
-  const modelsWrap = document.getElementById('czModelsWrap');
   const modelsEl = document.getElementById('czModels');
+  const modelSearch = document.getElementById('czModelSearch');
 
   CASE_BRANDS.forEach(b => {
     const btn = document.createElement('button');
     btn.className = 'cz-brand-btn';
-    btn.innerHTML = `<span class="cz-brand-icon">${brandIcon(b.id)}</span><span>${b.label}</span>`;
+    btn.innerHTML = `<span class="cz-brand-icon">${brandIcon()}</span><span>${b.label}</span>`;
     btn.addEventListener('click', () => selectBrand(b));
     brandsEl.appendChild(btn);
   });
 
   function brandIcon() {
-    return `<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><line x1="11" y1="18" x2="13" y2="18"/></svg>`;
+    return `<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><line x1="11" y1="18" x2="13" y2="18"/></svg>`;
   }
-
-  const modelSearch = document.getElementById('czModelSearch');
 
   function renderModels(filter) {
     modelsEl.innerHTML = '';
@@ -140,44 +145,60 @@
   function selectBrand(brand) {
     state.brand = brand;
     state.model = null;
-    document.querySelectorAll('.cz-brand-btn').forEach(b => b.classList.remove('active'));
-    [...brandsEl.children].find((el, i) => CASE_BRANDS[i].id === brand.id)?.classList.add('active');
+    document.querySelectorAll('.cz-brand-btn').forEach((b, i) => b.classList.toggle('active', CASE_BRANDS[i].id === brand.id));
+    document.getElementById('rowBrandValue').textContent = brand.label;
+    document.getElementById('rowModelValue').textContent = 'Choisir';
 
     modelSearch.value = '';
     renderModels('');
-    modelsWrap.hidden = false;
+    toggleRow('model'); // referme marque, ouvre modèle automatiquement
+    document.getElementById('expandModel').hidden = false;
+    document.getElementById('expandBrand').hidden = true;
   }
 
   function selectModel(modelLabel) {
     state.model = modelLabel;
     document.querySelectorAll('.cz-model-btn').forEach(b => b.classList.toggle('active', b.textContent === modelLabel));
+    document.getElementById('rowModelValue').textContent = modelLabel;
 
-    deviceColorsEl.innerHTML = '';
-    CASE_DEVICE_COLORS.forEach(c => {
-      const sw = document.createElement('button');
-      sw.className = 'cz-swatch';
-      sw.style.background = c.hex;
-      sw.title = c.label;
-      sw.setAttribute('aria-label', c.label);
-      sw.addEventListener('click', () => selectDeviceColor(c));
-      deviceColorsEl.appendChild(sw);
-    });
-    deviceColorWrap.hidden = false;
+    // Valeurs par défaut pour un aperçu immédiat, modifiables ensuite
+    if (!state.deviceColor) selectDeviceColor(CASE_DEVICE_COLORS[0], true);
+    if (!state.caseType) selectType(CASE_TYPES[0], true);
+    if (!state.productColor) selectCaseColor(CASE_COLORS[0], true);
+
+    document.getElementById('expandModel').hidden = true;
+    if (canvasPlaceholder) canvasPlaceholder.hidden = true;
+    updateSummary();
+    renderPreview();
   }
 
-  function selectDeviceColor(color) {
+  /* ── Couleur de l'appareil ─────────────────────────────────── */
+  const deviceColorsEl = document.getElementById('czDeviceColors');
+  CASE_DEVICE_COLORS.forEach(c => {
+    const sw = document.createElement('button');
+    sw.className = 'cz-swatch';
+    sw.style.background = c.hex;
+    sw.title = c.label;
+    sw.setAttribute('aria-label', c.label);
+    sw.addEventListener('click', () => selectDeviceColor(c));
+    deviceColorsEl.appendChild(sw);
+  });
+
+  function selectDeviceColor(color, silent) {
     state.deviceColor = color;
     [...deviceColorsEl.children].forEach((el, i) => el.classList.toggle('active', CASE_DEVICE_COLORS[i].id === color.id));
-    goToStep(2);
+    document.getElementById('rowDeviceColorValue').textContent = color.label;
+    const dot = document.getElementById('rowDeviceColorSwatch');
+    dot.style.background = color.hex;
+    dot.hidden = false;
+    if (!silent) {
+      document.getElementById('expandDeviceColor').hidden = true;
+      renderPreview();
+    }
   }
 
-  /* ── Étape 2 : types de coque ─────────────────────────────── */
+  /* ── Type de coque ─────────────────────────────────────────── */
   const typesEl = document.getElementById('czTypes');
-  const caseColorWrap = document.getElementById('czCaseColorWrap');
-  const caseColorsEl = document.getElementById('czCaseColors');
-  const deviceColorWrap = document.getElementById('czDeviceColorWrap');
-  const deviceColorsEl = document.getElementById('czDeviceColors');
-
   CASE_TYPES.forEach(type => {
     const card = document.createElement('button');
     card.className = 'cz-type-card';
@@ -192,32 +213,43 @@
     typesEl.appendChild(card);
   });
 
-  function selectType(type) {
+  function selectType(type, silent) {
     state.caseType = type;
     document.querySelectorAll('.cz-type-card').forEach((c, i) => c.classList.toggle('active', CASE_TYPES[i].id === type.id));
-
-    caseColorsEl.innerHTML = '';
-    CASE_COLORS.forEach(c => {
-      const sw = document.createElement('button');
-      sw.className = 'cz-swatch';
-      sw.style.background = c.hex;
-      sw.title = c.label;
-      sw.setAttribute('aria-label', c.label);
-      sw.addEventListener('click', () => selectCaseColor(c));
-      caseColorsEl.appendChild(sw);
-    });
-    caseColorWrap.hidden = false;
+    document.getElementById('rowCaseTypeValue').textContent = type.label;
+    if (!silent) {
+      document.getElementById('expandCaseType').hidden = true;
+      updateSummary();
+      renderPreview();
+    }
   }
 
-  function selectCaseColor(color) {
+  /* ── Couleur de la coque ───────────────────────────────────── */
+  const caseColorsEl = document.getElementById('czCaseColors');
+  CASE_COLORS.forEach(c => {
+    const sw = document.createElement('button');
+    sw.className = 'cz-swatch';
+    sw.style.background = c.hex;
+    sw.title = c.label;
+    sw.setAttribute('aria-label', c.label);
+    sw.addEventListener('click', () => selectCaseColor(c));
+    caseColorsEl.appendChild(sw);
+  });
+
+  function selectCaseColor(color, silent) {
     state.productColor = color;
     [...caseColorsEl.children].forEach((el, i) => el.classList.toggle('active', CASE_COLORS[i].id === color.id));
-    goToStep(3);
-    updateSummary();
-    renderPreview();
+    document.getElementById('rowCaseColorValue').textContent = color.label;
+    const dot = document.getElementById('rowCaseColorSwatch');
+    dot.style.background = color.hex;
+    dot.hidden = false;
+    if (!silent) {
+      document.getElementById('expandCaseColor').hidden = true;
+      renderPreview();
+    }
   }
 
-  /* ── Étape 3 : canvas & outils ─────────────────────────────── */
+  /* ── Onglet Photo : upload / collage / ajustements / filtres ── */
   const uploadZone = document.getElementById('czUploadZone');
   const fileInput = document.getElementById('czFileInput');
   const uploadWarning = document.getElementById('czUploadWarning');
@@ -366,7 +398,7 @@
   canvas.addEventListener('touchmove', dragMove, { passive: false });
   canvas.addEventListener('touchend', dragEnd);
 
-  /* Texte */
+  /* ── Onglet Texte ──────────────────────────────────────────── */
   document.getElementById('czTextInput').addEventListener('input', e => { state.text = e.target.value; renderPreview(); });
   document.getElementById('czTextSize').addEventListener('input', e => { state.textSize = Number(e.target.value); renderPreview(); });
   document.getElementById('czTextColor').addEventListener('input', e => { state.textColor = e.target.value; renderPreview(); });
@@ -403,6 +435,7 @@
   function renderPreview() {
     const S = CANVAS_SIZE;
     ctx.clearRect(0, 0, S, S);
+    if (!state.brand || !state.model) return;
 
     const active = getActiveTemplate();
 
@@ -495,14 +528,10 @@
     }
   }
 
-  /* ── Résumé ───────────────────────────────────────────────── */
+  /* ── Résumé (zone canvas) ──────────────────────────────────── */
   function updateSummary() {
-    document.getElementById('czSumBrand').textContent = state.brand ? state.brand.label : '—';
-    document.getElementById('czSumModel').textContent = state.model || '—';
-    document.getElementById('czSumDeviceColor').textContent = state.deviceColor ? state.deviceColor.label : '—';
-    document.getElementById('czSumType').textContent = state.caseType ? state.caseType.label : '—';
-    document.getElementById('czSumCaseColor').textContent = state.productColor ? state.productColor.label : '—';
-    document.getElementById('czSumSides').textContent = state.caseType ? CASE_SIDES_LABEL[state.caseType.sides] : '—';
+    const modelEl = document.getElementById('czSumModel');
+    modelEl.textContent = state.brand && state.model ? `${state.brand.label} ${state.model}` : 'Aucun modèle sélectionné';
     document.getElementById('czSumPrice').textContent = state.caseType ? formatPrice(state.caseType.price_eur) : '—';
   }
 
@@ -511,14 +540,14 @@
   /* ── Ajout au panier ──────────────────────────────────────── */
   document.getElementById('czAddToCart').addEventListener('click', () => {
     if (!state.brand || !state.model || !state.caseType) {
-      showToast('Merci de compléter les 3 étapes avant d\'ajouter au panier.');
+      showToast('Choisissez une marque, un modèle et un type de coque.');
       return;
     }
     const hasArtwork = state.artworkType === 'collage'
       ? state.collageImages.some(Boolean)
       : !!state.image;
     if (!hasArtwork) {
-      showToast('Ajoutez au moins une image avant de continuer.');
+      showToast('Ajoutez une photo (onglet Photo) avant de continuer.');
       return;
     }
 
