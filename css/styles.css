@@ -1358,6 +1358,42 @@ ul { list-style: none; }
 .cz-summary h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
 .cz-sum-price { font-size: 16px; margin-top: 6px; }
 
+/* Swatches couleur appareil / coque */
+.cz-swatches { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.cz-swatch {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 2.5px solid #ccc; cursor: pointer;
+  transition: border-color var(--t-fast), transform var(--t-fast);
+}
+.cz-swatch:hover { transform: scale(1.08); }
+.cz-swatch.active { border-color: var(--c-black); box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--c-black); }
+
+/* Toggle Image unique / Collage */
+.cz-artwork-toggle { display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; }
+.cz-artwork-btn {
+  padding: 8px 16px; border: 2px solid var(--c-border); border-radius: 999px;
+  background: var(--c-white); cursor: pointer; font-size: 13px; font-weight: 600;
+  transition: border-color var(--t-fast);
+}
+.cz-artwork-btn:hover { border-color: var(--c-black); }
+.cz-artwork-btn.active { border-color: var(--c-black); background: var(--c-black); color: var(--c-white); }
+
+/* Zone collage : grille 2x2 de slots uploadables */
+.cz-collage-zone {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  margin: 16px auto 0; max-width: 480px;
+}
+.cz-collage-slot {
+  aspect-ratio: 1/1; border: 2px dashed var(--c-border); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; color: var(--c-muted); cursor: pointer;
+  background-size: cover; background-position: center;
+  transition: border-color var(--t-fast);
+}
+.cz-collage-slot:hover { border-color: var(--c-black); }
+.cz-collage-slot.filled { border-style: solid; }
+.cz-collage-slot.filled span { display: none; }
+
 @media (max-width: 860px) {
   .cz-editor { grid-template-columns: 1fr; }
 }

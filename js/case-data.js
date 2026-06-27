@@ -79,6 +79,22 @@ const CASE_SILHOUETTES = {
   },
 };
 
+/* Couleurs d'appareil génériques (cosmétique, teinte le contour du téléphone) */
+const CASE_DEVICE_COLORS = [
+  { id: 'argent',  label: 'Argent',        hex: '#c7c9cc' },
+  { id: 'noir',    label: 'Noir sidéral',  hex: '#1c1c1e' },
+  { id: 'bleu',    label: 'Bleu titane',   hex: '#3a5169' },
+  { id: 'or',      label: 'Or',            hex: '#cdb586' },
+];
+
+/* Couleurs de coque disponibles pour chaque type (matériau visible derrière le visuel) */
+const CASE_COLORS = [
+  { id: 'transparent', label: 'Transparent', hex: '#e9e9e9cc' },
+  { id: 'noir',         label: 'Noir',        hex: '#1a1a1a' },
+  { id: 'blanc',        label: 'Blanc',       hex: '#f5f5f5' },
+  { id: 'marine',       label: 'Bleu marine', hex: '#1e3a5f' },
+];
+
 /* Types de coque disponibles */
 const CASE_TYPES = [
   { id: 'rigide-fine',        label: 'Coque rigide - Extra fine',             description: 'Plastique fin et léger',         sides: 'back',           price_eur: 19.99, popular: false },

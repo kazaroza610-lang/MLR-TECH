@@ -5,8 +5,12 @@
   const state = {
     brand: null,
     model: null,
+    deviceColor: null,
     caseType: null,
-    image: null,       // HTMLImageElement uploadé
+    productColor: null,
+    artworkType: 'single', // 'single' | 'collage'
+    image: null,       // HTMLImageElement uploadé (mode single)
+    collageImages: [null, null, null, null], // mode collage
     zoom: 1,
     rotation: 0,
     mirrorH: false,
@@ -77,11 +81,33 @@
   function selectModel(modelLabel) {
     state.model = modelLabel;
     document.querySelectorAll('.cz-model-btn').forEach(b => b.classList.toggle('active', b.textContent === modelLabel));
+
+    deviceColorsEl.innerHTML = '';
+    CASE_DEVICE_COLORS.forEach(c => {
+      const sw = document.createElement('button');
+      sw.className = 'cz-swatch';
+      sw.style.background = c.hex;
+      sw.title = c.label;
+      sw.setAttribute('aria-label', c.label);
+      sw.addEventListener('click', () => selectDeviceColor(c));
+      deviceColorsEl.appendChild(sw);
+    });
+    deviceColorWrap.hidden = false;
+  }
+
+  function selectDeviceColor(color) {
+    state.deviceColor = color;
+    [...deviceColorsEl.children].forEach((el, i) => el.classList.toggle('active', CASE_DEVICE_COLORS[i].id === color.id));
     goToStep(2);
   }
 
   /* ── Étape 2 : types de coque ─────────────────────────────── */
   const typesEl = document.getElementById('czTypes');
+  const caseColorWrap = document.getElementById('czCaseColorWrap');
+  const caseColorsEl = document.getElementById('czCaseColors');
+  const deviceColorWrap = document.getElementById('czDeviceColorWrap');
+  const deviceColorsEl = document.getElementById('czDeviceColors');
+
   CASE_TYPES.forEach(type => {
     const card = document.createElement('button');
     card.className = 'cz-type-card';
@@ -99,6 +125,23 @@
   function selectType(type) {
     state.caseType = type;
     document.querySelectorAll('.cz-type-card').forEach((c, i) => c.classList.toggle('active', CASE_TYPES[i].id === type.id));
+
+    caseColorsEl.innerHTML = '';
+    CASE_COLORS.forEach(c => {
+      const sw = document.createElement('button');
+      sw.className = 'cz-swatch';
+      sw.style.background = c.hex;
+      sw.title = c.label;
+      sw.setAttribute('aria-label', c.label);
+      sw.addEventListener('click', () => selectCaseColor(c));
+      caseColorsEl.appendChild(sw);
+    });
+    caseColorWrap.hidden = false;
+  }
+
+  function selectCaseColor(color) {
+    state.productColor = color;
+    [...caseColorsEl.children].forEach((el, i) => el.classList.toggle('active', CASE_COLORS[i].id === color.id));
     goToStep(3);
     updateSummary();
     renderPreview();
@@ -108,6 +151,50 @@
   const uploadZone = document.getElementById('czUploadZone');
   const fileInput = document.getElementById('czFileInput');
   const uploadWarning = document.getElementById('czUploadWarning');
+  const collageZone = document.getElementById('czCollageZone');
+  const collageInput = document.getElementById('czCollageInput');
+  let activeCollageSlot = 0;
+
+  document.querySelectorAll('.cz-artwork-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.artworkType = btn.dataset.artwork;
+      document.querySelectorAll('.cz-artwork-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      uploadZone.hidden = state.artworkType !== 'single';
+      collageZone.hidden = state.artworkType !== 'collage';
+      document.getElementById('czAdjustGroup').hidden = state.artworkType !== 'single' || !state.image;
+      document.getElementById('czFilterGroup').hidden = state.artworkType !== 'single' || !state.image;
+      renderPreview();
+    });
+  });
+
+  document.querySelectorAll('.cz-collage-slot').forEach(slot => {
+    slot.addEventListener('click', () => {
+      activeCollageSlot = Number(slot.dataset.slot);
+      collageInput.click();
+    });
+  });
+  collageInput.addEventListener('change', () => {
+    if (collageInput.files[0]) handleCollageFile(collageInput.files[0], activeCollageSlot);
+  });
+
+  function handleCollageFile(file, slotIndex) {
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        state.collageImages[slotIndex] = img;
+        const slotEl = document.querySelector(`.cz-collage-slot[data-slot="${slotIndex}"]`);
+        slotEl.innerHTML = '';
+        slotEl.style.backgroundImage = `url(${reader.result})`;
+        slotEl.classList.add('filled');
+        renderPreview();
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 
   uploadZone.addEventListener('click', () => fileInput.click());
   uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
@@ -254,24 +341,42 @@
     const bx = body.x * S, by = body.y * S, bw = body.w * S, bh = body.h * S, br = body.radius * S;
     const zx = zone.x * S, zy = zone.y * S, zw = zone.w * S, zh = zone.h * S, zr = zone.radius * S;
 
+    const deviceHex = state.deviceColor ? state.deviceColor.hex : '#111111';
+    const productHex = state.productColor ? state.productColor.hex : '#e9e9e9';
+
     // Ombre légère sous le téléphone
     ctx.save();
     ctx.shadowColor = 'rgba(0,0,0,0.18)';
     ctx.shadowBlur = 24;
     ctx.shadowOffsetY = 10;
     roundedRectPath(ctx, bx, by, bw, bh, br);
-    ctx.fillStyle = '#111';
+    ctx.fillStyle = deviceHex;
     ctx.fill();
     ctx.restore();
 
-    // Image utilisateur clippée dans la zone imprimable
+    // Visuel utilisateur clippé dans la zone imprimable
     roundedRectPath(ctx, zx, zy, zw, zh, zr);
     ctx.save();
     ctx.clip();
-    ctx.fillStyle = '#e9e9e9';
+    ctx.fillStyle = productHex;
     ctx.fillRect(zx, zy, zw, zh);
 
-    if (state.image) {
+    if (state.artworkType === 'collage') {
+      const cols = 2, rows = 2, gap = 4;
+      const cw = (zw - gap) / cols, ch = (zh - gap) / rows;
+      state.collageImages.forEach((img, i) => {
+        if (!img) return;
+        const col = i % cols, row = Math.floor(i / cols);
+        const cellX = zx + col * (cw + gap), cellY = zy + row * (ch + gap);
+        const scale = Math.max(cw / img.width, ch / img.height);
+        const dw = img.width * scale, dh = img.height * scale;
+        ctx.save();
+        roundedRectPath(ctx, cellX, cellY, cw, ch, 6);
+        ctx.clip();
+        ctx.drawImage(img, cellX + (cw - dw) / 2, cellY + (ch - dh) / 2, dw, dh);
+        ctx.restore();
+      });
+    } else if (state.image) {
       const cx = zx + zw / 2 + state.offsetX;
       const cy = zy + zh / 2 + state.offsetY;
       const baseScale = Math.max(zw / state.image.width, zh / state.image.height);
@@ -349,7 +454,9 @@
   function updateSummary() {
     document.getElementById('czSumBrand').textContent = state.brand ? state.brand.label : '—';
     document.getElementById('czSumModel').textContent = state.model || '—';
+    document.getElementById('czSumDeviceColor').textContent = state.deviceColor ? state.deviceColor.label : '—';
     document.getElementById('czSumType').textContent = state.caseType ? state.caseType.label : '—';
+    document.getElementById('czSumCaseColor').textContent = state.productColor ? state.productColor.label : '—';
     document.getElementById('czSumSides').textContent = state.caseType ? CASE_SIDES_LABEL[state.caseType.sides] : '—';
     document.getElementById('czSumPrice').textContent = state.caseType ? formatPrice(state.caseType.price_eur) : '—';
   }
@@ -362,8 +469,11 @@
       showToast('Merci de compléter les 3 étapes avant d\'ajouter au panier.');
       return;
     }
-    if (!state.image) {
-      showToast('Ajoutez une image avant de continuer.');
+    const hasArtwork = state.artworkType === 'collage'
+      ? state.collageImages.some(Boolean)
+      : !!state.image;
+    if (!hasArtwork) {
+      showToast('Ajoutez au moins une image avant de continuer.');
       return;
     }
 
@@ -382,8 +492,11 @@
       meta: {
         brand: state.brand.label,
         model: state.model,
+        deviceColor: state.deviceColor ? state.deviceColor.label : null,
         caseType: state.caseType.label,
+        caseColor: state.productColor ? state.productColor.label : null,
         sides: CASE_SIDES_LABEL[state.caseType.sides],
+        artworkType: state.artworkType,
       },
     });
   });

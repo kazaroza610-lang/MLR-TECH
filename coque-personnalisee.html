@@ -68,7 +68,7 @@
             <ul class="nav-sub">
               <li><a href="category.html?cat=telephone" data-i18n="subcat.all">Tout voir</a></li>
               <li><a href="category.html?cat=telephone&amp;subcat=smartphones" data-i18n="subcat.smartphones">Téléphone</a></li>
-              <li><a href="category.html?cat=telephone&amp;subcat=coques-protections" data-i18n="subcat.coques-protections">Coques &amp; Protections</a></li>
+              <li><a href="coque-personnalisee.html" data-i18n="subcat.coques-protections">Coques &amp; Protections</a></li>
               <li><a href="category.html?cat=telephone&amp;subcat=chargeurs-cables" data-i18n="subcat.chargeurs-cables">Chargeurs &amp; Câbles</a></li>
               <li><a href="category.html?cat=telephone&amp;subcat=batterie-externe" data-i18n="subcat.batterie-externe">Batterie externe</a></li>
               <li><a href="category.html?cat=telephone&amp;subcat=supports" data-i18n="subcat.supports">Supports voiture &amp; bureau</a></li>
@@ -152,7 +152,7 @@
     <section class="page-hero">
       <div style="max-width:1200px;margin:0 auto;padding:0 16px">
         <p class="product-back" style="margin-bottom:12px">
-          <a href="category.html?cat=telephone&amp;subcat=coques-protections">← Retour aux coques</a>
+          <a href="coque-personnalisee.html">← Retour aux coques</a>
         </p>
         <h1>Créez votre coque personnalisée</h1>
       </div>
@@ -177,12 +177,23 @@
             <h2 class="cz-step-title">Choisissez votre modèle</h2>
             <div class="cz-models" id="czModels"></div>
           </div>
+
+          <div id="czDeviceColorWrap" class="cz-models-wrap" hidden>
+            <h2 class="cz-step-title">Couleur de votre appareil</h2>
+            <div class="cz-swatches" id="czDeviceColors"></div>
+          </div>
         </div>
 
         <!-- ÉTAPE 2 : Type de coque -->
         <div class="cz-stepbox" id="stepType">
           <h2 class="cz-step-title">Choisissez le type de coque</h2>
           <div class="cz-types" id="czTypes"></div>
+
+          <div id="czCaseColorWrap" class="cz-models-wrap" hidden>
+            <h2 class="cz-step-title">Couleur de la coque</h2>
+            <div class="cz-swatches" id="czCaseColors"></div>
+          </div>
+
           <button class="btn btn-ghost cz-back-btn" data-go-step="1">← Retour</button>
         </div>
 
@@ -192,11 +203,26 @@
 
             <div class="cz-canvas-wrap">
               <canvas id="czCanvas" width="600" height="600"></canvas>
+
+              <div class="cz-artwork-toggle">
+                <button class="cz-artwork-btn active" data-artwork="single">Image unique</button>
+                <button class="cz-artwork-btn" data-artwork="collage">Collage</button>
+              </div>
+
               <div class="cz-upload-zone" id="czUploadZone">
                 <input type="file" id="czFileInput" accept="image/jpeg,image/png,image/webp" hidden>
                 <p><strong>Glissez votre image ici</strong><br>ou cliquez pour choisir un fichier</p>
                 <p class="cz-upload-hint">JPG, PNG ou WEBP — 20 Mo max — résolution recommandée : 1200×1200 px</p>
               </div>
+
+              <div class="cz-collage-zone" id="czCollageZone" hidden>
+                <div class="cz-collage-slot" data-slot="0"><span>+</span></div>
+                <div class="cz-collage-slot" data-slot="1"><span>+</span></div>
+                <div class="cz-collage-slot" data-slot="2"><span>+</span></div>
+                <div class="cz-collage-slot" data-slot="3"><span>+</span></div>
+                <input type="file" id="czCollageInput" accept="image/jpeg,image/png,image/webp" hidden>
+              </div>
+
               <p class="cz-upload-warning" id="czUploadWarning" hidden></p>
             </div>
 
@@ -247,7 +273,9 @@
                 <h3>Résumé</h3>
                 <p><strong>Marque :</strong> <span id="czSumBrand">—</span></p>
                 <p><strong>Modèle :</strong> <span id="czSumModel">—</span></p>
+                <p><strong>Couleur appareil :</strong> <span id="czSumDeviceColor">—</span></p>
                 <p><strong>Type :</strong> <span id="czSumType">—</span></p>
+                <p><strong>Couleur coque :</strong> <span id="czSumCaseColor">—</span></p>
                 <p><strong>Impression :</strong> <span id="czSumSides">—</span></p>
                 <p class="cz-sum-price"><strong>Prix :</strong> <span id="czSumPrice">—</span></p>
               </div>
