@@ -59,23 +59,23 @@ const CASE_BRANDS = [
   },
 ];
 
-/* Silhouettes génériques : coordonnées normalisées (0–1) sur un canvas carré.
-   `camera` décrit la forme du module caméra à exclure de la zone imprimable. */
+/* Silhouettes basées sur de vraies photos produit (dos réel, fond détouré).
+   Chaque template PNG a son cadre + module caméra réels en pixels opaques et
+   son intérieur transparent : le visuel du client est dessiné dans `printZone`
+   (coordonnées normalisées 0–1 par rapport à l'image source), puis le template
+   est superposé par-dessus pour révéler le cadre et la caméra réels. */
 const CASE_SILHOUETTES = {
   apple: {
-    body: { x: 0.16, y: 0.05, w: 0.68, h: 0.90, radius: 0.16 },
-    printZone: { x: 0.19, y: 0.08, w: 0.62, h: 0.84, radius: 0.13 },
-    camera: { type: 'apple-module', x: 0.24, y: 0.11, w: 0.22, h: 0.22, radius: 0.05 },
+    image: 'assets/images/products/template-apple.png',
+    printZone: { x: 0.10, y: 0.069, w: 0.80, h: 0.909, radius: 0.12 },
   },
   samsung: {
-    body: { x: 0.16, y: 0.05, w: 0.68, h: 0.90, radius: 0.12 },
-    printZone: { x: 0.19, y: 0.08, w: 0.62, h: 0.84, radius: 0.10 },
-    camera: { type: 'samsung-strip', x: 0.24, y: 0.10, w: 0.07, h: 0.20 },
+    image: 'assets/images/products/template-samsung.png',
+    printZone: { x: 0.1075, y: 0.069, w: 0.7875, h: 0.859, radius: 0.10 },
   },
   generic: {
-    body: { x: 0.16, y: 0.05, w: 0.68, h: 0.90, radius: 0.10 },
-    printZone: { x: 0.19, y: 0.08, w: 0.62, h: 0.84, radius: 0.08 },
-    camera: { type: 'single-circle', x: 0.27, y: 0.13, w: 0.12, h: 0.12 },
+    image: 'assets/images/products/template-generic.png',
+    printZone: { x: 0.1225, y: 0.081, w: 0.755, h: 0.844, radius: 0.10 },
   },
 };
 

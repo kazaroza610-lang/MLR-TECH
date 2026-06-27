@@ -28,6 +28,38 @@
   const ctx = canvas.getContext('2d');
   const CANVAS_SIZE = canvas.width;
 
+  /* Préchargement des templates photo réels (Apple / Samsung / générique) */
+  const TEMPLATE_IMAGES = {};
+  const tintCache = {};
+  Object.keys(CASE_SILHOUETTES).forEach(key => {
+    const img = new Image();
+    img.onload = () => renderPreview();
+    img.src = CASE_SILHOUETTES[key].image;
+    TEMPLATE_IMAGES[key] = img;
+  });
+
+  function getTintedTemplate(key, color) {
+    const img = TEMPLATE_IMAGES[key];
+    if (!img.complete || !img.naturalWidth) return null;
+    const cacheKey = key + '_' + (color ? color.id : 'none');
+    if (tintCache[cacheKey]) return tintCache[cacheKey];
+    const off = document.createElement('canvas');
+    off.width = img.naturalWidth;
+    off.height = img.naturalHeight;
+    const octx = off.getContext('2d');
+    octx.drawImage(img, 0, 0);
+    if (color) {
+      octx.globalCompositeOperation = 'source-atop';
+      octx.globalAlpha = 0.35;
+      octx.fillStyle = color.hex;
+      octx.fillRect(0, 0, off.width, off.height);
+      octx.globalAlpha = 1;
+      octx.globalCompositeOperation = 'source-over';
+    }
+    tintCache[cacheKey] = off;
+    return off;
+  }
+
   /* ── Navigation entre étapes ─────────────────────────────── */
   function goToStep(n) {
     document.querySelectorAll('.cz-stepbox').forEach(b => b.classList.remove('active'));
@@ -336,25 +368,33 @@
 
     const silhouetteKey = state.brand ? state.brand.silhouette : 'generic';
     const sil = CASE_SILHOUETTES[silhouetteKey];
+    const tplImg = TEMPLATE_IMAGES[silhouetteKey];
 
-    const body = sil.body, zone = sil.printZone;
-    const bx = body.x * S, by = body.y * S, bw = body.w * S, bh = body.h * S, br = body.radius * S;
-    const zx = zone.x * S, zy = zone.y * S, zw = zone.w * S, zh = zone.h * S, zr = zone.radius * S;
+    // Le template (400×800) est centré dans le canvas carré en conservant son ratio
+    const TPL_RATIO = 0.5; // largeur / hauteur du template source
+    const marginY = S * 0.04;
+    const drawH = S - marginY * 2;
+    const drawW = drawH * TPL_RATIO;
+    const drawX = (S - drawW) / 2;
+    const drawY = marginY;
 
-    const deviceHex = state.deviceColor ? state.deviceColor.hex : '#111111';
+    const zone = sil.printZone;
+    const zx = drawX + zone.x * drawW, zy = drawY + zone.y * drawH;
+    const zw = zone.w * drawW, zh = zone.h * drawH, zr = zone.radius * drawW;
+
     const productHex = state.productColor ? state.productColor.hex : '#e9e9e9';
 
     // Ombre légère sous le téléphone
     ctx.save();
-    ctx.shadowColor = 'rgba(0,0,0,0.18)';
-    ctx.shadowBlur = 24;
-    ctx.shadowOffsetY = 10;
-    roundedRectPath(ctx, bx, by, bw, bh, br);
-    ctx.fillStyle = deviceHex;
+    ctx.shadowColor = 'rgba(0,0,0,0.25)';
+    ctx.shadowBlur = 20;
+    ctx.shadowOffsetY = 12;
+    roundedRectPath(ctx, drawX, drawY, drawW, drawH, drawW * 0.16);
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
     ctx.fill();
     ctx.restore();
 
-    // Visuel utilisateur clippé dans la zone imprimable
+    // Visuel utilisateur clippé dans la zone imprimable (intérieur réel du template)
     roundedRectPath(ctx, zx, zy, zw, zh, zr);
     ctx.save();
     ctx.clip();
@@ -411,43 +451,14 @@
       ctx.restore();
     }
 
-    // Module caméra par-dessus
-    ctx.save();
-    ctx.fillStyle = '#0d0d0d';
-    const cam = sil.camera;
-    const camX = cam.x * S, camY = cam.y * S, camW = cam.w * S, camH = cam.h * S;
-    if (cam.type === 'apple-module') {
-      roundedRectPath(ctx, camX, camY, camW, camH, (cam.radius || 0.04) * S);
-      ctx.fill();
-      ctx.fillStyle = '#333';
-      ctx.beginPath(); ctx.arc(camX + camW * 0.3, camY + camH * 0.3, camW * 0.18, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.arc(camX + camW * 0.7, camY + camH * 0.3, camW * 0.18, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.arc(camX + camW * 0.3, camY + camH * 0.7, camW * 0.18, 0, Math.PI * 2); ctx.fill();
-    } else if (cam.type === 'samsung-strip') {
-      roundedRectPath(ctx, camX, camY, camW, camH, camW * 0.4);
-      ctx.fill();
-      ctx.fillStyle = '#333';
-      for (let i = 0; i < 3; i++) {
-        ctx.beginPath();
-        ctx.arc(camX + camW / 2, camY + camH * (0.22 + i * 0.3), camW * 0.32, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    } else {
-      ctx.beginPath();
-      ctx.arc(camX + camW / 2, camY + camH / 2, camW / 2, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = '#333';
-      ctx.beginPath();
-      ctx.arc(camX + camW / 2, camY + camH / 2, camW * 0.32, 0, Math.PI * 2);
-      ctx.fill();
+    // Photo réelle du téléphone (cadre + caméra) par-dessus : son intérieur
+    // transparent laisse apparaître le visuel dessiné juste au-dessus.
+    const tinted = getTintedTemplate(silhouetteKey, state.deviceColor);
+    if (tinted) {
+      ctx.drawImage(tinted, drawX, drawY, drawW, drawH);
+    } else if (tplImg.complete === false) {
+      tplImg.onload = renderPreview;
     }
-    ctx.restore();
-
-    // Contour de la coque
-    roundedRectPath(ctx, bx, by, bw, bh, br);
-    ctx.lineWidth = 3;
-    ctx.strokeStyle = '#000';
-    ctx.stroke();
   }
 
   /* ── Résumé ───────────────────────────────────────────────── */
